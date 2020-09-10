@@ -33,3 +33,6 @@
 
 # db
 *.opendb
+
+# Debug und so
+Projekt/.vs/*
