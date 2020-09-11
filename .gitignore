@@ -1,13 +1,10 @@
-
+# Damit Dateien ignoriert werden können, dürfen sie vorher nicht in git committed worden sein
+# also falls ignorieren nicht funktioniert: Entsprechende Datei löschen und das committen (auch Ordner)
 
 # Executables
 *.exe
 *.out
 *.app
-
-# db
-*.opendb
-*.db
 
 # Debug und so
 Projekt/.vs/
