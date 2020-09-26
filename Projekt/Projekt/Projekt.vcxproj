@@ -24,6 +24,7 @@
     <ProjectGuid>{445a11f1-33e8-44be-b0c2-60b5a4bc876a}</ProjectGuid>
     <RootNamespace>Projekt</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>PokerGame</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,9 +141,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="..\..\.gitignore" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Rules.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
