@@ -17,4 +17,7 @@
   <ItemGroup>
     <None Include="..\..\.gitignore" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Rules.txt" />
+  </ItemGroup>
 </Project>
