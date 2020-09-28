@@ -152,8 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BotPlayer.h" />
+    <ClInclude Include="CardAndSymbols.h" />
     <ClInclude Include="DeckOfCards.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameController.h" />
     <ClInclude Include="HumanPlayer.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="pch.h" />
@@ -163,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="BotPlayer.cpp" />
     <ClCompile Include="DeckOfCards.cpp" />
+    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="HumanPlayer.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="pch.cpp">

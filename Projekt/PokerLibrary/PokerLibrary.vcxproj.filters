@@ -39,6 +39,12 @@
     <ClInclude Include="DeckOfCards.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="CardAndSymbols.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GameController.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PokerLibrary.cpp">
@@ -63,6 +69,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="DeckOfCards.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="GameController.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
