@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headerdateien\Playertypes">
+      <UniqueIdentifier>{e384c0cf-4272-43ee-9e7d-07ac0a4c1127}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -22,15 +25,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Rules.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="HumanPlayer.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="BotPlayer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Output.h">
@@ -44,6 +38,18 @@
     </ClInclude>
     <ClInclude Include="GameController.h">
       <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Money.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="BotPlayer.h">
+      <Filter>Headerdateien\Playertypes</Filter>
+    </ClInclude>
+    <ClInclude Include="HumanPlayer.h">
+      <Filter>Headerdateien\Playertypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Headerdateien\Playertypes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +78,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="GameController.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Money.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

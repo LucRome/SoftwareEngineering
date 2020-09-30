@@ -1,6 +1,6 @@
 #pragma once
-//inherit Player
-class HumanPlayer
+#include "Player.h"
+class HumanPlayer : Player
 {
 };
 

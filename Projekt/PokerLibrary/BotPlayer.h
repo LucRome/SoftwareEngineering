@@ -1,5 +1,6 @@
 #pragma once
-class BotPlayer
+#include "Player.h"
+class BotPlayer : Player
 {
 };
 
