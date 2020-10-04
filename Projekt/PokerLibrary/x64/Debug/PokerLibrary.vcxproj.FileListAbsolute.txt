@@ -1,0 +1,2 @@
+C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\x64\Debug\PokerLibrary.pdb
+C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\PokerLibrary\x64\Debug\PokerLibrary.pdb
