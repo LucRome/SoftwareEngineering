@@ -51,6 +51,9 @@
     <ClInclude Include="Player.h">
       <Filter>Headerdateien\Playertypes</Filter>
     </ClInclude>
+    <ClInclude Include="ConsolePrinter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PokerLibrary.cpp">
@@ -81,6 +84,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Money.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsolePrinter.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
