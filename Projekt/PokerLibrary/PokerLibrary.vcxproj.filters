@@ -16,30 +16,21 @@
     <Filter Include="Headerdateien\Playertypes">
       <UniqueIdentifier>{e384c0cf-4272-43ee-9e7d-07ac0a4c1127}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\GameLogic">
+      <UniqueIdentifier>{846b3f0f-cffc-4dfd-bf22-d041b4302742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Output">
+      <UniqueIdentifier>{77b4b40c-d6fb-40c6-8f5f-a994910eeaa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Other">
+      <UniqueIdentifier>{a9169510-057d-4721-81f7-4e249dc34275}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Rules.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Output.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="DeckOfCards.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="CardAndSymbols.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="GameController.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Money.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="BotPlayer.h">
@@ -52,7 +43,25 @@
       <Filter>Headerdateien\Playertypes</Filter>
     </ClInclude>
     <ClInclude Include="ConsolePrinter.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\Output</Filter>
+    </ClInclude>
+    <ClInclude Include="GameController.h">
+      <Filter>Headerdateien\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>Headerdateien\Output</Filter>
+    </ClInclude>
+    <ClInclude Include="Rules.h">
+      <Filter>Headerdateien\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="CardAndSymbols.h">
+      <Filter>Headerdateien\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="DeckOfCards.h">
+      <Filter>Headerdateien\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Money.h">
+      <Filter>Headerdateien\Other</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
