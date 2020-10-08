@@ -4,11 +4,11 @@
 //the possible suits and values (print symbols should be added by the UI component)
 enum suits
 {
-	diamonds, clubs, hearts, spades
+	diamonds, clubs, hearts, spades, none
 };
 
 enum values {
-	two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
+	two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace, none
 };
 
 //for Rules: maybe add operators/functions for smaller/bigger/...
