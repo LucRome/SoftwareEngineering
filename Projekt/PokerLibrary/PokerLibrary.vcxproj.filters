@@ -42,9 +42,6 @@
     <ClInclude Include="Player.h">
       <Filter>Headerdateien\Playertypes</Filter>
     </ClInclude>
-    <ClInclude Include="ConsolePrinter.h">
-      <Filter>Headerdateien\Output</Filter>
-    </ClInclude>
     <ClInclude Include="GameController.h">
       <Filter>Headerdateien\GameLogic</Filter>
     </ClInclude>
@@ -93,9 +90,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Money.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="ConsolePrinter.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
