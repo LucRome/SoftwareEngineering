@@ -6,7 +6,7 @@
 class GameController
 {
 public:
-	GameController(std::vector<std::shared_ptr<Player>>);
+	GameController();
 	void playGame(); //Rückgabetyp benötigt, für Gewinner
 
 private:
