@@ -60,6 +60,9 @@
     <ClInclude Include="Money.h">
       <Filter>Headerdateien\Other</Filter>
     </ClInclude>
+    <ClInclude Include="Dealer.h">
+      <Filter>Headerdateien\GameLogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PokerLibrary.cpp">
@@ -90,6 +93,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Money.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Dealer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
