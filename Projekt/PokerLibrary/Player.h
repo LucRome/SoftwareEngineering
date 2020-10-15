@@ -6,6 +6,6 @@ class Player
 
 private:
 	chipstack m_chipstack;
-
+	
 };
 

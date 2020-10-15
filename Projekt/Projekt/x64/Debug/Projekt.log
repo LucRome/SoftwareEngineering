@@ -1,2 +1,2 @@
-﻿  main.cpp
-  Projekt.vcxproj -> C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\x64\Debug\PokerGame.exe
+﻿  Menue.cpp
+C:\Users\Noah Hauke\source\SoftwareEngineering\Projekt\Projekt\Menue.cpp(3,10): fatal error C1083: Datei (Include) kann nicht geöffnet werden: "Output.h": No such file or directory
