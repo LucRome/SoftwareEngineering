@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Rules.h"
 #include <string.h>
-
+#include "CardAndSymbols.h"
 
 std::string ChangeCards(int i)
 {
