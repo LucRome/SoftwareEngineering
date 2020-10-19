@@ -9,16 +9,20 @@ HumanPlayer::HumanPlayer(card pFirstCard, card pSecondCard, chipstack pStartingC
 
 chipstack HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 	int play;
+	chipstack chipsOut;
+	std::cout << "What do u want to do";
 	for (plays i:pPlays)
 	{
 		switch (i)
 		{
 		case fold:
-			//ausgabe
+			std::cout << " fold [2]";
 			break;
 		case check:
+			std::cout << " check [0]";
 			break;
 		case raise:
+			std::cout << " raise [1]";
 			break;
 		default:
 			break;
@@ -29,19 +33,22 @@ chipstack HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 	switch (play)
 	{
 	case 0:		//check
-		//dec 
-		return {check,pToCheck};
+		chipsOut = pToCheck;
+		decFromWinnings(chipsOut);
+		return {check,chipsOut};
 		break;
 	case 1:		//raise
 		std::cout << "How much do u want to raise?"
-		//Eingabe in Chipstack
-			return {};
+		//Eingabe in Chipstack   chipsOut = ...
+		chipsOut = (pToCheck + chipsOut);
+		decFromWinnings(chipsOut);
+		return {raise,chipsOut };
 		break;
 	case 2:		//fold
-		return //emptyChipstack
+		return {fold,chipsOut}
 		break;
 	default:
-		std::cout << "Couldn't de"
+		std::cout << "Input was not recognized";
 		break;
 	}
 }
