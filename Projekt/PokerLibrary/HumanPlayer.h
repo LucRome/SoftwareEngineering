@@ -5,7 +5,7 @@
 
 class HumanPlayer: Player{
 public:
-	HumanPlayer();
-	chipstack play(chipstack pToCheck, std::vector<plays> pPlays) override;
+	HumanPlayer(chipstack pStartingChips,std::string pName);
+	outPlay play(chipstack pToCheck, std::vector<plays> pPlays) override;
 private:
 };

@@ -2,12 +2,12 @@
 #include "HumanPlayer.h"
 #include <iostream>
 
-HumanPlayer::HumanPlayer(card pFirstCard, card pSecondCard, chipstack pStartingChips) {
-	setHand(pFirstCard, pSecondCard);
-	setWinnings(pStartingChips);
+HumanPlayer::HumanPlayer(chipstack pStartingChips, std::string pName):Player(pStartingChips,pName) {
+
 }
 
-chipstack HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
+
+outPlay HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 	int play;
 	chipstack chipsOut;
 	std::cout << "What do u want to do";
@@ -38,14 +38,14 @@ chipstack HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 		return {check,chipsOut};
 		break;
 	case 1:		//raise
-		std::cout << "How much do u want to raise?"
-		//Eingabe in Chipstack   chipsOut = ...
+		std::cout << "How much do u want to raise?";
+		chipsOut = chipstack::readChipstackFromConsole();
 		chipsOut = (pToCheck + chipsOut);
 		decFromWinnings(chipsOut);
 		return {raise,chipsOut };
 		break;
 	case 2:		//fold
-		return {fold,chipsOut}
+		return { fold,chipsOut };
 		break;
 	default:
 		std::cout << "Input was not recognized";
