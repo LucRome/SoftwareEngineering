@@ -1,8 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+<<<<<<< HEAD
     "\\Projekt"
   ],
   "SelectedNode": "\\Projekt\\Projekt.sln",
+=======
+    "\\Projekt",
+    "\\Projekt\\PokerLibrary",
+    "\\Projekt\\Projekt"
+  ],
+  "SelectedNode": "\\Projekt\\PokerLibrary\\Rules.cpp",
+>>>>>>> master
   "PreviewInSolutionExplorer": false
 }
