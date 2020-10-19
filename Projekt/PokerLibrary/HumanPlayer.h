@@ -3,8 +3,9 @@
 #include "CardAndSymbols.h"
 #include "Money.h"
 
-class HumanPlayer: public Player{
+class HumanPlayer: Player{
 public:
 	HumanPlayer();
+	chipstack play(chipstack pToCheck, std::vector<plays> pPlays) override;
 private:
 };

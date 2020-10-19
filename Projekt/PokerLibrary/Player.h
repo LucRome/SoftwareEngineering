@@ -1,6 +1,15 @@
 #pragma once
 #include "Money.h"
 #include "CardAndSymbols.h"
+#include "enum.h"
+#include <vector>
+
+struct outPlay
+{
+	plays play;
+	chipstack chips;
+};
+
 //only abstract
 class Player
 {
@@ -21,6 +30,16 @@ public:
 	HumanPlayer::setWinnings(chipstack pStartingChips) {	//Function can be used to set the Balance of a player at the beginning of a new round
 		winnings = pStartingChips;
 	}
+	
+	HumanPlayer::addToWinnings(chipstack pAdd) {	//
+		winnings = winnings + pAdd;
+	}
+
+	HumanPlayer::decFromWinnings(chipstack pDec) {	//
+		winnings = winnings - pDec;
+	}
+
+	virtual chipstack play(chipstack pToCheck, std::vector<plays> pPlays) = 0;
 private:	
 
 	hand playerHand;

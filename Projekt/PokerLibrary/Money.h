@@ -11,4 +11,5 @@ private:
 
 public:
 	chipstack& operator+(const chipstack& a);
+	chipstack& operator-(const chipstack& a);
 };
