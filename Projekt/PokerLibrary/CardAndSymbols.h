@@ -17,3 +17,8 @@ struct card { //suits, value
 	suits suit;
 	values value;
 };
+
+struct hand { //suits, value
+	card firstCard;
+	card secondCard;
+};
