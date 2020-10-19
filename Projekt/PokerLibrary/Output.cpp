@@ -25,3 +25,7 @@ void Output::rulesOut()
 	}
 	file.close();
 }
+
+void Output::printTable(std::vector<std::shared_ptr<const Player>>& players)
+{
+}
