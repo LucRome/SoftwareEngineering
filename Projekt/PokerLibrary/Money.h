@@ -10,7 +10,14 @@ struct chipstack {
 	std::array<int, nr_chipvalues> m_chips = { 0 }; //standard: all are 0
 
 public:
-	chipstack& operator+(const chipstack& a);
-	chipstack& operator-(const chipstack& a);
+	chipstack& operator+(const chipstack& a) const;
+	chipstack& operator-(const chipstack& a) const;
+	bool operator<= (const chipstack& a) const;
+	bool operator< (const int& a) const;
+	bool operator> (const chipstack& a) const ;
+	bool operator== (const int& a) const;
+
+	int sum() const;
+
 	static chipstack readChipstackFromConsole();
 };

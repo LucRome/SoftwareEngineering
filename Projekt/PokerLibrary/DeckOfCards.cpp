@@ -20,6 +20,7 @@ card DeckOfCards::getRandomCard()
     card returnCard = m_cardDeck[cardNr];
     //maybe: first swap with last element, then pop_back -> faster?
     m_cardDeck.erase(m_cardDeck.begin() + cardNr);
+    return returnCard;
 }
 
 void DeckOfCards::refreshDeck()

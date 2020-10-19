@@ -13,7 +13,7 @@ public:
 	void refreshDeck();
 
 private:
-	void fillCardDeck();
+	void fillDeck();
 	std::vector<card> m_cardDeck;
 };
 
