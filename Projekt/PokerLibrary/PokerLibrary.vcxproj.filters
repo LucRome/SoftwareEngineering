@@ -63,6 +63,9 @@
     <ClInclude Include="Dealer.h">
       <Filter>Headerdateien\GameLogic</Filter>
     </ClInclude>
+    <ClInclude Include="StringMaps.h">
+      <Filter>Headerdateien\Output</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PokerLibrary.cpp">
@@ -96,6 +99,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Dealer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="StringMaps.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

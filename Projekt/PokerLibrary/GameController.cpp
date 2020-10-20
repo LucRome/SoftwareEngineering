@@ -38,6 +38,7 @@ Player& GameController::playGame()
 		//reset everything from previous round
 		resetAfterRound();
 	}
+	return *(m_players[0]);
 }
 
 //TODO: Blinds

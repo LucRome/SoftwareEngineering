@@ -4,6 +4,13 @@
 
 const std::array<int, nr_chipvalues> chipstack::values = { 5, 10, 20, 50, 100, 500 };
 
+chipstack::chipstack() {
+
+}
+chipstack::chipstack(std::array<int, nr_chipvalues> chips) {
+    m_chips = chips;
+}
+
 chipstack& chipstack::operator+(const chipstack& a) const
 {
 	chipstack& result = *(new chipstack());
