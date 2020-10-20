@@ -2,6 +2,8 @@
 #include "Money.h"
 #include "Output.h"
 
+const std::array<int, nr_chipvalues> chipstack::values = { 5, 10, 20, 50, 100, 500 };
+
 chipstack& chipstack::operator+(const chipstack& a) const
 {
 	chipstack& result = *(new chipstack());
@@ -43,8 +45,8 @@ bool chipstack::operator==(const int& a) const
 int chipstack::sum() const
 {
     int s = 0;
-    for (int i : m_chips) {
-        s += i;
+    for (int i = 0; i < nr_chipvalues; i++) {
+        s += values[i] * m_chips[i];
     }
     return s;
 }
