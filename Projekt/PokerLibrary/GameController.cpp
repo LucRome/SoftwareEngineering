@@ -10,6 +10,14 @@ GameController::GameController(std::vector<std::shared_ptr<Player>> players, int
 	,m_playersInRound(players)
 	,m_communityCard(std::array<card, 5>())
 {
+	m_players.shrink_to_fit();
+	m_playersInRound.shrink_to_fit();
+
+	//initialise m_pot_perPlayer 
+	for (int i = 0; i < m_players.size(); i++) {
+		m_pot_perPlayer.push_back(chipstack());
+	}
+	m_pot_perPlayer.shrink_to_fit();
 }
 
 Player& GameController::playGame()
@@ -26,6 +34,8 @@ Player& GameController::playGame()
 			}
 		}
 		m_players.shrink_to_fit();
+
+		//reset everything from previous round
 		resetAfterRound();
 	}
 }
@@ -63,7 +73,12 @@ void GameController::preflop(int start_playerNr)
 
 void GameController::resetAfterRound()
 {
-	//TODO: implement
+	dealer.refresh();
+	m_bid = chipstack();
+	m_pot = chipstack();
+	for (chipstack c : m_pot_perPlayer) {
+		c = chipstack();
+	}
 }
 
 void GameController::flop(int start_playerNr)
@@ -92,6 +107,7 @@ void GameController::river(int start_playerNr)
 void GameController::showdown(int start_playerNr)
 {
 	//TODO: showdown (need rules and Output)
+	//also: add pot to winner
 }
 
 void GameController::roundOfBidding(int start_playerNr)
@@ -176,6 +192,7 @@ bool GameController::allPlayersSamePot()
 	}
 	return same;
 }
+
 
 void GameController::player_bid(int playerNr, chipstack chips)
 {

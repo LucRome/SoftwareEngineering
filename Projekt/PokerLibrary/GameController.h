@@ -24,6 +24,7 @@ private:
 	std::vector<plays> possiblePlays(int playerNr);
 	bool allPlayersSamePot();
 
+
 	//add bid to all variables where its needed and remove from player
 	void player_bid(int playerNr, chipstack chips);
 
@@ -37,6 +38,6 @@ private:
 	int m_max;
 	int m_dealer_pos; //start: 0
 
-	std::array<card, 5> m_communityCard;
+	std::array<card, 5> m_communityCard = {card(), card(), card(), card(), card()};
 };
 

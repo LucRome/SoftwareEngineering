@@ -1,5 +1,6 @@
 #pragma once
 #include <array>
+#include <string>
 
 const int nr_chipvalues = 6;
 
@@ -15,8 +16,8 @@ public:
 	bool operator< (const int& a) const;
 	bool operator> (const chipstack& a) const ;
 	bool operator== (const int& a) const;
-
 	int sum() const;
 
 	static chipstack readChipstackFromConsole();
+	std::string toString() const;
 };

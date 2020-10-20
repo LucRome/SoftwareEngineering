@@ -58,7 +58,19 @@ chipstack chipstack::readChipstackFromConsole()
     int val;
     for (int i = 0; i < c.m_chips.size(); i++) {
         val = c.m_chips[i];
-        val = out.readChip(chipvalues(i));
+        val = out.readChip(values[i]);
     }
     return c;
+}
+
+std::string chipstack::toString() const
+{
+    std::string s = "{ ";
+    for (int i = 0; i < nr_chipvalues; i++) {
+        s += values[i];
+        s += "€: ";
+        s += m_chips[i];
+        i < (nr_chipvalues - 1) ? s += ", " : s += " }";
+    }
+    return s;
 }
