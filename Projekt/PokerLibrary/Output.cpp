@@ -46,14 +46,14 @@ void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
 
 	/*	Your turn player xy (1)
 
-		hand: {} (2)
-		community cards: {} (3)
+		hand:				{} (2)
+		community cards:	{} (3)
 
-		your Bid: {} (sum: ) (4)
-		highest Bid: {} (sum: ) (5)
-		Pot: {} (sum: ) (6)
+		your Bid:			{} (sum: ) (4)
+		highest Bid:		{} (sum: ) (5)
+		Pot:				{} (sum: ) (6)
 
-		your Money: {} (sum: ) (7)
+		your Money:			{} (sum: ) (7)
 
 		other Players: (8)
 			xy: 12€ (sum) (9)
@@ -63,7 +63,7 @@ void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
 	std::cout << "Your turn player " << players[playerIndex]->getName() << std::endl << std::endl;
 	//(2)
 	hand h = players[playerIndex]->getHand();
-	std::cout << "\thand: {" << cardToString(h.firstCard) << ", " << cardToString(h.secondCard) << "}" << std::endl;
+	std::cout << "\thand:\t\t { " << cardToString(h.firstCard) << " " << cardToString(h.secondCard) << " }" << std::endl;
 	//(3)
 	std::cout << "\tcommunity cards: { ";
 	for (card c : communityCard) {
@@ -71,19 +71,19 @@ void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
 	}
 	std::cout <<"}" << std::endl << std::endl;
 	//(4)
-	std::cout << "\tyour Bid: " << chipstackToStringAndSum(playerBid) << std::endl;
+	std::cout << "\tyour Bid: \t" << chipstackToStringAndSum(playerBid) << std::endl;
 	//(5)
-	std::cout << "\thighest Bid: " << chipstackToStringAndSum(max_bid) << std::endl;
+	std::cout << "\thighest Bid: \t" << chipstackToStringAndSum(max_bid) << std::endl;
 	//(6)
-	std::cout << "\tPot: " << chipstackToStringAndSum(pot) << std::endl;
+	std::cout << "\tPot: \t\t" << chipstackToStringAndSum(pot) << std::endl;
 	//(7)
-	std::cout << "\tyour Money: " << chipstackToStringAndSum(players[playerIndex]->getWinnings()) << std::endl << std::endl;
+	std::cout << "\tyour Money: \t" << chipstackToStringAndSum(players[playerIndex]->getWinnings()) << std::endl << std::endl;
 	//(8)
 	std::cout << "\tother Players: " << std::endl;
 	//(9),(10),...
 	for (int i = 0; i < players.size(); i++) {
 		if (i != playerIndex) {
-			std::cout << "\t\t" << players[i]->getName() << ": " << chipstackToStringAndSum(players[i]->getWinnings()) << std::endl;
+			std::cout << "\t\t" << players[i]->getName() << ": \t" << chipstackToStringAndSum(players[i]->getWinnings()) << std::endl;
 		}
 	}
 }
