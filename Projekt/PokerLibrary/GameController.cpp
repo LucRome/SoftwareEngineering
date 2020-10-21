@@ -22,26 +22,24 @@ GameController::GameController(std::vector<std::shared_ptr<Player>> players, int
 
 std::shared_ptr<Player>& GameController::playGame()
 {
-	//TODO: extract bankrupt players (after each round)
 	bool cont = true;
 	while (cont) {
 		round();
 		m_dealer_pos = (m_dealer_pos + 1) % m_playersInRound.size();
 		//extract bankrupt players
 		for (int i = 0; i < m_players.size(); i++) {
-			if (m_players[i]->getWinnings() == 0) {
+			if (m_players[i]->bankrupt()) {
 				m_players.erase(m_players.begin() + i);
 			}
 		}
 		m_players.shrink_to_fit();
-
+		m_playersInRound = m_players;
 		//reset everything from previous round
 		resetAfterRound();
 	}
 	return m_players[0];
 }
 
-//TODO: Blinds
 
 void GameController::round()
 {
@@ -142,32 +140,36 @@ plays GameController::movePlayer(int playerNr)
 {
 	plays play;
 	bool moveAllowed = false;
-	do { //let player choose move until correct
-		outPlay move = m_players[playerNr]->play(m_bid - m_pot_perPlayer[playerNr], possiblePlays(playerNr));
-		switch (move.play) {
-		case fold: //remove Players from all vectors for this round
-			moveAllowed = true;
-			m_playersInRound.erase(m_playersInRound.begin() + playerNr);
-			m_pot_perPlayer.erase(m_pot_perPlayer.begin() + playerNr);
-			break;
-		case check: //check whether bid is right, then remove chips from player and add to pot
-			if (move.chips == (m_bid.sum() - m_pot_perPlayer[playerNr].sum())) {
+	if (!m_players[playerNr]->bankrupt()) { //Player doesnt need to move if bankrupt, but stays in round (ALL IN)
+		do { //let player choose move until correct
+			chipstack delta = m_bid - m_pot_perPlayer[playerNr]; //operator-: result cant be negative
+			outPlay move = m_players[playerNr]->play(delta, possiblePlays(playerNr));
+			switch (move.play) {
+			case fold: //remove Players from all vectors for this round
 				moveAllowed = true;
-				player_bid(playerNr, move.chips);
+				m_playersInRound.erase(m_playersInRound.begin() + playerNr);
+				m_pot_perPlayer.erase(m_pot_perPlayer.begin() + playerNr);
+				break;
+			case check: //check whether bid is right, then remove chips from player and add to pot
+				if (move.chips == (m_bid.sum() - m_pot_perPlayer[playerNr].sum())) {
+					moveAllowed = true;
+					player_bid(playerNr, move.chips);
+				}
+				break;
+			case raise: //only allowed when player_pot + new bid <= maximum
+				if (m_pot_perPlayer[playerNr] + move.chips < m_max + 1
+					&& m_pot_perPlayer[playerNr] + move.chips > m_bid) {
+					moveAllowed = true;
+					player_bid(playerNr, move.chips);
+				}
+				break;
+			default:
+				moveAllowed = false;
 			}
-			break;
-		case raise: //only allowed when player_pot + new bid <= maximum
-			if (m_pot_perPlayer[playerNr] + move.chips < m_max + 1
-				&& m_pot_perPlayer[playerNr] + move.chips > m_bid) {
-				moveAllowed = true;
-				player_bid(playerNr, move.chips);
-			}
-			break;
-		default:
-			moveAllowed = false;
-		}
-		play = move.play;
-	} while (!moveAllowed);
+			play = move.play;
+		} while (!moveAllowed);
+	}
+
 	return play;
 }
 
@@ -200,6 +202,9 @@ bool GameController::allPlayersSamePot()
 void GameController::player_bid(int playerNr, chipstack chips)
 {
 	m_playersInRound[playerNr]->decFromWinnings(chips);
+	if (m_playersInRound[playerNr]->getWinnings().isNegative) {
+		m_playersInRound[playerNr]->setBankrupt();
+	}
 	m_pot_perPlayer[playerNr] = m_pot_perPlayer[playerNr] + chips;
 	m_pot = m_pot + chips;
 	if (m_pot_perPlayer[playerNr] > m_bid) {
