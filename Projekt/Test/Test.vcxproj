@@ -48,6 +48,9 @@
     <ProjectReference Include="..\PokerLibrary\PokerLibrary.vcxproj">
       <Project>{a533385f-304f-47ef-8c55-fe4aad85469b}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Projekt\Projekt.vcxproj">
+      <Project>{445a11f1-33e8-44be-b0c2-60b5a4bc876a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -81,6 +84,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\Projekt;C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\PokerLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
