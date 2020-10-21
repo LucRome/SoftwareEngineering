@@ -4,6 +4,7 @@
 #include "DeckOfCards.h"
 #include "Money.h"
 #include "Dealer.h"
+#include "Output.h"
 
 class GameController
 {
@@ -39,5 +40,8 @@ private:
 	int m_dealer_pos; //start: 0
 
 	std::array<card, 5> m_communityCard = {card(), card(), card(), card(), card()};
+
+	//Output Class
+	Output out;
 };
 

@@ -40,7 +40,7 @@ int Output::readChip(int value)
 
 void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
 	int playerIndex, const std::array< card, 5>& communityCard,const chipstack& playerBid, const chipstack& pot,
-	const chipstack& bid)
+	const chipstack& max_bid)
 {
 	clearConsole();
 
@@ -73,7 +73,7 @@ void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
 	//(4)
 	std::cout << "\tyour Bid: " << chipstackToStringAndSum(playerBid) << std::endl;
 	//(5)
-	std::cout << "\thighest Bid: " << chipstackToStringAndSum(bid) << std::endl;
+	std::cout << "\thighest Bid: " << chipstackToStringAndSum(max_bid) << std::endl;
 	//(6)
 	std::cout << "\tPot: " << chipstackToStringAndSum(pot) << std::endl;
 	//(7)

@@ -114,11 +114,13 @@ void GameController::showdown(int start_playerNr)
 void GameController::roundOfBidding(int start_playerNr)
 {
 	int playersThatActed = 0;
-	int playerNr = start_playerNr;
+	int playerNr = start_playerNr; //point to the plyers whos turn it is
 	bool cont = true;
 	
 	while (cont) {
-		for (int i = 0; i < m_playersInRound.size(); i++) {
+		for (int i = 0; i < m_playersInRound.size(); i++) { //just iterate over all players
+			out.printTable(m_playersInRound, playerNr, m_communityCard, m_pot_perPlayer[playerNr],
+				m_pot, m_bid);
 			if (movePlayer(playerNr) != fold) { //increase PlayerNr. if Player doesnt fold
 				playerNr = (playerNr + 1) % m_playersInRound.size();
 			}
