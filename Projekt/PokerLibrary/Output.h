@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Player.h"
+#include "StringMaps.h"
 #include <memory>
 class Output
 {
@@ -11,5 +12,15 @@ public:
 
 	int readChip(int value);
 
-	void printTable(std::vector<std::shared_ptr<const Player>>& players);
+	void printTable(const std::vector< std::shared_ptr< Player>>& players,
+		int playerNr, const std::array< card, 5>& communityCard, const chipstack& playerBid, const chipstack& pot,
+		const chipstack& bid);
+	
+	void clearConsole();
+
+	std::string cardToString(const card& card);
+	std::string chipstackToStringAndSum(const chipstack& c);
+
+private:
+	StringMaps strMaps;
 };

@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="BotPlayer.h" />
     <ClInclude Include="CardAndSymbols.h" />
+    <ClInclude Include="Dealer.h" />
     <ClInclude Include="DeckOfCards.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameController.h" />
@@ -162,9 +163,11 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rules.h" />
+    <ClInclude Include="StringMaps.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BotPlayer.cpp" />
+    <ClCompile Include="Dealer.cpp" />
     <ClCompile Include="DeckOfCards.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="HumanPlayer.cpp" />
@@ -179,9 +182,11 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PokerLibrary.cpp" />
     <ClCompile Include="Rules.cpp" />
+    <ClCompile Include="StringMaps.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Projekt\Rules.txt" />
+    <Text Include="TableOut_ideas.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

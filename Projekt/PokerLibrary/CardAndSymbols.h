@@ -14,8 +14,8 @@ enum values {
 //for Rules: maybe add operators/functions for smaller/bigger/...
 
 struct card { //suits, value
-	suits suit;
-	values value;
+	suits suit = s_none;
+	values value = v_none;
 };
 
 struct hand { //suits, value
