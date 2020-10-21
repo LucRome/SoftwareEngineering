@@ -12,16 +12,18 @@ Menue::~Menue() {
 }
 
 void Menue::Startgame() {
-	int displayRules;
-	int nrPlayers, humanBot;
+	int displayRules, maxPlayers = 9, nrPlayers, humanBot;
 	std::cout << "Welcome to poker" << std::endl << "Do you whant the rules to be displayed? If yes type 1" << std::endl;
 	std::cin >> displayRules;
 	if (displayRules == 1) {
 		Output out = Output();
 		out.rulesOut();
 	}
-	std::cout << "Please enter the number of players: " << std::endl;
-	std::cin >> nrPlayers;
+
+	do {
+		std::cout << "Please enter the number of players: " << std::endl << "The maximum number of players is 9" << std::endl;
+		std::cin >> nrPlayers;
+	} while (nrPlayers > maxPlayers);
 
 	for (int i = 0; i < nrPlayers; i++) {
 		std::cout << "Should player " << i << "be a bot or a human?" << std::endl;
