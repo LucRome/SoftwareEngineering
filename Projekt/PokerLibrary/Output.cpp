@@ -69,7 +69,7 @@ void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
 	for (card c : communityCard) {
 		std::cout << cardToString(c) << " ";
 	}
-	std::cout << std::endl << std::endl;
+	std::cout <<"}" << std::endl << std::endl;
 	//(4)
 	std::cout << "\tyour Bid: " << chipstackToStringAndSum(playerBid) << std::endl;
 	//(5)
@@ -106,8 +106,8 @@ std::string Output::cardToString(const card& card)
 std::string Output::chipstackToStringAndSum(const chipstack& c)
 {
 	std::string s = c.toString();
-	s += " (sum: ";
-	s += c.sum();
-	s += ")";
+	s.append(" (sum: ");
+	s.append(std::to_string(c.sum()));
+	s.append(")");
 	return s;
 }

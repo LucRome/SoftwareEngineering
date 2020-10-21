@@ -74,10 +74,10 @@ std::string chipstack::toString() const
 {
     std::string s = "{ ";
     for (int i = 0; i < nr_chipvalues; i++) {
-        s += values[i];
-        s += "€: ";
-        s += m_chips[i];
-        i < (nr_chipvalues - 1) ? s += ", " : s += " }";
+        s.append(std::to_string(values[i]));
+        s.append("€: ");
+        s.append(std::to_string(m_chips[i]));
+        i < (nr_chipvalues - 1) ? s.append(", ") : s.append(" }");
     }
     return s;
 }
