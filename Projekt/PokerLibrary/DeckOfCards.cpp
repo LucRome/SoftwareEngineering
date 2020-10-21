@@ -11,6 +11,7 @@ DeckOfCards::DeckOfCards()
 int DeckOfCards::randomNumberGenerator(int numberOfCards)
 {
     int random = mt_rand();
+    random = std::abs(random); //make positive
     return random % numberOfCards;
 }
 
