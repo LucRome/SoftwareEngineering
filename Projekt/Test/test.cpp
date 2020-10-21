@@ -11,3 +11,16 @@ TEST(randomNumberGenerator, correctNumber) {
 TEST(overload, correct) {
 	EXPECT_EQ(1, 1);
 }
+
+
+//Tests Luca:
+TEST(randomNumberGenerator, positive) {
+	DeckOfCards deck = DeckOfCards();
+	bool pos = true;
+	for (int i = 0; i < 30; i++) {
+		if (deck.randomNumberGenerator(52) < 0) {
+			pos = false;
+		}
+	}
+	EXPECT_TRUE(pos);
+}

@@ -1,0 +1,3 @@
+﻿  pch.cpp
+  test.cpp
+LINK : fatal error LNK1104: Datei "C:\Users\Luca\Documents\GitHub\SoftwareEngineering\Projekt\x64\Debug\PokerLibrary.lib" kann nicht geöffnet werden.
