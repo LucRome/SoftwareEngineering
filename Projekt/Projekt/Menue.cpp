@@ -30,6 +30,8 @@ void Menue::Startgame() {
 		std::cout << "1 = Bot; 2 = Human" << std::endl;
 		std::cin >> humanBot;
 
+
+
 		switch (humanBot) {
 		case 1: {
 			//Create a human player, enter name
@@ -39,10 +41,8 @@ void Menue::Startgame() {
 			//Call function to create a bot
 			break;
 		}
-
 		}
+
 	}
-
-
 
 }
