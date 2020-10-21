@@ -20,7 +20,7 @@ GameController::GameController(std::vector<std::shared_ptr<Player>> players, int
 	m_pot_perPlayer.shrink_to_fit();
 }
 
-Player& GameController::playGame()
+std::shared_ptr<Player>& GameController::playGame()
 {
 	//TODO: extract bankrupt players (after each round)
 	bool cont = true;
@@ -38,7 +38,7 @@ Player& GameController::playGame()
 		//reset everything from previous round
 		resetAfterRound();
 	}
-	return *(m_players[0]);
+	return m_players[0];
 }
 
 //TODO: Blinds

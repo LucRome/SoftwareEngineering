@@ -10,7 +10,7 @@ class GameController
 {
 public:
 	GameController(std::vector<std::shared_ptr<Player>> players, int max, chipstack bigBlind, chipstack smallBlind);
-	Player& playGame(); //Rückgabetyp benötigt, für Gewinner
+	std::shared_ptr<Player>& playGame(); //Rückgabetyp benötigt, für Gewinner
 
 private:
 	void round();
