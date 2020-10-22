@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Rules.h"
+/*#include "Rules.h"
 #include <string.h>
 #include "CardAndSymbols.h"
 
@@ -172,4 +172,4 @@ bool IsFlush(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSy
 int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable)
 {
 
-}
+}*/

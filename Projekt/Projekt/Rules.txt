@@ -84,6 +84,7 @@ Round of betting:
 	 - Fold: don't pay into the pot and toss away your cards, wait for next round
 	 - Call/Check: match the amount of the bet/ don't raise
 	 - Raise: Raise the amount of the bet
+	 - Forgot: All in ()
 	 - (Begin of Preflop: bet = big blind)
 
 	The round of betting continues until the following conditions are met:

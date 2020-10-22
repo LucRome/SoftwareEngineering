@@ -1,0 +1,17 @@
+printTable();
+
+	am Anfang: clear();
+
+	bei jedem Zug von jedem Spieler ausgeben:
+	 - Hand
+	 - Community Cards
+	 - playerBid
+	 - Pot
+	 - Highest Bid
+
+	 -Money of all Players (starting with yours)
+	 - Zugmöglichkeiten von Spieler
+
+
+	 - chipstacks: {123€:12, 32}
+	 - cards: [Suit: Value]

@@ -9,8 +9,11 @@ class DeckOfCards
 public:
 	DeckOfCards();
 	int randomNumberGenerator(int numberOfCards);
+	card getRandomCard();
+	void refreshDeck();
 
 private:
-	std::vector<card> cardDeck;
+	void fillDeck();
+	std::vector<card> m_cardDeck;
 };
 

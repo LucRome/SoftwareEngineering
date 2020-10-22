@@ -19,7 +19,7 @@ public:
 		name = pName;
 	}
 
-	hand getHand() {										//returns the Hand with both Cards on the Hand
+	hand getHand() const {										//returns the Hand with both Cards on the Hand
 		return playerHand;
 	}
 
@@ -28,11 +28,11 @@ public:
 		playerHand.secondCard = pSecondCard;
 	}
 
-	std::string getName() {
+	std::string getName() const {
 		return name;
 	}
 
-	chipstack getWinnings() {					//returns the balance of the Player at the moment 
+	chipstack getWinnings() const {					//returns the balance of the Player at the moment 
 		return winnings;
 	}
 
@@ -49,9 +49,14 @@ public:
 	}
 
 	virtual outPlay play(chipstack pToCheck, std::vector<plays> pPlays) = 0;
+
+	bool bankrupt() const;
+	void setBankrupt();
 private:	
 	std::string name;
 	hand playerHand;
 	chipstack winnings;
+
+	bool m_bankrupt = false;
 };
 

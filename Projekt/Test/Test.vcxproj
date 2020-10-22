@@ -84,7 +84,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\Projekt;C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\PokerLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\Projekt;C:\Users\Luca\Documents\GitHub\SoftwareEngineering\Projekt\PokerLibrary;C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\PokerLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
