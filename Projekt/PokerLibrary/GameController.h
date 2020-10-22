@@ -4,12 +4,13 @@
 #include "DeckOfCards.h"
 #include "Money.h"
 #include "Dealer.h"
+#include "Output.h"
 
 class GameController
 {
 public:
 	GameController(std::vector<std::shared_ptr<Player>> players, int max, chipstack bigBlind, chipstack smallBlind);
-	Player& playGame(); //Rückgabetyp benötigt, für Gewinner
+	std::shared_ptr<Player>& playGame(); //Rückgabetyp benötigt, für Gewinner
 
 private:
 	void round();
@@ -39,5 +40,8 @@ private:
 	int m_dealer_pos; //start: 0
 
 	std::array<card, 5> m_communityCard = {card(), card(), card(), card(), card()};
+
+	//Output Class
+	Output out;
 };
 

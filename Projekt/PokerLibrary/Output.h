@@ -14,7 +14,7 @@ public:
 
 	void printTable(const std::vector< std::shared_ptr< Player>>& players,
 		int playerNr, const std::array< card, 5>& communityCard, const chipstack& playerBid, const chipstack& pot,
-		const chipstack& bid);
+		const chipstack& max_bid);
 	
 	void clearConsole();
 
