@@ -34,8 +34,18 @@ int Output::readChip(int value)
 	int amount;
 	std::cout << "Chipvalue: " << value << std::endl;
 	std::cout << "amount: ";
-	std::cin >> amount;
+	amount = userInput();
 	return amount;
+}
+
+int Output::userInput() {
+	int input;
+	while (!(std::cin >> input)) {
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Invalid input please try again" << std::endl;
+	}
+	return input;
 }
 
 void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,

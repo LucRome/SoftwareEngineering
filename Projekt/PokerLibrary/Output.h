@@ -10,6 +10,8 @@ public:
 	~Output();
 	void rulesOut();
 
+	int userInput();
+
 	int readChip(int value);
 
 	void printTable(const std::vector< std::shared_ptr< Player>>& players,
