@@ -2,6 +2,8 @@
 #include "DeckOfCards.h"
 #include "GameController.h"
 #include "HumanPlayer.h"
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
 
 TEST(randomNumberGenerator, correctNumber) {
 	DeckOfCards deck = DeckOfCards();
