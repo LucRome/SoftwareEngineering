@@ -8,12 +8,14 @@ class DeckOfCards
 {
 public:
 	DeckOfCards();
-	int randomNumberGenerator(int numberOfCards);
-	card getRandomCard();
+	virtual ~DeckOfCards();
+	virtual int randomNumberGenerator(int numberOfCards);
+	virtual card getRandomCard();
 	void refreshDeck();
 
-private:
+protected:
 	void fillDeck();
+private:
 	std::vector<card> m_cardDeck;
 };
 

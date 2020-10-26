@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PokerLibrary", "PokerLibrar
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{C10F96B3-C38B-4ECD-B9F0-E7470CC49A73}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tests", "Tests\Tests.vcxproj", "{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{C10F96B3-C38B-4ECD-B9F0-E7470CC49A73}.Release|x64.Build.0 = Release|x64
 		{C10F96B3-C38B-4ECD-B9F0-E7470CC49A73}.Release|x86.ActiveCfg = Release|Win32
 		{C10F96B3-C38B-4ECD-B9F0-E7470CC49A73}.Release|x86.Build.0 = Release|Win32
+		{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}.Debug|x64.ActiveCfg = Debug|x64
+		{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}.Debug|x64.Build.0 = Debug|x64
+		{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}.Debug|x86.ActiveCfg = Debug|Win32
+		{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}.Debug|x86.Build.0 = Debug|Win32
+		{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}.Release|x64.ActiveCfg = Release|x64
+		{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}.Release|x64.Build.0 = Release|x64
+		{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}.Release|x86.ActiveCfg = Release|Win32
+		{BD1F0E71-8770-4F79-9492-7F9E5654E6CE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
