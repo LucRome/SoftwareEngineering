@@ -3,9 +3,15 @@
 std::mt19937 mt_rand(time(NULL));
 
 
+
 DeckOfCards::DeckOfCards()
 {
     fillDeck();
+}
+
+DeckOfCards::DeckOfCards(int seed) {
+    fillDeck();
+    mt_rand.seed(seed);
 }
 
 DeckOfCards::~DeckOfCards()

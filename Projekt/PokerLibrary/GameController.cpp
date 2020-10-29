@@ -187,7 +187,7 @@ std::vector<plays> GameController::possiblePlays(int playerNr)
 	return possible;
 }
 
-bool GameController::allPlayersSamePot()
+bool GameController::allPlayersSamePot()//returns if all Player bid the same sum
 {
 	bool same = true;
 	for (int i = 0; i < m_playersInRound.size(); i++) {
