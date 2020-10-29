@@ -1,2 +1,0 @@
-C:\Users\Luca\Documents\GitHub\SoftwareEngineering\Projekt\Test\x64\Debug\Test.vcxproj.CopyComplete
-C:\Users\sophia.schmoll\github\SoftwareEngineering\Projekt\Test\x64\Debug\Test.vcxproj.CopyComplete
