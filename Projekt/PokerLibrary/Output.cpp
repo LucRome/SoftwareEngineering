@@ -96,10 +96,10 @@ void Output::clearConsole()
 std::string Output::cardToString(const card& card)
 {
 	std::string s = "[";
-	s += strMaps.suit_string(card.suit);
-	s += ": ";
-	s += strMaps.value_string(card.value);
-	s += "]";
+	s.append(strMaps.suit_string(card.suit));
+	s.append(": ");
+	s.append(strMaps.value_string(card.value));
+	s.append("]");
 	return s;
 }
 
@@ -108,6 +108,6 @@ std::string Output::chipstackToStringAndSum(const chipstack& c)
 	std::string s = c.toString();
 	s.append(" (sum: ");
 	s.append(std::to_string(c.sum()));
-	s.append(")");
+	s.append("$)");
 	return s;
 }
