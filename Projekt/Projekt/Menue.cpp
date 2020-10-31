@@ -94,11 +94,40 @@ void Menue::Startgame() {
 		}
 		case 2: {
 			//Bot 
-			//Call function to create a bot
+			if (i == 0) {
+				bigBlind = bigBlind.createChipstackForBot();
+				//Bot
+				break;
+			}
+			if (i == 1) {
+				smallBlind = smallBlind.createChipstackForBot();
+				//bot
+				break;
+			}
+			else {
+				startchips = startchips.createChipstackForBot();
+				//bot
+				break;
+			}
 			break;
 		}
 		case 3: {
 			//smart bot 
+			if (i == 0) {
+				bigBlind = bigBlind.createChipstackForBot();
+				//Bot
+				break;
+			}
+			if (i == 1) {
+				smallBlind = smallBlind.createChipstackForBot();
+				//bot
+				break;
+			}
+			else {
+				startchips = startchips.createChipstackForBot();
+				//bot
+				break;
+			}
 		}
 		}
 

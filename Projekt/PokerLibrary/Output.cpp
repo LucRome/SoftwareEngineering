@@ -5,6 +5,7 @@
 #include <string>
 #include <stdlib.h>
 #include "StringMaps.h"
+#include "DeckOfCards.h"
 
 
 
@@ -35,6 +36,15 @@ int Output::readChip(int value)
 	std::cout << "Chipvalue: " << value << std::endl;
 	std::cout << "amount: ";
 	amount = userInput();
+	return amount;
+}
+
+//for Bot Chipstack 
+//idk if Output.cpp is right place for this function 
+int Output::randomChips(int value) {
+	int amount;
+	DeckOfCards random = DeckOfCards();
+	amount = random.randomNumberGenerator(20);
 	return amount;
 }
 

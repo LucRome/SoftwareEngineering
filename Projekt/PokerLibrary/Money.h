@@ -24,6 +24,7 @@ public:
 	bool isNegative = false;
 
 	static chipstack readChipstackFromConsole();
+	static chipstack createChipstackForBot();
 	std::string toString() const;
 
 private:
