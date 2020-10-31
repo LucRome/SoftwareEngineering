@@ -8,6 +8,10 @@ DeckOfCards::DeckOfCards()
     fillDeck();
 }
 
+DeckOfCards::~DeckOfCards()
+{
+}
+
 int DeckOfCards::randomNumberGenerator(int numberOfCards)
 {
     int random = mt_rand();
