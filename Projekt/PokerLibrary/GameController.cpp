@@ -20,6 +20,10 @@ GameController::GameController(std::vector<std::shared_ptr<Player>> players, int
 	m_pot_perPlayer.shrink_to_fit();
 }
 
+GameController::~GameController()
+{
+}
+
 std::shared_ptr<Player>& GameController::playGame()
 {
 	bool cont = true;
