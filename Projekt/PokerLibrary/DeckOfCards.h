@@ -8,6 +8,7 @@ class DeckOfCards
 {
 public:
 	DeckOfCards();
+	DeckOfCards(int seed);
 	virtual ~DeckOfCards();
 	virtual int randomNumberGenerator(int numberOfCards);
 	virtual card getRandomCard();
