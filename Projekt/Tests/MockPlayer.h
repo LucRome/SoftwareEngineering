@@ -12,5 +12,6 @@ public:
     MockPlayer(chipstack pStartingChips, std::string pName);
     ~MockPlayer();
     MOCK_METHOD2(play, outPlay(chipstack, std::vector<plays>));
+    MOCK_METHOD0(bankrupt, bool());
 };
 
