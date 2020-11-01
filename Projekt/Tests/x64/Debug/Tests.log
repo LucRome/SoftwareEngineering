@@ -1,5 +1,6 @@
 ﻿  GCFriend.cpp
   MockPlayer.cpp
+  MockRandom.cpp
   test.cpp
   Code wird generiert...
   Tests.vcxproj -> C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\x64\Debug\Tests.exe

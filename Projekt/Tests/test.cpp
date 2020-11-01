@@ -13,12 +13,13 @@
 using namespace testing;
 
 
-
+//TODO: Vor der Abgabe Löschen
 TEST(TestCaseName, TestName) {
   EXPECT_EQ(1, 1);
   EXPECT_TRUE(true);
 }
 
+//Tests wether the return value of randomNumberGenerator is positive
 TEST(RandomNumber, positive) {
 	DeckOfCards deck = DeckOfCards();
 	bool pos = true;
@@ -30,29 +31,14 @@ TEST(RandomNumber, positive) {
 	EXPECT_TRUE(pos);
 }
 
-TEST(RandomNumber, correctNumber) {
-	DeckOfCards deck = DeckOfCards();
-	int number = 1;
-	int test = deck.randomNumberGenerator(number);
-	EXPECT_EQ(test, 0);
-}
-
-
-TEST(RandomNumber, one) {
-	auto rnd = std::make_shared<MockRandom>();
-	EXPECT_CALL(*rnd, randomNumberGenerator(_)).WillOnce(Return(15));
-	int expected = 15;
-	int gotten = rnd->randomNumberGenerator(3);
-	EXPECT_EQ(expected, gotten);
-}
-
+//Tests if funkction movePlayers() returns the selected action of the player
 TEST(movePlayer,  returnRaise) {
 	chipstack st_ch = chipstack({ 1,1,1,1,1,1 });
 	chipstack sB = chipstack({ 1,0,0,0,0,0 });
 	chipstack bB = chipstack({ 2,0,0,0,0,0 });
 	auto player1 = std::make_shared<MockPlayer>(st_ch, "a");
 	outPlay play1 = { raise, chipstack({ 1,0,0,0,0,0 }) };
-	EXPECT_CALL(*player1, play(_,_)).WillOnce(Return(play1)); 
+	EXPECT_CALL(*player1, play(_,_)).WillOnce(Return(play1)); //reaction of the player is mocked to raise; this avoids Input
 	std::vector<std::shared_ptr<Player>> players;
 	players.push_back(player1);
 	GCFriend gc = GCFriend(players, 10000, bB, sB);
@@ -87,6 +73,12 @@ TEST(allPlayersSamePot, simpleTrue) {
 	EXPECT_EQ(gc.isPotSame(), true);
 }
 
+//kann noch nicht geschrieben werden, Funktion possiblePlays() noch nicht fertig
+TEST(gameController, possiblePlays) {
+	EXPECT_EQ(1, 1);
+}
+
+//Follwing Tests check wether the overload operators for chipstack work accordingly
 TEST(money, simplePlus) {
 	chipstack ch1 = chipstack({ 1,1,1,1,1,1 });
 	chipstack ch2 = chipstack({ 0,0,0,0,0,1 });
@@ -300,14 +292,34 @@ TEST(money, greater_true) {
 	EXPECT_TRUE(greater);
 }
 
+//Tests the sum() Function for Chipstacks
 TEST(money, sumOperator) {
-	chipstack ch1 = chipstack({ 12, 5, 44, 6, 3, 1 });
+	chipstack ch1 = chipstack({ 12, 5, 44, 6, 3, 1 }); //12*5 + 5*10 + 44*20 + 6*50 + 3*100 + 1*500 = 2090
 	int sum = ch1.sum();
 	int expected = 2090;
 	EXPECT_EQ(sum, expected);
 }
 
 
+//Funktion toString() aus MOney muss erst fertig sein
+TEST(money, toString) {
+	EXPECT_EQ(1, 1);
+}
+
+//Tests the Output of the cardToString() Function
+TEST(output, cardToString) {
+	Output out = Output();
+	card c1 = { diamonds, five };
+	std::string result=out.cardToString(c1);
+	std::string expected = "[D: 5]";
+	EXPECT_EQ(result, expected);
+}
+
+
+//Funktion toString() aus Money muss erst fertig sein 
+TEST(output, chipstackToStringAndSum) {
+	EXPECT_EQ(1, 1);
+}
 
 
 //Test: GameController::playGame()
