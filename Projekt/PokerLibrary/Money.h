@@ -24,7 +24,7 @@ public:
 	bool isNegative = false;
 
 	static chipstack readChipstackFromConsole();
-	std::string toString() const;
+	std::string toString() const; 
 
 private:
 	void checkForNegativeSum();

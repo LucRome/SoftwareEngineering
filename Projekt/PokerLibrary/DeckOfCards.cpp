@@ -4,9 +4,15 @@
 
 
 
+
 DeckOfCards::DeckOfCards()
 {
     fillDeck();
+}
+
+DeckOfCards::DeckOfCards(int seed) {
+    fillDeck();
+    mt_rand.seed(seed);
 }
 
 DeckOfCards::~DeckOfCards()

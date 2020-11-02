@@ -10,6 +10,8 @@ class GameController
 {
 public:
 	GameController(std::vector<std::shared_ptr<Player>> players, int max, chipstack bigBlind, chipstack smallBlind);
+	~GameController();
+	friend class GCFriend;
 	std::shared_ptr<Player>& playGame(); //Rückgabetyp benötigt, für Gewinner
 
 private:
