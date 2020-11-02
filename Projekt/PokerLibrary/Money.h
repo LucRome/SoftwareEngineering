@@ -16,7 +16,7 @@ public:
 	chipstack& operator-(const chipstack& a) const;
 	bool operator<= (const chipstack& a) const;
 	bool operator< (const int& a) const;
-	bool operator> (const chipstack& a) const ;
+	bool operator> (const chipstack& a) const;
 	bool operator== (const int& a) const;
 	int sum() const;
 
