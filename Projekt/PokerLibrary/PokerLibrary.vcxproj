@@ -163,6 +163,7 @@
     <ClInclude Include="Output.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Rnd.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="StringMaps.h" />
   </ItemGroup>
@@ -183,6 +184,7 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PokerLibrary.cpp" />
+    <ClCompile Include="Rnd.cpp" />
     <ClCompile Include="Rules.cpp" />
     <ClCompile Include="StringMaps.cpp" />
   </ItemGroup>
