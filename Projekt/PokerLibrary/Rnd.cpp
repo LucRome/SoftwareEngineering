@@ -7,6 +7,9 @@ namespace rnd {
 
 int randomNr(int max)
 {
-	int random = rnd::mt_rand() % max;
+	int random = 0;
+	if (max != 0) {
+		random = rnd::mt_rand() % max;
+	}
 	return random;
 }

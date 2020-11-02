@@ -69,10 +69,11 @@ plays DumbBot::detPlay(std::vector<plays>& pPlays) const
 			pos[i] = top;
 			break;
 		case raise:
-			top += p_check;
+			top += p_raise;
 			pos[i] = top;
 			break;
 		}
+		i++;
 	}
 
 	//Determine your play
@@ -81,9 +82,7 @@ plays DumbBot::detPlay(std::vector<plays>& pPlays) const
 	for (int i = 0; i < pPlays.size(); i++) {
 		if (rnd < pos[i]) {
 			pl = pPlays[i];
-		}
-		else {
-			break;
+			break; //iterate until you found the roof
 		}
 	}
 	return pl;
