@@ -25,23 +25,29 @@ std::shared_ptr<Player>& GameController::playGame()
 	bool cont = true;
 	while (cont) {
 		round();
-		m_dealer_pos = (m_dealer_pos + 1) % m_playersInRound.size();
 		//extract bankrupt players
 		for (int i = 0; i < m_players.size(); i++) {
 			if (m_players[i]->bankrupt()) {
 				m_players.erase(m_players.begin() + i);
 			}
 		}
-		m_players.shrink_to_fit();
-		m_playersInRound = m_players;
-		//reset everything from previous round
-		resetAfterRound();
+		if (m_players.size() > 1) { //check if at least 2 players are left
+			m_dealer_pos = (m_dealer_pos + 1) % m_players.size();
+			m_players.shrink_to_fit();
+			m_playersInRound = m_players;
+			//reset everything from previous round
+			resetAfterRound();
+		}
+		else {
+			cont = false;
+		}
+		
 	}
 	return m_players[0];
 }
 
 
-void GameController::round()
+void GameController::round() //return false if all players folded
 {
 	//Blinds
 	int sb_pos = (m_dealer_pos + 1) % m_playersInRound.size();
@@ -51,23 +57,27 @@ void GameController::round()
 	player_bid(sb_pos, m_smallBlind);
 	player_bid(bb_pos, m_bigBlind);
 
-	preflop(startBid_pos);
-	startBid_pos = (startBid_pos + 1) % m_playersInRound.size();
-	flop(startBid_pos);
-	startBid_pos = (startBid_pos + 1) % m_playersInRound.size();
-	turn(startBid_pos);
-	startBid_pos = (startBid_pos + 1) % m_playersInRound.size();
-	river(startBid_pos);
-	showdown(startBid_pos);
+	if (preflop(startBid_pos)) { //just continue if there are still players left
+		startBid_pos = (startBid_pos + 1) % m_playersInRound.size();
+		if (flop(startBid_pos)) {
+			startBid_pos = (startBid_pos + 1) % m_playersInRound.size();
+			if (turn(startBid_pos)) {
+				startBid_pos = (startBid_pos + 1) % m_playersInRound.size();
+				if (river(startBid_pos)) {
+					showdown(startBid_pos);
+				}
+			}
+		}
+	}
 }
 
-void GameController::preflop(int start_playerNr)
+bool GameController::preflop(int start_playerNr)
 {
 	for (std::shared_ptr<Player> p : m_playersInRound) {
 		std::array<card, 2> hand = dealer.getHand();
 		p->setHand(hand[0], hand[1]);
 	}
-	roundOfBidding(start_playerNr);
+	return roundOfBidding(start_playerNr);
 }
 
 void GameController::resetAfterRound()
@@ -75,32 +85,32 @@ void GameController::resetAfterRound()
 	dealer.refresh();
 	m_bid = chipstack();
 	m_pot = chipstack();
-	for (chipstack c : m_pot_perPlayer) {
-		c = chipstack();
+	for (int i = 0; i < m_players.size(); i++) {
+		m_pot_perPlayer.push_back(chipstack());
 	}
 }
 
-void GameController::flop(int start_playerNr)
+bool GameController::flop(int start_playerNr)
 {
 	std::array<card, 3> c_flop = dealer.getFlop();
 	for (int i = 0; i < c_flop.size(); i++) {
 		m_communityCard[i] = c_flop[i];
 	}
-	roundOfBidding(start_playerNr);
+	return roundOfBidding(start_playerNr);
 }
 
 #define turn_pos 3
-void GameController::turn(int start_playerNr)
+bool GameController::turn(int start_playerNr)
 {
 	m_communityCard[turn_pos] = dealer.getCard();
-	roundOfBidding(start_playerNr);
+	return roundOfBidding(start_playerNr);
 }
 
 #define river_pos 4
-void GameController::river(int start_playerNr)
+bool GameController::river(int start_playerNr)
 {
 	m_communityCard[river_pos] = dealer.getCard();
-	roundOfBidding(start_playerNr);
+	return roundOfBidding(start_playerNr);
 }
 
 void GameController::showdown(int start_playerNr)
@@ -109,7 +119,7 @@ void GameController::showdown(int start_playerNr)
 	//also: add pot to winner
 }
 
-void GameController::roundOfBidding(int start_playerNr)
+bool GameController::roundOfBidding(int start_playerNr) //return false if all players folded
 {
 	int playersThatActed = 0;
 	int playerNr = start_playerNr; //point to the plyers whos turn it is
@@ -123,7 +133,14 @@ void GameController::roundOfBidding(int start_playerNr)
 				playerNr = (playerNr + 1) % m_playersInRound.size();
 			}
 			else {
-				playerNr %= m_playersInRound.size();
+				
+				if (m_playersInRound.size() != 0) {
+					playerNr %= m_playersInRound.size();
+				}
+				else {
+					return false;
+				}
+				
 			}
 			playersThatActed++;
 			if(playersThatActed >= m_playersInRound.size() && allPlayersSamePot()) {
@@ -131,19 +148,19 @@ void GameController::roundOfBidding(int start_playerNr)
 			}
 		}
 	}
-
+	return true;
 //TODO: noch prüfen, falls negative Werte im moneystack -> ungültiger Zug
 //TODO: ALL-IN
 }
 
 plays GameController::movePlayer(int playerNr)
 {
-	plays play;
+	plays play = check; //if player is bankrupt he went all in -> he can check until the end of the round
 	bool moveAllowed = false;
 	if (!m_players[playerNr]->bankrupt()) { //Player doesnt need to move if bankrupt, but stays in round (ALL IN)
 		do { //let player choose move until correct
 			chipstack delta = m_bid - m_pot_perPlayer[playerNr]; //operator-: result cant be negative
-			outPlay move = m_players[playerNr]->play(delta, possiblePlays(playerNr));
+			outPlay move = m_playersInRound[playerNr]->play(delta, possiblePlays(playerNr));
 			switch (move.play) {
 			case fold: //remove Players from all vectors for this round
 				moveAllowed = true;
