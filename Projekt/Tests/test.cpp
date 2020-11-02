@@ -198,10 +198,10 @@ TEST(money, lessThanOrEqual_greater) {
 	EXPECT_FALSE(lessThanOrEqual);
 }
 
-/* Following Tests for Overload Operator <
+
 TEST(money, less_Equal) {
 	chipstack ch1 = chipstack({ 12,5,44,6,3,1 });
-	chipstack ch2 = chipstack({ 12,5,44,6,3,1 });
+	int ch2 = 2090;
 	bool less = false;
 	if (ch1 < ch2) {
 		less = true;
@@ -211,7 +211,7 @@ TEST(money, less_Equal) {
 
 TEST(money, less_true) {
 	chipstack ch1 = chipstack({ 11,5,44,6,3,1 });
-	chipstack ch2 = chipstack({ 12,5,44,6,3,1 });
+	int ch2 = 3000;
 	bool less = false;
 	if (ch1 < ch2) {
 		less = true;
@@ -221,29 +221,19 @@ TEST(money, less_true) {
 
 TEST(money, less_false) {
 	chipstack ch1 = chipstack({ 12,5,56,6,3,11 });
-	chipstack ch2 = chipstack({ 12,5,44,6,3,1 });
+	int ch2 = 2090;
 	bool less = false;
 	if (ch1 < ch2) {
 		less = true;
 	}
 	EXPECT_FALSE(less);
 }
-*/
 
-/*Following Tests for Overload Operator ==
-TEST(money, equal_simpleTrue) {
+
+
+TEST(money, equal_True) {
 	chipstack ch1 = chipstack({ 12,5,44,6,3,1 });
-	chipstack ch2 = chipstack({ 12,5,44,6,3,1 });
-	bool equal = false;
-	if (ch1 == ch2) {
-		equal = true;
-	}
-	EXPECT_TRUE(equal);
-}
-
-TEST(money, equal_complexTrue) {
-	chipstack ch1 = chipstack({ 0,9,0,0,0,4 });
-	chipstack ch2 = chipstack({ 12,5,44,6,3,1 });
+	int ch2 = 2090;
 	bool equal = false;
 	if (ch1 == ch2) {
 		equal = true;
@@ -253,14 +243,14 @@ TEST(money, equal_complexTrue) {
 
 TEST(money, equal_false) {
 	chipstack ch1 = chipstack({ 11,5,44,6,3,1 });
-	chipstack ch2 = chipstack({ 12,5,44,6,3,1 });
+	int ch2 = 19;
 	bool equal = false;
 	if (ch1 == ch2) {
 		equal = true;
 	}
-	EXPECT_TRUE(equal);
+	EXPECT_FALSE(equal);
 }
-*/
+
 
 TEST(money, greater_Equal) {
 	chipstack ch1 = chipstack({ 12,5,44,6,3,1 });
