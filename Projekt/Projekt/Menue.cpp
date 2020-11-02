@@ -56,16 +56,19 @@ void Menue::Startgame() {
 	do {
 		std::cout << "Please enter the number of players: " << std::endl << "The maximum number of players is 9" << std::endl;
 		nrPlayers = out.userInput();
-	} while (nrPlayers > maxPlayers);
+	} while (nrPlayers > maxPlayers || nrPlayers <= 1);
 
-	std::cout << "Please enter the table range: " << std::endl;
-	tableRange = out.userInput();
+	do {
+		std::cout << "Please enter the table range: " << std::endl << "The minimel table range is 25000" << std::endl;
+		tableRange = out.userInput();
+	} while (tableRange < 25000);
+
 
 	// first enterd is big blind, second small blind
 	std::cout << "The first player you enter will be big blind, the second small blind.\n";
 
 	for (int i = 0; i < nrPlayers; i++) {
-		std::cout << "Should player " << (i+1) << "be a bot or a human?" << std::endl;
+		std::cout << "Should player " << (i+1) << " be a bot or a human?" << std::endl;
 		std::cout << "1 = human; 2 = bot; 3 = smart bot" << std::endl;
 		humanBot = out.userInput();
 		std::cout << "Please enter a name for player " << (i+1) << ": " << std::endl;

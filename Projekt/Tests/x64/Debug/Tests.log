@@ -1,6 +1,11 @@
-﻿  GCFriend.cpp
+﻿  pch.cpp
+  gtest_main.cc
+  GCFriend.cpp
   MockPlayer.cpp
   MockRandom.cpp
   test.cpp
-  Code wird generiert...
-  Tests.vcxproj -> C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\x64\Debug\Tests.exe
+  Generating Code...
+  gtest-all.cc
+  gmock-all.cc
+  Generating Code...
+  Tests.vcxproj -> C:\Users\sophia.schmoll\github\SoftwareEngineering\Projekt\x64\Debug\Tests.exe
