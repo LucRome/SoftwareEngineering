@@ -7,6 +7,7 @@
 #include "Dealer.h"
 #include "GameController.h"
 #include "HumanPlayer.h"
+#include "DumbBot.h"
 
 #include <vector>
 #include <memory>
@@ -57,10 +58,10 @@ TEST(randomNumberGenerator, positive) {
 
 TEST(playGame, justPlay) {
 	std::vector<std::shared_ptr<Player>> players;
-	players.push_back(std::make_shared<HumanPlayer>(st_ch, "A"));
-	players.push_back(std::make_shared<HumanPlayer>(st_ch, "B"));
-	players.push_back(std::make_shared<HumanPlayer>(st_ch, "C"));
-	players.push_back(std::make_shared<HumanPlayer>(st_ch, "D"));
+	players.push_back(std::make_shared<DumbBot>(st_ch, "A"));
+	players.push_back(std::make_shared<DumbBot>(st_ch, "B"));
+	players.push_back(std::make_shared<DumbBot>(st_ch, "C"));
+	players.push_back(std::make_shared<DumbBot>(st_ch, "D"));
 	players.shrink_to_fit();
 
 	GameController gc = GameController(players, 10000, bB, sB);
