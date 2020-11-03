@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "DeckOfCards.h"
-std::mt19937 mt_rand(time(NULL));
+#include "Rnd.h"
+
 
 
 
@@ -20,9 +21,7 @@ DeckOfCards::~DeckOfCards()
 
 int DeckOfCards::randomNumberGenerator(int numberOfCards)
 {
-    int random = mt_rand();
-    random = std::abs(random); //make positive
-    return random % numberOfCards;
+    return randomNr(numberOfCards);
 }
 
 card DeckOfCards::getRandomCard()
