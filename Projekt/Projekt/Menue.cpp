@@ -6,7 +6,7 @@
 #include <Output.h>
 #include <Money.cpp>
 #include <HumanPlayer.h>
-
+#include "DumbBot.h"
 
 
 Output out = Output();
@@ -99,17 +99,17 @@ void Menue::Startgame() {
 			//Bot 
 			if (i == 0) {
 				bigBlind = bigBlind.createChipstackForBot();
-				//Bot
+				players.push_back(std::make_shared<DumbBot>(bigBlind, playerName));
 				break;
 			}
 			if (i == 1) {
 				smallBlind = smallBlind.createChipstackForBot();
-				//bot
+				players.push_back(std::make_shared<DumbBot>(smallBlind, playerName));
 				break;
 			}
 			else {
 				startchips = startchips.createChipstackForBot();
-				//bot
+				players.push_back(std::make_shared<DumbBot>(startchips, playerName));
 				break;
 			}
 			break;
