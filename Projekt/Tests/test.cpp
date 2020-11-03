@@ -7,6 +7,8 @@
 #include "Dealer.h"
 #include "GameController.h"
 #include "HumanPlayer.h"
+#include "DumbBot.h"
+
 #include "GCFriend.h"
 #include <vector>
 #include <memory>
