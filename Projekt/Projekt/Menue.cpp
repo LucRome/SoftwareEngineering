@@ -30,11 +30,11 @@ void Menue::Startgame() {
 
 		switch (humanBot) {
 		case 1: {
-			//Create a human player, enter name
+			//Call function to create a bot
 			break;
 			}
 		case 2: {
-			//Call function to create a bot
+			//Create a Human player, enter name
 			break;
 		}
 

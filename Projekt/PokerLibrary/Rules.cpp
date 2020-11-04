@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-std::string ChangeCards(int i)
+std::string ChangeCards(values i)
 {
 	std::string Check;
 	if (i == 0)
@@ -64,8 +64,8 @@ std::string ChangeCards(int i)
 bool CheckFlush(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable, int i, std::string suitCheck)
 {
 	int isTrue=0;
-	std::string Check;
-	strcpy(Check, ChangeCards(i));
+	values Check;
+	Check=ChangeCards(i);
 	for (int j = 0; j < 2; j++)
 	{
 		if (strcmp(CardsOnTheHand[j].value, Check) && strcmp(CardsOnTheHand[j].suit, suitCheck)
@@ -95,7 +95,7 @@ bool CheckFlush(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAn
 	return false;
 
 }
-
+// kann mit Flush zusammen gepackt werden, bestimmtes suit ist net notwendig
 bool RoyalFlush(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable)
 {
 	int i;
