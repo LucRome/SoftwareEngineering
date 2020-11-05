@@ -44,14 +44,24 @@ void Menue::Startgame() {
 	//Chipstacks 
 	chipstack bigBlind, smallBlind, startchips;
 
-
+	// Variabels for menue 
 	int displayRules, maxPlayers = 9, nrPlayers, humanBot, tableRange;
 	std::string playerName;
+
+
 	std::cout << "Welcome to poker" << std::endl << "Do you whant the rules to be displayed? 0 - no, 1 - yes" << std::endl;
 	displayRules = out.userInput();
 	if (displayRules == 1) {
 		out.rulesOut();
 	}
+
+	// Clear Console befor game starts 
+	// Windows
+	system("pause");
+	//Linux
+	//system("read");
+	out.clearConsole();
+
 
 	do {
 		std::cout << "Please enter the number of players: " << std::endl << "The maximum number of players is 9" << std::endl;
