@@ -535,14 +535,13 @@ Rules::int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<Cards
 	int IntCheck;
 	bool Check;
 	bool Street == false; bool ThreeOfAKind = false; bool TwoPair = false, Pair = false;
-	CardsAndSymbols HighestCardOnTheHand;
 	if (CardsOnTheHand[0].values >= CardsOnTheHand[1].values)
 	{
-		HighestCardOnTheHand = CardsOnTheHand[0];
+		Hands.HighCard = CardsOnTheHand[0];
 	}
 	else
 	{
-		HighestCardOnTheHand = CardsOnTheHand[1];
+		Hands.HighCard = CardsOnTheHand[1];
 	}
 
 
@@ -578,44 +577,36 @@ Rules::int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<Cards
 	IntCheck = CheckNumbers(CardsOnTheHand, CardsOnTheTable);
 	if (IntCheck == 1)
 	{
+		Hands.FourOfAKind = true;
 		// Viererpasch Rückgabe
 	}
 	else if (IntCheck == 2)
 	{
+		Hands.FullHouse = true;
 		// Fullhouse Rückgabe
 	}
 	else if (IntCheck == 3)
 	{
-		ThreeOfAKind = true;
+		Hands.ThreeOfAKind = true;
 	}
 	else if (Intcheck == 4)
 	{
-		TwoPair = true;
+		Hands.TwoPair = true;
 	}
 	else if (IntCheck == 5)
 	{
-		Pair = true;
+		Hands.Pair = true;
 	}
 	Check = CheckNormalFlush(CardsOnTheHand, CardsOnTheTable);
 	if (Check == true)
 	{
-		// Flush Rückgabe
+		Hands.Flush = true;
 	}
 	if (Street == true)
 	{
+		Hands.Straight = true;
 		// Straight Rückgabe
 	}
-	if (ThreeOfAKind == true)
-	{
-		//Three of A Kind Rückgabe
-	}
-	if (TwoPair == true)
-	{
-		//Two Pair Rückgabe
-	}
-	if (Pair == true)
-	{
-		//Pair Rückgabe
-	}
+	
 	//Höchste Karte Rückgabe
 }
