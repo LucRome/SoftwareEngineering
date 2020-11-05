@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "DeckOfCards.h"
 #include "Rnd.h"
-
+#include "Rnd.cpp"
 
 
 
@@ -12,7 +12,7 @@ DeckOfCards::DeckOfCards()
 
 DeckOfCards::DeckOfCards(int seed) {
     fillDeck();
-    mt_rand.seed(seed);
+    rnd::mt_rand.seed(seed);
 }
 
 DeckOfCards::~DeckOfCards()

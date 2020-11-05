@@ -10,7 +10,11 @@ public:
 	~Output();
 	void rulesOut();
 
+	int userInput();
+
 	int readChip(int value);
+
+	int randomChips(int value);
 
 	void printTable(const std::vector< std::shared_ptr< Player>>& players,
 		int playerNr, const std::array< card, 5>& communityCard, const chipstack& playerBid, const chipstack& pot,
