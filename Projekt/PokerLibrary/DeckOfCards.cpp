@@ -12,7 +12,7 @@ DeckOfCards::DeckOfCards()
 
 DeckOfCards::DeckOfCards(int seed) {
     fillDeck();
-    mt_rand.seed(seed);
+    rnd::mt_rand.seed(seed);
 }
 
 DeckOfCards::~DeckOfCards()
