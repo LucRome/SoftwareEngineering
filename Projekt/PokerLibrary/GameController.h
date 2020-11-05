@@ -10,17 +10,19 @@ class GameController
 {
 public:
 	GameController(std::vector<std::shared_ptr<Player>> players, int max, chipstack bigBlind, chipstack smallBlind);
+	~GameController();
+	friend class GCFriend;
 	std::shared_ptr<Player>& playGame(); //Rückgabetyp benötigt, für Gewinner
 
 private:
 	void round();
-	void preflop(int start_playerNr);
+	bool preflop(int start_playerNr);
 	void resetAfterRound();
-	void flop(int start_playerNr);
-	void turn(int start_playerNr);
-	void river(int start_playerNr);
+	bool flop(int start_playerNr);
+	bool turn(int start_playerNr);
+	bool river(int start_playerNr);
 	void showdown(int start_playerNr);
-	void roundOfBidding(int start_playerNr);
+	bool roundOfBidding(int start_playerNr);
 	plays movePlayer(int playerNr);
 	std::vector<plays> possiblePlays(int playerNr);
 	bool allPlayersSamePot();

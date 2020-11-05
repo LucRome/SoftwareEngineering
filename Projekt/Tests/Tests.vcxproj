@@ -33,11 +33,15 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
+    <ClInclude Include="GCFriend.h" />
+    <ClInclude Include="MockPlayer.h" />
     <ClInclude Include="MockRandom.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\packages\gmock.1.10.0\lib\native\src\gtest\src\gtest_main.cc" />
+    <ClCompile Include="GCFriend.cpp" />
+    <ClCompile Include="MockPlayer.cpp" />
     <ClCompile Include="MockRandom.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
@@ -89,7 +93,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\PokerLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\sophia.schmoll\github\SoftwareEngineering\Projekt\PokerLibrary;C:\Users\Miriam\Desktop\GitHub\SoftwareEngineering\Projekt\PokerLibrary;C:\Users\Luca\Documents\GitHub\SoftwareEngineering\Projekt\PokerLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

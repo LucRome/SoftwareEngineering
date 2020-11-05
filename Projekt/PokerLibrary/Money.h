@@ -16,7 +16,7 @@ public:
 	chipstack& operator-(const chipstack& a) const;
 	bool operator<= (const chipstack& a) const;
 	bool operator< (const int& a) const;
-	bool operator> (const chipstack& a) const ;
+	bool operator> (const chipstack& a) const;
 	bool operator== (const int& a) const;
 	int sum() const;
 
@@ -24,6 +24,7 @@ public:
 	bool isNegative = false;
 
 	static chipstack readChipstackFromConsole();
+	static chipstack createChipstackForBot();
 	std::string toString() const;
 
 private:
