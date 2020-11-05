@@ -108,7 +108,7 @@ Rules:: bool CheckSuits(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array
 	return false;
 }
 
-Rueles:: int CheckHowManyOfAKind(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable,int i)
+Rules:: int CheckHowManyOfAKind(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable,int i)
 {
 	int Counter;
 	for (int j = 0; j < 2; j++)
@@ -128,16 +128,32 @@ Rueles:: int CheckHowManyOfAKind(std::array<CardAndSymbols, 2> CardsOnTheHand, s
 	return Counter;
 }
 
-Rules:: bool CheckVourOfAKind(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
-{
+/*Rules:: bool CheckVourOfAKind(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
+{	
 	if (Zwei == 4 || Drei == 4 || Vier == 4 || Fuenf == 4 || Sechs == 4 || Sieben == 4 || Acht == 4 || Neun == 4 || Zehn == 4 || Bube == 4 || Dame == 4 || Koenig == 4 || Ass == 4)
 	{
 		return true;
 	}
+	
 	return false;
+}*/
+
+Rules:: bool CheckVourOfAKind(std::array<int, 13>Numbers)
+{
+	for (int i = 0; i < 13; i++)
+	{
+		if (Numbers[i] = 4)
+		{
+			Hands.FourOfAKindCard = values(i);
+			return true;
+		}
+	}
+	return 0;
 }
 
-Rules:: int CheckThreeOfAKindAndFullHouse(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
+
+
+/*Rules:: int CheckThreeOfAKindAndFullHouse(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
 {
 	if (Zwei == 3)
 	{
@@ -284,9 +300,35 @@ Rules:: int CheckThreeOfAKindAndFullHouse(int Zwei, int Drei, int Vier, int Fuen
 	}
 
 	return 0;
+}*/
+
+
+Rules:: int CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers)
+{
+	for (int j = 0; j < 13; j++)
+	{
+		if (Numbers[j] == 3)
+		{
+			for (int i = 0; i < 13; i++)
+			{
+				if (Numbers[i] >= 2 && i != j)
+				{
+					Hands.FullHouseCards[0] = values(j);
+					Hands.FullhouseCards[1] = values(i);
+					return 1;
+				}
+			}
+			Hands.ThreeOfAKindCard = values(j);
+			return 2;
+		}
+	}
+	return 0;
 }
 
-Rules:: int CheckTwoPairAndPair(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
+
+
+
+/*Rules:: int CheckTwoPairAndPair(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
 {
 	if (Zwei == 2)
 	{
@@ -433,19 +475,42 @@ Rules:: int CheckTwoPairAndPair(int Zwei, int Drei, int Vier, int Fuenf, int Sec
 	}
 
 	return 0;
+}*/
+
+Rules:: int CheckTwoPairAndPair(std::array<int, 13>Numbers)
+{
+	for (int j = 0; j < 13; j++)
+	{
+		if (Numbers[j] == 2)
+		{
+			for (int i = 0; i < 13; i++)
+			{
+				if (Numbers[i] == 2 && i != j)
+				{
+					Hands.TwoPairCards[0] = values(j);
+					Hands.TwoPairCards[1] = values(i);
+					return 1;
+				}
+				Hands.PairCard = values(j);
+				return 2;
+			}
+		}
+	}
+	return 0;
 }
 
 
 
 Rules:: int CheckNumbers(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable)
 {
-	int Zwei, Drei, Vier, Fuenf, Sechs, Sieben, Acht, Neun, Zehn, Bube, Dame, Koenig, Ass;
+	std::array<int, 13>Numbers;
+	//int Zwei, Drei, Vier, Fuenf, Sechs, Sieben, Acht, Neun, Zehn, Bube, Dame, Koenig, Ass;
 	for (int i = 0; i < 13; i++)
 	{
 		int Speicher;
 		Speicher = CheckHowManyOfAKind(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable, i);
-	    
-		if (i = 0)
+		Numbers[i] = Speicher;
+		/*if (i = 0)
 		{
 			Zwei = Speicher;
 		}
@@ -496,17 +561,17 @@ Rules:: int CheckNumbers(std::array<CardAndSymbols, 2> CardsOnTheHand, std::arra
 		if (i = 12)
 		{
 			Ass = Speicher;
-		}
+		}*/
 	}
 	
 	bool Check;
 	int IntCheck
-	Check = CheckVourOfAKind(Zwei, Drei, Vier, Fuenf, Sechs, Sieben, Acht, Neun, Zehn, Bube, Dame, Koenig, Ass);
+	Check = CheckVourOfAKind(Numbers);
 	if (Check == true)
 	{
 		return 1;
 	}
-	IntCheck = CheckThreeOfAKind(Zwei, Drei, Vier, Fuenf, Sechs, Sieben, Acht, Neun, Zehn, Bube, Dame, Koenig, Ass);
+	IntCheck = CheckThreeOfAKind(Numbers);
 	if (IntCheck == 1)
 	{
 		return 2;
@@ -515,7 +580,7 @@ Rules:: int CheckNumbers(std::array<CardAndSymbols, 2> CardsOnTheHand, std::arra
 	{
 		return 3;
 	}
-	IntCheck = CheckTwoPairAndPair(Zwei, Drei, Vier, Fuenf, Sechs, Sieben, Acht, Neun, Zehn, Bube, Dame, Koenig, Ass);
+	IntCheck = CheckTwoPairAndPair(Numbers);
 	if (IntCheck == 1)
 	{
 		return 4;
@@ -530,18 +595,30 @@ Rules:: int CheckNumbers(std::array<CardAndSymbols, 2> CardsOnTheHand, std::arra
 }
 
 
-Rules::int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable)
+Rules::BestHand HasWon(std::struct CardsOnTheHandStruct, std::struct CardsOnTheTableStruct)
 {
+	std::array<CardsAndSymbols, 2> CardsOnTheHand;
+	std::array<CardsAndSymbols, 5> CardsOnTheTable;
+
+	CardsOnTheHand[0] = CardsOnTheHandStruct.Card1;
+	CardsOnTheHand[1] = CardsOnTheHandStruct.Card2;
+	CardsOnTheTable[0] = CardsOnTheTableStruct.Card1;
+	CardsOnTheTable[1] = CardsOnTheTableStruct.Card2;
+	CardsOnTheTable[2] = CardsOnTheTableStruct.Card3;
+	CardsOnTheTable[3] = CardsOnTheTableStruct.Card4;
+	CardsOnTheTable[4] = CardsOnTheTableStruct.Card5;
+
+
 	int IntCheck;
 	bool Check;
 	bool Street == false; bool ThreeOfAKind = false; bool TwoPair = false, Pair = false;
 	if (CardsOnTheHand[0].values >= CardsOnTheHand[1].values)
 	{
-		Hands.HighCard = CardsOnTheHand[0];
+		Hands.HighCard = CardsOnTheHand[0];		//Höchste Karte Rückgabe
 	}
 	else
 	{
-		Hands.HighCard = CardsOnTheHand[1];
+		Hands.HighCard = CardsOnTheHand[1];		//Höchste Karte Rückgabe
 	}
 
 
@@ -554,7 +631,7 @@ Rules::int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<Cards
 			if (CardsForAStreet[0].values() == values[12])
 			{
 
-
+				Hands.RoyalFlush = true;
 				//Royalflush Rückgabe
 
 
@@ -562,7 +639,8 @@ Rules::int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<Cards
 			}
 			else
 			{
-
+				Hands.StraightFlush = true;
+				Hands.StraightFlushHighestCard = CardsForAStreet[0];
 				//Flush Rückgabe
 
 
@@ -570,6 +648,7 @@ Rules::int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<Cards
 		}
 		else
 		{
+			Hands.StraightHighestCard = CardsForAStreet[0];
 			Street == true;
 		}
 	}
@@ -608,5 +687,5 @@ Rules::int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<Cards
 		// Straight Rückgabe
 	}
 	
-	//Höchste Karte Rückgabe
+	return Hands;
 }

@@ -28,12 +28,12 @@ private:
 
 
 		CardsAndSymbols StraightFlushHighestCard;
-		CardsAndSymbols FourOfAKindCard;
-		std::array<CardsAndSymbols, 2> FullHouseCards;
+		values FourOfAKindCard;
+		std::array<values, 2> FullHouseCards;
 		CardsAndSymbols StraightHighestCard;
-		CardsAndSymbols ThreeOfAKindCard;
-		std::array<CardsAndSymbols, 2> TwoPairCards;
-		CardsAndSymbols PairCard;
+		values ThreeOfAKindCard;
+		std::array<values, 2> TwoPairCards;
+		values PairCard;
 		CardsAndSymbols HighCard;
 	}Hands;
 }
