@@ -1,5 +1,5 @@
-# Damit Dateien ignoriert werden können, dürfen sie vorher nicht in git committed worden sein
-# also falls ignorieren nicht funktioniert: Entsprechende Datei löschen und das committen (auch Ordner)
+# Damit Dateien ignoriert werden kï¿½nnen, dï¿½rfen sie vorher nicht in git committed worden sein
+# also falls ignorieren nicht funktioniert: Entsprechende Datei lï¿½schen und das committen (auch Ordner)
 
 # Executables
 *.exe
@@ -8,4 +8,9 @@
 
 # Debug und so
 Projekt/.vs/
-/.vs/SoftwareEngineering/v16/Browse.VC.opendb
+/.vs/
+Projekt/PokerLibrary/x64
+Projekt/PokerLibrary/Debug
+Projekt/Projekt/x64
+Projekt/Projekt/Debug
+*.obj

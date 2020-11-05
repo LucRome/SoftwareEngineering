@@ -3,7 +3,7 @@
 #include "CardAndSymbols.h"
 #include "Money.h"
 
-class HumanPlayer: Player{
+class HumanPlayer: public Player{
 public:
 	HumanPlayer(chipstack pStartingChips,std::string pName);
 	outPlay play(chipstack pToCheck, std::vector<plays> pPlays) override;
