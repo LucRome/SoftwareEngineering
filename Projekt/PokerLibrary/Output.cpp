@@ -45,7 +45,7 @@ int Output::randomChips(int value) {
 	int amount;
 	DeckOfCards random = DeckOfCards();
 	amount = random.randomNumberGenerator(20);
-	//amount = randomNr(20); Luca warum geht das nicht? -> Linker error 
+	// amount = randomNr(20); 
 	return amount;
 }
 
