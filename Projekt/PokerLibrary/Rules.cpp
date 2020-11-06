@@ -602,6 +602,14 @@ int Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> 
 }
 
 
+Rules::Rules()
+{
+}
+
+Rules::~Rules()
+{
+}
+
 BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnTheTable)
 {
 	std::array<card, 2> CardsOnTheHand;
