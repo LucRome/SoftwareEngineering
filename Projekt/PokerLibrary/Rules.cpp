@@ -150,13 +150,13 @@ bool Rules::CheckVourOfAKind(std::array<int, 13>Numbers)
 {
 	for (int i = 0; i < 13; i++)
 	{
-		if (Numbers[i] = 4)
+		if (Numbers[i] == 4)
 		{
 			Hands.FourOfAKindCard = values(i);
 			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 
 
@@ -510,7 +510,7 @@ int Rules::CheckTwoPairAndPair(std::array<int, 13>Numbers)
 
 int Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable)
 {
-	std::array<int, 13>Numbers;
+	std::array<int, 13>Numbers = { 0 };
 	//int Zwei, Drei, Vier, Fuenf, Sechs, Sieben, Acht, Neun, Zehn, Bube, Dame, Koenig, Ass;
 	for (int i = 0; i < 13; i++)
 	{
