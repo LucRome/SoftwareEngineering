@@ -30,6 +30,13 @@ private:
 
 	//TODO: find better strings
 	//Map for suits <-> string
+
+	/*const char dia = 004;
+	const char hea = 003;
+	const char clu = 005;
+	const char spa = 006;
+	(only expanded ascii*/
+
 	std::map<suits, std::string> suitMap = {
 		{diamonds, "D"},
 		{clubs, "C"},

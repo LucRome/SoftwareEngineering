@@ -7,10 +7,10 @@ class Dealer
 {
 public:
 	Dealer();
-	void refresh();
-	std::array<card, 2> getHand();
-	std::array<card, 3> getFlop();
-	card getCard();
+	void refresh(); //refills the cardDeck
+	std::array<card, 2> getHand(); //returns the Hand
+	std::array<card, 3> getFlop(); //returns the Flop
+	card getCard(); //returns single card
 
 private:
 	DeckOfCards m_deckOfCards;
