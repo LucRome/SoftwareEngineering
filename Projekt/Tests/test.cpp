@@ -58,7 +58,6 @@ TEST(HighCard_true, 2) {
 }
 
 
-/*
 //TODO: Vor der Abgabe Löschen
 TEST(TestCaseName, TestName) {
   EXPECT_EQ(1, 1);
@@ -307,7 +306,7 @@ TEST(money, equal_false) {
 	EXPECT_TRUE(equal);
 }
 */
-/*
+
 TEST(money, greater_Equal) {
 	chipstack ch1 = chipstack({ 12,5,44,6,3,1 });
 	chipstack ch2 = chipstack({ 12,5,44,6,3,1 });
@@ -389,4 +388,3 @@ TEST(output, chipstackToStringAndSum) {
 //	bool suc = s == "A";
 //	EXPECT_TRUE(suc);
 //}
-*/
