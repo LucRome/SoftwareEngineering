@@ -69,7 +69,7 @@ void Menue::Startgame() {
 	} while (nrPlayers > maxPlayers || nrPlayers <= 1);
 
 	do {
-		std::cout << "Please enter the table range: " << std::endl << "The minimel table range is 25000" << std::endl;
+		std::cout << "Please enter the table range: " << std::endl << "The minimal table range is 25000" << std::endl;
 		tableRange = out.userInput();
 	} while (tableRange < 25000);
 
