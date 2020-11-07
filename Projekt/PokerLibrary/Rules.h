@@ -1,12 +1,58 @@
 #pragma once
-//#include "Player.h"
-//#include "CardAndSymbols.h"
-//
-//class Rules
-//{
-//	Rueles();
-//	~Rules();
-//
-//	int HasWon(std::array<CardAndSymbols, 2> CardsOnTheHand, std::array<CardsAndSymbols, 5> CardsOnTheTable);
-//};
-//
+#include "Player.h"
+#include "CardAndSymbols.h"
+
+enum winTypes {highCard, pair, twoPair, threeOfAKind, straight, flush, fullHouse, fourOfAKind, straightFlush, royalFlush};
+
+struct BestHand
+{
+	/*bool RoyalFlush = false;
+	bool StraightFlush = false;
+	bool FourOfAKind = false;
+	bool FullHouse = false;
+	bool Flush = false;
+	bool Straight = false;
+	bool ThreeOfAKind = false;
+	bool TwoPair = false;
+	bool Pair = false;*/
+
+	std::array<bool, 10> musterCorrect = { false };
+
+	card StraightFlushHighestCard;
+	values FourOfAKindCard;
+	std::array<values, 2> FullHouseCards;
+	card StraightHighestCard;
+	values ThreeOfAKindCard;
+	std::array<values, 2> TwoPairCards;
+	values PairCard;
+	card HighCard;
+};
+
+//TODO: optimize
+
+class Rules
+{
+public:
+	Rules();
+	~Rules();
+
+
+	BestHand HasWon(hand CardsOnTheHand, std::array<card, 5> CardsOnTheTable);
+
+
+private:
+	std::array<card, 5> CardsForAStreet; //contains the cards that build a street?
+	
+	bool CheckNormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //checks for Flush (hand + community)
+	bool CheckFlush(std::array<card, 5> Cards); //used for Straight Flush (+ Royal Flush)
+	bool CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //returns true if  street (?)
+	int CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i); //Helper for 2,3,... ofAKind
+	bool CheckFourOfAKind(std::array<int, 13> Numbers); //FourOfAKind
+														
+	//set the bits of musterCorrect
+	void CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers); //3 of a Kind + full House (1. fullHouse, 2 3oaK)
+	void CheckTwoPairAndPair(std::array<int, 13> Numbers); //2 pair, 1 twoPairs 
+	void CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); // 1: fourOfAKind, 2: fullHouse, 3: 3oak, 4: 2pair, 5: pair, 0: highCard
+
+	BestHand Hands;
+};

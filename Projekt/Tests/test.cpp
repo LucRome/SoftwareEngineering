@@ -9,10 +9,53 @@
 #include "HumanPlayer.h"
 #include "DumbBot.h"
 
+#include "Rules.h"
+
 #include "GCFriend.h"
 #include <vector>
+#include <array>
 #include <memory>
 using namespace testing;
+
+
+Rules rl;
+//tests for Rules
+//High card
+TEST(HighCard_true, 1) {
+	hand p_hand = {
+		{diamonds, ace},
+		{clubs, six}
+	};
+	card c = { hearts, three };
+	card c1 = { diamonds, two };
+	card c2 = { spades, queen };
+	card c3 = { clubs, jack };
+	card c4 = { spades, seven };
+	std::array<card, 5> community = {
+		c, c1, c2, c3, c4
+	};
+	BestHand bh = rl.HasWon(p_hand, community);
+	bool right = (bh.HighCard == p_hand.firstCard);
+	EXPECT_TRUE(right);
+}
+
+TEST(HighCard_true, 2) {
+	hand p_hand = {
+		{diamonds, four},
+		{clubs, six}
+	};
+	card c = { hearts, three };
+	card c1 = { diamonds, two };
+	card c2 = { spades, queen };
+	card c3 = { clubs, jack };
+	card c4 = { spades, seven };
+	std::array<card, 5> community = {
+		c, c1, c2, c3, c4
+	};
+	BestHand bh = rl.HasWon(p_hand, community);
+	bool right = (bh.HighCard == p_hand.firstCard);
+	EXPECT_TRUE(right);
+}
 
 
 //TODO: Vor der Abgabe Löschen
