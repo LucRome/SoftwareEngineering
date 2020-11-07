@@ -112,7 +112,8 @@ TEST(allPlayersSamePot, simpleTrue) {
 	EXPECT_EQ(gc.isPotSame(), true);
 }
 
-//kann noch nicht geschrieben werden, Funktion possiblePlays() noch nicht fertig
+//TODO: kann noch nicht geschrieben werden, Funktion possiblePlays() noch nicht fertig
+//else for der Abgabe löschen
 TEST(gameController, possiblePlays) {
 	EXPECT_EQ(1, 1);
 }
@@ -327,9 +328,13 @@ TEST(money, sumOperator) {
 	EXPECT_EQ(sum, expected);
 }
 
-//Funktion toString() aus Money muss erst fertig sein
+//Test the if the output of the toString() function is a expected
 TEST(money, toString) {
-	EXPECT_EQ(1, 1);
+	chipstack ch1 = chipstack({ 6, 5, 4, 3, 2, 1 });
+	std::string st = ch1.toString();
+	std::string expected = "{ 5$: 6, 10$: 5, 20$: 4, 50$: 3, 100$: 2, 500$: 1 }";
+	EXPECT_EQ(st, expected);
+
 }
 
 //Tests for output
@@ -342,9 +347,13 @@ TEST(output, cardToString) {
 	EXPECT_EQ(result, expected);
 }
 
-//Funktion toString() aus Money muss erst fertig sein 
+//Tests if output of chipstackToStringAndSum ist as expected
 TEST(output, chipstackToStringAndSum) {
-	EXPECT_EQ(1, 1);
+	Output out = Output();
+	chipstack ch1 = chipstack({ 6, 5, 4, 3, 2, 1 });
+	std::string st = out.chipstackToStringAndSum(ch1);
+	std::string expected = "{ 5$: 6, 10$: 5, 20$: 4, 50$: 3, 100$: 2, 500$: 1 } (sum: 1010$)";
+	EXPECT_EQ(st, expected);
 }
 
 //Tests for Rules
@@ -629,7 +638,7 @@ TEST(Rules, hasWon_straight_2) {
 	EXPECT_EQ(result.StraightHighestCard, card3);
 }
 
-//ace as last
+//TODO: ace as last
 TEST(Rules, hasWon_straight_3) {
 
 }
