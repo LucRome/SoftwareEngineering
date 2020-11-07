@@ -214,6 +214,8 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 {
 	std::array<card, 2> CardsOnTheHand;
 
+	Hands.musterCorrect[highCard] = true;
+
 	CardsOnTheHand[0] = CardsOnTheHandStruct.firstCard;
 	CardsOnTheHand[1] = CardsOnTheHandStruct.secondCard;
 

@@ -16,7 +16,7 @@ struct BestHand
 	bool TwoPair = false;
 	bool Pair = false;*/
 
-	std::array<bool, 10> musterCorrect;
+	std::array<bool, 10> musterCorrect = { false };
 
 	card StraightFlushHighestCard;
 	values FourOfAKindCard;
