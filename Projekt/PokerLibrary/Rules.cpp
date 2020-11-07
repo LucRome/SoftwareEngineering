@@ -44,23 +44,6 @@ bool Rules::CheckFlush(std::array<card, 5> Cards) //used to check for Royal flus
 	suits Check;
 	Check = Cards[0].suit; //enough to check for the suit of the first card (all or nothing)
 	int Counter = 1;
-	/*for (int i = 0; i < 5; i++)
-	{
-
-		if (Check == Cards[h].suits())
-		{
-			Counter++;
-
-		}
-	}
-	if (Counter >= 5)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}*/
 	bool isFlush = true;
 	for (card c : Cards) {
 		if (c.suit != Check) {
@@ -136,16 +119,6 @@ int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<ca
 	return Counter;
 }
 
-/*Rules:: bool CheckVourOfAKind(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
-{
-	if (Zwei == 4 || Drei == 4 || Vier == 4 || Fuenf == 4 || Sechs == 4 || Sieben == 4 || Acht == 4 || Neun == 4 || Zehn == 4 || Bube == 4 || Dame == 4 || Koenig == 4 || Ass == 4)
-	{
-		return true;
-	}
-
-	return false;
-}*/
-
 bool Rules::CheckVourOfAKind(std::array<int, 13>Numbers)
 {
 	for (int i = 0; i < 13; i++)
@@ -160,157 +133,7 @@ bool Rules::CheckVourOfAKind(std::array<int, 13>Numbers)
 }
 
 
-
-/*Rules:: int CheckThreeOfAKindAndFullHouse(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
-{
-	if (Zwei == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Drei == 3)
-	{
-		if (Zwei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Vier == 3)
-	{
-		if (Drei >= 2 || Zwei >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Fuenf == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Zwei >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Sechs == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Zwei >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Sieben == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Zwei >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Acht == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Zwei >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Neun == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Zwei >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Zehn == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zwei >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Bube == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Zwei >= 2 || Dame >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Dame == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Zwei >= 2 || Koenig >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Koenig == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Zwei >= 2 || Ass >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Ass == 3)
-	{
-		if (Drei >= 2 || Vier >= 2 || Fuenf >= 2 || Sechs >= 2 || Sieben >= 2 || Acht >= 2 || Neun >= 2 || Zehn >= 2 || Bube >= 2 || Dame >= 2 || Koenig >= 2 || Zwei >= 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	return 0;
-}*/
-
-
-int Rules::CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers)
+winTypes Rules::CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers)
 {
 	for (int j = 0; j < 13; j++)
 	{
@@ -322,168 +145,17 @@ int Rules::CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers)
 				{
 					Hands.FullHouseCards[0] = values(j);
 					Hands.FullHouseCards[1] = values(i);
-					return 1;
+					return fullHouse;
 				}
 			}
 			Hands.ThreeOfAKindCard = values(j);
-			return 2;
+			return threeOfAKind;
 		}
 	}
-	return 0;
+	return highCard; //None of both
 }
 
-
-
-
-/*Rules:: int CheckTwoPairAndPair(int Zwei, int Drei, int Vier, int Fuenf, int Sechs, int Sieben, int Acht, int Neun, int Zehn, int Bube, int Dame, int Koenig, int Ass)
-{
-	if (Zwei == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Drei == 2)
-	{
-		if (Zwei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Vier == 2)
-	{
-		if (Zwei == 2 || Drei == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Fuenf == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Zwei == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Sechs == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Zwei == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Sieben == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Zwei == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Acht == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Zwei == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Neun == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Zwei == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Zehn == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zwei == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Bube == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Zwei == 2 || Dame == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Dame == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Zwei == 2 || Koenig == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Koenig == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Zwei == 2 || Ass == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	if (Ass == 2)
-	{
-		if (Drei == 2 || Vier == 2 || Fuenf == 2 || Sechs == 2 || Sieben == 2 || Acht == 2 || Neun == 2 || Zehn == 2 || Bube == 2 || Dame == 2 || Koenig == 2 || Zwei == 2)
-		{
-			return 1;
-		}
-		else
-		{
-			return 2;
-		}
-	}
-	return 0;
-}*/
-
-int Rules::CheckTwoPairAndPair(std::array<int, 13>Numbers)
+winTypes Rules::CheckTwoPairAndPair(std::array<int, 13>Numbers)
 {
 	for (int j = 0; j < 13; j++) // iterate over all values (first pair)
 	{
@@ -496,19 +168,19 @@ int Rules::CheckTwoPairAndPair(std::array<int, 13>Numbers)
 				{
 					Hands.TwoPairCards[0] = values(j);
 					Hands.TwoPairCards[1] = values(i);
-					return 1; //nich eher 2?
+					return twoPair; //nich eher 2?
 				}
 				Hands.PairCard = values(j);
-				return 2; //1?
+				return pair; //1?
 			}
 		}
 	}
-	return 0;
+	return highCard; //none
 }
 
 
 
-int Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable)
+winTypes Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable)
 {
 	std::array<int, 13>Numbers = { 0 };
 	//int Zwei, Drei, Vier, Fuenf, Sechs, Sieben, Acht, Neun, Zehn, Bube, Dame, Koenig, Ass;
@@ -517,87 +189,35 @@ int Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> 
 		int Speicher;
 		Speicher = CheckHowManyOfAKind(CardsOnTheHand, CardsOnTheTable, i);
 		Numbers[i] = Speicher;
-		/*if (i = 0)
-		{
-			Zwei = Speicher;
-		}
-		if (i = 1)
-		{
-			Drei = Speicher;
-		}
-		if (i = 2)
-		{
-			Vier = Speicher;
-		}
-		if (i = 3)
-		{
-			Fuenf = Speicher;
-		}
-		if (i = 4)
-		{
-			Sechs = Speicher;
-		}
-		if (i = 5)
-		{
-			Sieben = Speicher;
-		}
-		if (i = 6)
-		{
-			Acht = Speicher;
-		}
-		if (i = 7)
-		{
-			Neun = Speicher;
-		}
-		if (i = 8)
-		{
-			Zehn = Speicher;
-		}
-		if (i = 9)
-		{
-			Bube = Speicher;
-		}
-		if (i = 10)
-		{
-			Dame = Speicher;
-		}
-		if (i = 11)
-		{
-			Koenig = Speicher;
-		}
-		if (i = 12)
-		{
-			Ass = Speicher;
-		}*/
 	}
 
 	bool Check;
-	int IntCheck;
+	winTypes IntCheck;
 	Check = CheckVourOfAKind(Numbers);
 	if (Check == true)
 	{
-		return 1;
+		return fourOfAKind;
 	}
 	IntCheck = CheckThreeOfAKindAndFullHouse(Numbers); //CheckThreeOfAKind (old)
-	if (IntCheck == 1)
+	if (IntCheck == fullHouse)
 	{
-		return 2;
+		return fullHouse;
 	}
-	else if (IntCheck == 2)
+	else if (IntCheck == threeOfAKind)
 	{
-		return 3;
+		return threeOfAKind;
 	}
 	IntCheck = CheckTwoPairAndPair(Numbers);
-	if (IntCheck == 1)
+	if (IntCheck == twoPair)
 	{
-		return 4;
+		return twoPair;
 	}
-	else if (IntCheck == 2)
+	else if (IntCheck == pair)
 	{
-		return 5;
+		return pair;
 	}
 
-	return 0;
+	return highCard;
 
 }
 
@@ -613,18 +233,11 @@ Rules::~Rules()
 BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnTheTable)
 {
 	std::array<card, 2> CardsOnTheHand;
-	//std::array<card, 5> CardsOnTheTable;
 
 	CardsOnTheHand[0] = CardsOnTheHandStruct.firstCard;
 	CardsOnTheHand[1] = CardsOnTheHandStruct.secondCard;
-	/*CardsOnTheTable[0] = CardsOnTheTable.Card1;
-	CardsOnTheTable[1] = CardsOnTheTable.Card2;
-	CardsOnTheTable[2] = CardsOnTheTable.Card3;
-	CardsOnTheTable[3] = CardsOnTheTable.Card4;
-	CardsOnTheTable[4] = CardsOnTheTable.Card5;*/
 
-
-	int IntCheck;
+	winTypes IntCheck;
 	bool Check;
 	bool Street = false;
 	bool ThreeOfAKind = false;
@@ -648,19 +261,14 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 		{
 			if (CardsForAStreet[0].value == values(12)) //Royalflush
 			{
-
-				Hands.RoyalFlush = true;
+				Hands.musterCorrect[royalFlush] = true;
 				//Royalflush Rückgabe
-
-
-
 			}
 			else
 			{
-				Hands.StraightFlush = true;
+				Hands.musterCorrect[straightFlush] = true;
 				Hands.StraightFlushHighestCard = CardsForAStreet[0];
-				//Flush Rückgabe
-				//TODO: eher street?
+				//Straight Flush Rückgabe
 
 			}
 		}
@@ -672,36 +280,36 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 	}
 
 	IntCheck = CheckNumbers(CardsOnTheHand, CardsOnTheTable);
-	if (IntCheck == 1)
+	if (IntCheck == fourOfAKind)
 	{
-		Hands.FourOfAKind = true;
+		Hands.musterCorrect[fourOfAKind] = true;
 		// Viererpasch Rückgabe
 	}
-	else if (IntCheck == 2)
+	else if (IntCheck == fullHouse)
 	{
-		Hands.FullHouse = true;
+		Hands.musterCorrect[fullHouse] = true;
 		// Fullhouse Rückgabe
 	}
-	else if (IntCheck == 3)
+	else if (IntCheck == ThreeOfAKind)
 	{
-		Hands.ThreeOfAKind = true;
+		Hands.musterCorrect[ThreeOfAKind] = true;
 	}
-	else if (IntCheck == 4)
+	else if (IntCheck == TwoPair)
 	{
-		Hands.TwoPair = true;
+		Hands.musterCorrect[TwoPair] = true;
 	}
-	else if (IntCheck == 5)
+	else if (IntCheck == pair)
 	{
-		Hands.Pair = true;
+		Hands.musterCorrect[pair] = true;
 	}
 	Check = CheckNormalFlush(CardsOnTheHand, CardsOnTheTable);
 	if (Check == true)
 	{
-		Hands.Flush = true;
+		Hands.musterCorrect[flush] = true;
 	}
 	if (Street == true)
 	{
-		Hands.Straight = true;
+		Hands.musterCorrect[straight] = true;
 		// Straight Rückgabe
 	}
 

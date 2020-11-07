@@ -2,9 +2,11 @@
 #include "Player.h"
 #include "CardAndSymbols.h"
 
+enum winTypes {highCard, pair, twoPair, threeOfAKind, straight, flush, fullHouse, fourOfAKind, straightFlush, royalFlush};
+
 struct BestHand
 {
-	bool RoyalFlush = false;
+	/*bool RoyalFlush = false;
 	bool StraightFlush = false;
 	bool FourOfAKind = false;
 	bool FullHouse = false;
@@ -12,8 +14,9 @@ struct BestHand
 	bool Straight = false;
 	bool ThreeOfAKind = false;
 	bool TwoPair = false;
-	bool Pair = false;
+	bool Pair = false;*/
 
+	std::array<bool, 10> musterCorrect;
 
 	card StraightFlushHighestCard;
 	values FourOfAKindCard;
@@ -25,6 +28,7 @@ struct BestHand
 	card HighCard;
 };
 
+//TODO: optimize
 
 class Rules
 {
@@ -49,10 +53,10 @@ private:
 
 	bool CheckVourOfAKind(std::array<int, 13> Numbers); //FourOfAKind
 
-	int CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers); //3 of a Kind + full House
+	winTypes CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers); //3 of a Kind + full House (1. fullHouse, 2 3oaK)
 
-	int CheckTwoPairAndPair(std::array<int, 13> Numbers); //pair, twoPairs (???)
-	int CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); // 1: fourOfAKind, 2: ThreeOfAKind(?), ...
+	winTypes CheckTwoPairAndPair(std::array<int, 13> Numbers); //2 pair, 1 twoPairs 
+	winTypes CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); // 1: fourOfAKind, 2: fullHouse, 3: 3oak, 4: 2pair, 5: pair, 0: highCard
 
 	BestHand Hands;
 };
