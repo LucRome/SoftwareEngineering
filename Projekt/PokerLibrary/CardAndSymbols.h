@@ -16,7 +16,7 @@ enum values {
 struct card { //suits, value
 	suits suit = s_none;
 	values value = v_none;
-	const bool operator== (const card& c2) {
+	bool operator== (const card& c2) const {
 		return this->suit == c2.suit && this->value == c2.value;
 	}
 };
