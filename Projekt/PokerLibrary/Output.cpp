@@ -5,7 +5,8 @@
 #include <string>
 #include <stdlib.h>
 #include "StringMaps.h"
-
+#include "DeckOfCards.h"
+#include "Rnd.h"
 
 
 Output::Output()
@@ -34,8 +35,28 @@ int Output::readChip(int value)
 	int amount;
 	std::cout << "Chipvalue: " << value << std::endl;
 	std::cout << "amount: ";
-	std::cin >> amount;
+	amount = userInput();
 	return amount;
+}
+
+//for Bot Chipstack 
+//idk if Output.cpp is right place for this function 
+int Output::randomChips(int value) {
+	int amount;
+	DeckOfCards random = DeckOfCards();
+	amount = random.randomNumberGenerator(20);
+	// amount = randomNr(20); 
+	return amount;
+}
+
+int Output::userInput() {
+	int input;
+	while (!(std::cin >> input)) {
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Invalid input please try again" << std::endl;
+	}
+	return input;
 }
 
 void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
@@ -96,10 +117,10 @@ void Output::clearConsole()
 std::string Output::cardToString(const card& card)
 {
 	std::string s = "[";
-	s += strMaps.suit_string(card.suit);
-	s += ": ";
-	s += strMaps.value_string(card.value);
-	s += "]";
+	s.append(strMaps.suit_string(card.suit));
+	s.append(": ");
+	s.append(strMaps.value_string(card.value));
+	s.append("]");
 	return s;
 }
 
@@ -108,6 +129,6 @@ std::string Output::chipstackToStringAndSum(const chipstack& c)
 	std::string s = c.toString();
 	s.append(" (sum: ");
 	s.append(std::to_string(c.sum()));
-	s.append(")");
+	s.append("$)");
 	return s;
 }

@@ -73,12 +73,21 @@ chipstack chipstack::readChipstackFromConsole()
     return c;
 }
 
+chipstack chipstack::createChipstackForBot() {
+    Output out;
+    chipstack c;
+    for (int i = 0; i < c.m_chips.size(); i++) {
+        c.m_chips[i] = out.randomChips(values[i]);
+    }
+    return c;
+}
+
 std::string chipstack::toString() const
 {
     std::string s = "{ ";
     for (int i = 0; i < nr_chipvalues; i++) {
         s.append(std::to_string(values[i]));
-        s.append("€: ");
+        s.append("$: ");
         s.append(std::to_string(m_chips[i]));
         i < (nr_chipvalues - 1) ? s.append(", ") : s.append(" }");
     }

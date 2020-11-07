@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "DeckOfCards.h"
 #include "Rnd.h"
-
+#include "Rnd.cpp"
 
 
 
