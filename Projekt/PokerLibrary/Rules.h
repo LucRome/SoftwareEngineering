@@ -14,7 +14,8 @@ struct BestHand
 	bool Straight = false;
 	bool ThreeOfAKind = false;
 	bool TwoPair = false;
-	bool Pair = false;*/
+	bool Pair = false;
+	bool highCard = false*/
 
 	std::array<bool, 10> musterCorrect = { false };
 
@@ -23,7 +24,7 @@ struct BestHand
 	std::array<values, 2> FullHouseCards;
 	card StraightHighestCard;
 	values ThreeOfAKindCard;
-	std::array<values, 2> TwoPairCards;
+	std::array<values, 2> TwoPairCards; //highest value first
 	values PairCard;
 	card HighCard;
 };
@@ -38,7 +39,7 @@ public:
 
 
 	BestHand HasWon(hand CardsOnTheHand, std::array<card, 5> CardsOnTheTable);
-
+	friend class RulesFriend;
 
 private:
 	std::array<card, 5> CardsForAStreet; //contains the cards that build a street?
