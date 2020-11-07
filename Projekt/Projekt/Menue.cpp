@@ -3,6 +3,7 @@
 #include "HumanPlayer.h"
 #include "GameController.h"
 #include <iostream>
+#include <string>
 #include <Output.h>
 #include <Money.cpp>
 #include <HumanPlayer.h>
@@ -45,11 +46,11 @@ void Menue::Startgame() {
 	chipstack bigBlind, smallBlind, startchips;
 
 	// Variabels for menue 
-	int displayRules, maxPlayers = 9, nrPlayers, humanBot, tableRange;
+	int displayRules, maxPlayers = 9, nrPlayers, humanBot, tableRange, nameBot, k = 1;;
 	std::string playerName;
 
 
-	std::cout << "Welcome to poker" << std::endl << "Do you whant the rules to be displayed? 0 - no, 1 - yes" << std::endl;
+	std::cout << "Welcome to poker" << std::endl << "Do you whant the rules to be displayed? no = 0, yes = 1" << std::endl;
 	displayRules = out.userInput();
 	if (displayRules == 1) {
 		out.rulesOut();
@@ -81,9 +82,21 @@ void Menue::Startgame() {
 		std::cout << "Should player " << (i+1) << " be a bot or a human?" << std::endl;
 		std::cout << "1 = human; 2 = bot; 3 = smart bot" << std::endl;
 		humanBot = out.userInput();
-		std::cout << "Please enter a name for player " << (i+1) << ": " << std::endl;
-		std::cin >> playerName;
-		
+
+		if (humanBot != 1) {
+			std::cout << "Du you whant to name the bot? 1 = yes, 2 = no" << std::endl;
+			nameBot = out.userInput();
+			if (nameBot == 2) {
+				std::string s = std::to_string(k);
+				playerName = "Bot" + s;
+				k++;
+			}
+		}
+
+		if (humanBot == 1 || nameBot == 1) {
+			std::cout << "Please enter a name for player " << (i + 1) << ": " << std::endl;
+			std::cin >> playerName;
+		}
 
 
 		switch (humanBot) {
@@ -155,4 +168,3 @@ void Menue::Startgame() {
 	std::shared_ptr<Player>& winner = gc.playGame();
 
 }
-
