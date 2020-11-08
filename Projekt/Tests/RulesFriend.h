@@ -7,9 +7,5 @@ public:
     RulesFriend();
     ~RulesFriend();
 
-	bool NormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable);
-	bool Suites(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable);
-
 };
-
 
