@@ -64,7 +64,7 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 
 		for (int j = 0; j < 2; j++)
 		{
-			if (CardsOnTheHand[j].value == values(i) && Counter == CounterBefore)
+			if (CardsOnTheHand[j].value == values(i) && (Counter == CounterBefore))
 			{
 				Counter++;
 				CardsForAStreet[Counter - 1] = CardsOnTheHand[j];
@@ -74,14 +74,14 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 		{
 			for (int j = 0; j < 5; j++)
 			{
-				if (CardsOnTheTable[j].value == values(i) && Counter == CounterBefore)
+				if (CardsOnTheTable[j].value == values(i) && (Counter == CounterBefore ))
 				{
 					Counter++;
 					CardsForAStreet[Counter - 1] = CardsOnTheTable[j];
 				}
 			}
 		}
-		if (Counter == CounterBefore && Counter < 5)
+		if ((Counter == CounterBefore) && Counter < 5)
 		{
 			Counter = 0;
 			CounterBefore = 0;
@@ -231,7 +231,7 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 
 	if (CheckSuits(CardsOnTheHand, CardsOnTheTable)) //street
 	{
-		if (CheckFlush(CardsForAStreet)) //flush
+		if (CheckFlush(CardsForAStreet)) //StraightFlush
 		{
 			if (CardsForAStreet[0].value == values(12)) //Royalflush
 			{
