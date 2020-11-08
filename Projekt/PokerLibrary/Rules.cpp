@@ -231,7 +231,7 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 
 	if (CheckSuits(CardsOnTheHand, CardsOnTheTable)) //street
 	{
-		if (CheckFlush(CardsForAStreet)) //flush
+		if (CheckFlush(CardsForAStreet)) //StraightFlush
 		{
 			if (CardsForAStreet[0].value == values(12)) //Royalflush
 			{
