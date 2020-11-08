@@ -953,7 +953,6 @@ TEST(Rules, normalFlush_2) {
 	EXPECT_TRUE(result);
 }
 
-
 //TODO wenn flush in hasWon eingefügt wird löschen
 TEST(Rules, normalFlush_3) {
 	RulesFriend rl = RulesFriend();
@@ -969,4 +968,3 @@ TEST(Rules, normalFlush_3) {
 	bool result = rl.NormalFlush(hand, community);
 	EXPECT_FALSE(result);
 }
-
