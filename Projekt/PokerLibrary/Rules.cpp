@@ -126,6 +126,10 @@ bool Rules::CheckFourOfAKind(std::array<int, 13>Numbers)
 		if (Numbers[i] == 4)
 		{
 			Hands.FourOfAKindCard = values(i);
+			Hands.ThreeOfAKindCard = values(i);
+			Hands.TwoPairCards[0] = values(i);
+			Hands.TwoPairCards[1] = values(i);
+			Hands.PairCard = values(i);
 			return true;
 		}
 	}
@@ -146,10 +150,16 @@ void Rules::CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers)
 					Hands.FullHouseCards[0] = values(j);
 					Hands.FullHouseCards[1] = values(i);
 					Hands.musterCorrect[fullHouse] = true;
+					Hands.musterCorrect[twoPair] = true;
+					Hands.TwoPairCards[0] = values(j);
+					Hands.TwoPairCards[1] = values(i);
 				}
 			}
 			Hands.ThreeOfAKindCard = values(j);
 			Hands.musterCorrect[threeOfAKind] = true;
+			Hands.musterCorrect[pair] = true;
+			Hands.PairCard = values(j);
+
 		}
 	}
 }
@@ -181,12 +191,12 @@ void Rules::CheckTwoPairAndPair(std::array<int, 13>Numbers)
 void Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable)
 {
 	std::array<int, 13>Numbers = { 0 };
-	//int Zwei, Drei, Vier, Fuenf, Sechs, Sieben, Acht, Neun, Zehn, Bube, Dame, Koenig, Ass;
+	//int two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
 	for (int i = 0; i < 13; i++)
 	{
-		int Speicher;
-		Speicher = CheckHowManyOfAKind(CardsOnTheHand, CardsOnTheTable, i);
-		Numbers[i] = Speicher;
+		int storage;
+		storage = CheckHowManyOfAKind(CardsOnTheHand, CardsOnTheTable, i);
+		Numbers[i] = storage;
 	}
 
 	
@@ -195,6 +205,7 @@ void Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5>
 		Hands.musterCorrect[fourOfAKind] = true;
 		Hands.musterCorrect[threeOfAKind] = true;
 		Hands.musterCorrect[pair] = true;
+		Hands.musterCorrect[twoPair] = true;
 	}
 	CheckThreeOfAKindAndFullHouse(Numbers); //directlay sets bits
 	CheckTwoPairAndPair(Numbers); //directly sets bits
@@ -222,13 +233,16 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 	//Determine High Card
 	if (CardsOnTheHand[0].value >= CardsOnTheHand[1].value)
 	{
-		Hands.HighCard = CardsOnTheHand[0];		//Höchste Karte Rückgabe
+		Hands.HighCard = CardsOnTheHand[0];		//firstCard is HighCard
 	}
 	else
 	{
-		Hands.HighCard = CardsOnTheHand[1];		//Höchste Karte Rückgabe
+		Hands.HighCard = CardsOnTheHand[1];		//secondCard is HighCard
 	}
-
+	if (CheckNormalFlush(CardsOnTheHand, CardsOnTheTable)) { //flush
+		Hands.musterCorrect[flush]=true;
+		//evtl. noch zum struct hinzufügen?
+	}
 	if (CheckSuits(CardsOnTheHand, CardsOnTheTable)) //street
 	{
 		if (CheckFlush(CardsForAStreet)) //StraightFlush
@@ -236,14 +250,20 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 			if (CardsForAStreet[0].value == values(12)) //Royalflush
 			{
 				Hands.musterCorrect[royalFlush] = true;
+				Hands.musterCorrect[straightFlush] = true;
+				Hands.StraightFlushHighestCard = CardsForAStreet[0];
+				Hands.StraightHighestCard = CardsForAStreet[0];
+				Hands.musterCorrect[straight] = true;
 			}
 			else
 			{
 				Hands.musterCorrect[straightFlush] = true;
 				Hands.StraightFlushHighestCard = CardsForAStreet[0];
+				Hands.StraightHighestCard = CardsForAStreet[0];
+				Hands.musterCorrect[straight] = true;
 			}
 		}
-		else
+		else //Straight
 		{
 			Hands.StraightHighestCard = CardsForAStreet[0];
 			Hands.musterCorrect[straight] = true;
