@@ -123,7 +123,7 @@ bool GameController::river(int start_playerNr)
 void GameController::showdown(int start_playerNr)
 {
 	//TODO: showdown (need rules and Output)
-	//print Showdown (all cards open + pot)
+	
 	
 	//check Rules:
 	Rules rules;
@@ -132,12 +132,14 @@ void GameController::showdown(int start_playerNr)
 		playerNBestHand pu = { player, rules.HasWon(player->getHand(), m_communityCard) };
 		player_besthands.push_back(pu);
 	}
-	//(print best hand of each player)
+	//print Showdown (all cards open + bestHand + pot)
+	out.printShowdown(player_besthands, m_pot, m_communityCard);
 
 	//determine winner(s)
 	std::vector<playerNBestHand>& winners = detWinner(player_besthands);
 	//add pot to winner(s)
 	addPotToWinners(winners);
+	out.printWinners(winners);
 }
 
 bool GameController::roundOfBidding(int start_playerNr) //return false if all players folded
