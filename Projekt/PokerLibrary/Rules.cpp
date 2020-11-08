@@ -6,40 +6,31 @@
 
 bool Rules::CheckNormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable)
 {
-
-	for (int j = 0; j < 2; j++)
-	{
-
-		int Counter = 1;
-		for (int i = 0; i < 5; i++)
-		{
-
-			if (CardsOnTheHand[j].suit == CardsOnTheTable[i].suit)
-			{
-				Counter++;
+	std::array<card, 7> cardsInGame;
+	for (int i = 0; i < 5; i++) {
+		cardsInGame[i] = CardsOnTheTable[i];
+	}
+	cardsInGame[5] = CardsOnTheHand[0];
+	cardsInGame[6] = CardsOnTheHand[1];
+	for (int i = 0; i < 7; i++) {
+		int counter = 1; 
+		for (int j = i + 1; j < 7; j++) {
+			if (cardsInGame[i].suit == cardsInGame[j].suit) {
+				counter++;
 			}
 		}
-		if (Counter >= 5)
-		{
+		if (counter >= 5) {
 			return true;
 		}
-		else
-		{
-			Counter = 0;
+		else {
+			counter = 0;
 		}
 	}
 	return false;
-
 }
 
 
-
-
-
-
-
-
-bool Rules::CheckFlush(std::array<card, 5> Cards) //used to check for Royal flush
+bool Rules::CheckFlush(std::array<card, 5> Cards) //used to check for Royal flush and straightFlush
 {
 	suits Check;
 	Check = Cards[0].suit; //enough to check for the suit of the first card (all or nothing)

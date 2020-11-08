@@ -810,6 +810,28 @@ TEST(Rules, hasWon_flush_3) {
 	EXPECT_EQ(result.ThreeOfAKindCard, values::queen);
 }
 
+TEST(Rules, hasWon_flush_4) {
+	Rules rl = Rules();
+	hand hand = { {clubs, ace}, { diamonds, four } };
+	card card1 = { hearts, six };
+	card card2 = { hearts, five };
+	card card3 = { hearts, two };
+	card card4 = { hearts, queen };
+	card card5 = { hearts, jack };
+	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+	BestHand result = rl.HasWon(hand, community);
+	EXPECT_TRUE(result.musterCorrect[highCard]);
+	EXPECT_FALSE(result.musterCorrect[twoPair]);
+	EXPECT_FALSE(result.musterCorrect[pair]);
+	EXPECT_FALSE(result.musterCorrect[threeOfAKind]);
+	EXPECT_FALSE(result.musterCorrect[straight]);
+	EXPECT_TRUE(result.musterCorrect[flush]);
+	for (int i = 6; i < 10; i++) {
+		EXPECT_FALSE(result.musterCorrect[i]);
+	}
+	EXPECT_EQ(result.HighCard, hand.firstCard);
+}
+
 //Tests for the fullHousePart in HasWon
 TEST(Rules, hasWon_fullHouse_1) {
 	Rules rl = Rules();
@@ -922,3 +944,4 @@ TEST(Rules, hasWon_royalFlush_1) {
 	EXPECT_EQ(result.StraightHighestCard, hand.secondCard);
 	EXPECT_EQ(result.StraightFlushHighestCard, hand.secondCard);
 }
+
