@@ -59,12 +59,13 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 	values Check;
 	int Counter = 0;
 	int CounterBefore = 0;
+	int counterBeforeAce = 12;
 	for (int i = 12; i >= 0; i--)
 	{
 
 		for (int j = 0; j < 2; j++)
 		{
-			if (CardsOnTheHand[j].value == values(i) && Counter == CounterBefore)
+			if (CardsOnTheHand[j].value == values(i) && (Counter == CounterBefore || Counter==counterBeforeAce))
 			{
 				Counter++;
 				CardsForAStreet[Counter - 1] = CardsOnTheHand[j];
@@ -74,14 +75,14 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 		{
 			for (int j = 0; j < 5; j++)
 			{
-				if (CardsOnTheTable[j].value == values(i) && Counter == CounterBefore)
+				if (CardsOnTheTable[j].value == values(i) && (Counter == CounterBefore || Counter == counterBeforeAce))
 				{
 					Counter++;
 					CardsForAStreet[Counter - 1] = CardsOnTheTable[j];
 				}
 			}
 		}
-		if (Counter == CounterBefore && Counter < 5)
+		if ((Counter == CounterBefore || Counter == counterBeforeAce) && Counter < 5)
 		{
 			Counter = 0;
 			CounterBefore = 0;

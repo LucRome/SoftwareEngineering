@@ -739,8 +739,8 @@ TEST(Rules, hasWon_straight_6) {
 //TODO: (flush) Tests for the flushPart in HasWon
 TEST(Rules, hasWon_flush_1) {
 	Rules rl = Rules();
-	hand hand = { {clubs, ace}, {diamonds, four} };
-	card card1 = { hearts, six };
+	hand hand = { {clubs, ace}, {hearts, six} };
+	card card1 = { diamonds, four };
 	card card2 = { hearts, five };
 	card card3 = { hearts, two };
 	card card4 = { hearts, queen };
@@ -762,8 +762,8 @@ TEST(Rules, hasWon_flush_1) {
 //TODO: (flush) combined flush and doublePair
 TEST(Rules, hasWon_flush_2) {
 	Rules rl = Rules();
-	hand hand = { {clubs, jack}, {diamonds, queen} };
-	card card1 = { hearts, six };
+	hand hand = { {clubs, jack}, { hearts, six }  };
+	card card1 = { diamonds, queen };
 	card card2 = { hearts, five };
 	card card3 = { hearts, two };
 	card card4 = { hearts, queen };
@@ -779,7 +779,7 @@ TEST(Rules, hasWon_flush_2) {
 	for (int i = 6; i < 10; i++) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
-	EXPECT_EQ(result.HighCard, hand.secondCard);
+	EXPECT_EQ(result.HighCard, hand.firstCard);
 	EXPECT_EQ(result.PairCard, values::queen);
 	EXPECT_EQ(result.TwoPairCards[0], values::queen);
 	EXPECT_EQ(result.TwoPairCards[1], values::jack);
@@ -788,8 +788,8 @@ TEST(Rules, hasWon_flush_2) {
 //TODO: (flush, pair) combined flush and doublePair
 TEST(Rules, hasWon_flush_3) {
 	Rules rl = Rules();
-	hand hand = { {clubs, queen}, {diamonds, queen} };
-	card card1 = { hearts, six };
+	hand hand = { {clubs, queen},{ hearts, six } };
+	card card1 = { diamonds, queen };
 	card card2 = { hearts, five };
 	card card3 = { hearts, two };
 	card card4 = { hearts, queen };
@@ -920,3 +920,53 @@ TEST(Rules, hasWon_royalFlush_1) {
 	EXPECT_EQ(result.HighCard, hand.secondCard);
 	//EXPECT_EQ(result.StraightFlushHighestCard, card1);
 }
+
+//TODO wenn flush in hasWon eingefügt wird löschen
+TEST(Rules, normalFlush_1) {
+	RulesFriend rl = RulesFriend();
+	card card1 = { hearts, two };
+	card card2 = { hearts, six };
+	card card3 = { hearts, five };
+	card card4 = { hearts, queen };
+	card hand1 = { hearts, jack };
+	card card5 = { clubs, ace };
+	card hand2 = { diamonds, four };
+	std::array <card, 2> hand = { hand1, hand2 };
+	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+	bool result = rl.NormalFlush(hand, community);
+	EXPECT_TRUE(result);
+}
+
+//TODO wenn flush in hasWon eingefügt wird löschen
+TEST(Rules, normalFlush_2) {
+	RulesFriend rl = RulesFriend();
+	card card1 = { diamonds, ace };
+	card card2 = { diamonds, king };
+	card card3 = { diamonds, queen };
+	card card4 = { diamonds, jack };
+	card card5 = { clubs, three };
+	card hand1 = { diamonds, ten }; 
+	card hand2 = { spades, nine };
+	std::array <card, 2> hand = { hand1, hand2 };
+	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+	bool result = rl.NormalFlush(hand, community);
+	EXPECT_TRUE(result);
+}
+
+
+//TODO wenn flush in hasWon eingefügt wird löschen
+TEST(Rules, normalFlush_3) {
+	RulesFriend rl = RulesFriend();
+	card card1 = { diamonds, two };
+	card card2 = { diamonds, three };
+	card card3 = { hearts, ace };
+	card card4 = { clubs, jack };
+	card card5 = { diamonds, seven };
+	card hand1 = { spades, queen };
+	card hand2 = { clubs, nine };
+	std::array <card, 2> hand = { hand1, hand2 };
+	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+	bool result = rl.NormalFlush(hand, community);
+	EXPECT_FALSE(result);
+}
+
