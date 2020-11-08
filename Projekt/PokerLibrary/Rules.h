@@ -21,6 +21,7 @@ struct BestHand
 
 	card StraightFlushHighestCard;
 	values FourOfAKindCard;
+	//TODO: add cards for flush
 	std::array<values, 2> FullHouseCards; //first: threeOfAKind, second: pair
 	card StraightHighestCard;
 	values ThreeOfAKindCard;

@@ -5,6 +5,8 @@
 #include "Money.h"
 #include "Dealer.h"
 #include "Output.h"
+#include "Rules.h"
+#include "Player_Besthand_struct.h"
 
 class GameController
 {
@@ -27,6 +29,8 @@ private:
 	std::vector<plays> possiblePlays(int playerNr);
 	bool allPlayersSamePot();
 
+	std::vector<playerNBestHand>& detWinner(std::vector<playerNBestHand>& players_besthands);
+	void addPotToWinners(std::vector<playerNBestHand>& winners);
 
 	//add bid to all variables where its needed and remove from player
 	void player_bid(int playerNr, chipstack chips);

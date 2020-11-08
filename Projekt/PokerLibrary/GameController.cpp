@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "GameController.h"
+#include "Rules.h"
+#include "DrawResolver.h"
 
 GameController::GameController(std::vector<std::shared_ptr<Player>> players, int max, chipstack bigBlind, chipstack smallBlind)
 	:m_players(players)
@@ -121,7 +123,21 @@ bool GameController::river(int start_playerNr)
 void GameController::showdown(int start_playerNr)
 {
 	//TODO: showdown (need rules and Output)
-	//also: add pot to winner
+	//print Showdown (all cards open + pot)
+	
+	//check Rules:
+	Rules rules;
+	std::vector<playerNBestHand> player_besthands; //connects Players and BestHands
+	for (std::shared_ptr<Player> player : m_playersInRound) {
+		playerNBestHand pu = { player, rules.HasWon(player->getHand(), m_communityCard) };
+		player_besthands.push_back(pu);
+	}
+	//(print best hand of each player)
+
+	//determine winner(s)
+	std::vector<playerNBestHand>& winners = detWinner(player_besthands);
+	//add pot to winner(s)
+	addPotToWinners(winners);
 }
 
 bool GameController::roundOfBidding(int start_playerNr) //return false if all players folded
@@ -220,6 +236,58 @@ bool GameController::allPlayersSamePot()//returns if all Player bid the same sum
 	return same;
 }
 
+
+//Niedrigere Werte auch noch checken?
+
+std::vector<playerNBestHand>& GameController::detWinner(std::vector<playerNBestHand>& players_besthands) //players: memberm_playersInRound
+{
+	//draws (Temp)
+	DrawResolver dR;
+	std::vector<playerNBestHand>& draws = *(new std::vector<playerNBestHand>());
+	int winner_nr; //nr of player who has won (in case of draw: int_max)
+	winTypes best = highCard;
+
+	//iterate over all players and compare
+	//already resolve same winType issues
+	winTypes playerWinType = highCard; //winType of this player
+	int musterNr = royalFlush; //to iterate over all winTypes (also determines starting point)
+	bool cont = true;
+	for (int playerNr = 0; playerNr < players_besthands.size(); playerNr++) { //i =: playerNr
+		musterNr = royalFlush; // reset
+
+		//determine best muster
+		while(musterNr >= highCard && cont){
+			if (players_besthands[playerNr].besthand.musterCorrect[musterNr]) {
+				playerWinType = winTypes(musterNr);
+				cont = false;
+			}
+		}
+
+		//determine if best, draw, lose
+		if (playerWinType > best) { //winner
+			best = playerWinType;
+			winner_nr = playerNr;
+			draws.clear(); //all previous draws are meaningless
+			draws.push_back(players_besthands[playerNr]);
+		}
+		else if (playerWinType < best) { //lost -> eliminate from vectors
+			players_besthands.erase(players_besthands.begin() + playerNr);
+		}
+		else if (playerWinType == best) { //draw -> resolve or push to draws
+			draws.push_back(players_besthands[playerNr]);
+			dR.resolveDraws(draws, playerWinType);
+		}
+	}
+	return draws;
+}
+
+void GameController::addPotToWinners(std::vector<playerNBestHand>& winners)
+{
+	int cashPerPlayer = m_pot.sum() / winners.size();
+	for (playerNBestHand p : winners) {
+		p.player->addToWinnings(cashPerPlayer);
+	}
+}
 
 void GameController::player_bid(int playerNr, chipstack chips)
 {

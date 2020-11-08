@@ -44,6 +44,10 @@ public:
 		winnings = winnings + pAdd;
 	}
 
+	void addToWinnings(int pAdd) {	//
+		winnings = winnings + pAdd;
+	}
+
 	void decFromWinnings(chipstack pDec) {	//
 		winnings = winnings - pDec;
 	}

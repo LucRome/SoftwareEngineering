@@ -22,6 +22,21 @@ chipstack& chipstack::operator+(const chipstack& a) const
     return result; 
 }
 
+chipstack& chipstack::operator+(const int& a) const
+{
+    //go through from top to bottom and add
+    int sum = a;
+    int amountForValue;
+    chipstack& result = *(new chipstack);
+    for (int i = m_chips.size() - 1; i >= 0; i--) {
+        //go through values from big to small and attempt to resort
+        amountForValue = sum / values[i];
+        sum -= amountForValue * values[i];
+        result.m_chips[i] = amountForValue;
+    }
+    return result;
+}
+
 chipstack& chipstack::operator-(const chipstack& a) const
 {
     chipstack& result = *(new chipstack());
