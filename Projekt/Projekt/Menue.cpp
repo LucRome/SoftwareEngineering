@@ -43,7 +43,7 @@ void Menue::Startgame() {
 	std::vector<std::shared_ptr<Player>>players;
 
 	//Chipstacks 
-	chipstack bigBlind, smallBlind, startchips;
+	chipstack startchips;
 
 	// Variabels for menue 
 	int displayRules, maxPlayers = 9, nrPlayers, humanBot, tableRange, nameBot, k = 1;;
@@ -109,54 +109,42 @@ void Menue::Startgame() {
 		//chipstack and array players
 		switch (humanBot) {
 		//Human player
-		case 1: {
-			//big bilnd
-			if (i == 0) {
-				bigBlind = bigBlind.readChipstackFromConsole();
-				players.push_back(std::make_shared<HumanPlayer>(bigBlind, playerName));
-				break;
-			}
-			//small blind
-			if (i == 1) {
-				smallBlind = smallBlind.readChipstackFromConsole();
-				players.push_back(std::make_shared<HumanPlayer>(smallBlind, playerName));
-				break;
-			}
-			//other players
-			else {
-				startchips = startchips.readChipstackFromConsole();
-				players.push_back(std::make_shared<HumanPlayer>(startchips, playerName));
-			}
+		case 1:
+			startchips = startchips.readChipstackFromConsole();
+			players.push_back(std::make_shared<HumanPlayer>(startchips, playerName));
 			break;
-		}
+
 		//Bot 
-		case 2: {
-			//big blind
-			if (i == 0) {
-				bigBlind = bigBlind.createChipstackForBot();
-				players.push_back(std::make_shared<DumbBot>(bigBlind, playerName));
-				break;
-			}
-			//small blind
-			if (i == 1) {
-				smallBlind = smallBlind.createChipstackForBot();
-				players.push_back(std::make_shared<DumbBot>(smallBlind, playerName));
-				break;
-			}
-			//other
-			else {
-				startchips = startchips.createChipstackForBot();
-				players.push_back(std::make_shared<DumbBot>(startchips, playerName));
-				break;
-			}
+		case 2:
+			startchips = startchips.createChipstackForBot();
+			players.push_back(std::make_shared<DumbBot>(startchips, playerName));
 			break;
-		}
 		}
 	}
-
-	//Connection to Game Controller 
 	players.shrink_to_fit();
 
+	chipstack bigBlind = chipstack({ 0,1,0,0,0,0 });
+	chipstack smallBlind = chipstack({ 1,0,0,0,0,0 });
+
+	//Ask if standardblinds or custom
+	std::cout << "Bigblind: " << bigBlind.toString() << std::endl;
+	std::cout << "Smallblind: " << smallBlind.toString() << std::endl;
+
+	std::cout << "Do you want to change the blinds (yes/no : 1/0)" << std::endl;
+
+	int in;
+	do
+	{
+		std::cin >> in;
+	} while (in != 0 && in != 1);
+	
+	if (in == 1) {
+		std::cout << "Bigblind: ";
+		bigBlind = chipstack::readChipstackFromConsole();
+		std::cout << "\nSmallblind: ";
+		smallBlind = chipstack::readChipstackFromConsole();
+	}
+	//Connection to Game Controller 
 	//start game
 	GameController gc = GameController(players, tableRange, bigBlind, smallBlind);
 	std::shared_ptr<Player>& winner = gc.playGame();
