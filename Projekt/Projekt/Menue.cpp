@@ -59,9 +59,12 @@ void Menue::Startgame() {
 	// Clear Console befor game starts, Comment out not needed os
 	// Windows
 	system("pause");
+
 	//Linux
 	//system("read");
+
 	out.clearConsole();
+
 
 	//Number of player will be enterd
 	do {
