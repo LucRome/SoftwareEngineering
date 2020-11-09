@@ -263,6 +263,7 @@ std::vector<playerNBestHand>& GameController::detWinner(std::vector<playerNBestH
 				playerWinType = winTypes(musterNr);
 				cont = false;
 			}
+			musterNr--;
 		}
 
 		//determine if best, draw, lose
