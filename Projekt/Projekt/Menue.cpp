@@ -82,7 +82,7 @@ void Menue::Startgame() {
 	//Create Players, Bots
 	for (int i = 0; i < nrPlayers; i++) {
 		std::cout << "Should player " << (i+1) << " be a bot or a human?" << std::endl;
-		std::cout << "1 = human; 2 = bot; 3 = smart bot" << std::endl;
+		std::cout << "1 = human; 2 = bot" << std::endl;
 		humanBot = out.userInput();
 
 		//naming Bot or not 
@@ -105,8 +105,8 @@ void Menue::Startgame() {
 
 		//chipstack and array players
 		switch (humanBot) {
+		//Human player
 		case 1: {
-			//Human player
 			//big bilnd
 			if (i == 0) {
 				bigBlind = bigBlind.readChipstackFromConsole();
@@ -126,8 +126,8 @@ void Menue::Startgame() {
 			}
 			break;
 		}
+		//Bot 
 		case 2: {
-			//Bot 
 			//big blind
 			if (i == 0) {
 				bigBlind = bigBlind.createChipstackForBot();
@@ -148,28 +148,7 @@ void Menue::Startgame() {
 			}
 			break;
 		}
-		case 3: {
-			//smart bot 
-			if (i == 0) {
-				bigBlind = bigBlind.createChipstackForBot();
-				//Bot
-				break;
-			}
-			if (i == 1) {
-				smallBlind = smallBlind.createChipstackForBot();
-				//bot
-				break;
-			}
-			else {
-				startchips = startchips.createChipstackForBot();
-				//bot
-				break;
-			}
 		}
-		}
-
-
-
 	}
 
 	//Connection to Game Controller 
