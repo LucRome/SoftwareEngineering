@@ -20,6 +20,7 @@ bool Rules::CheckNormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card
 			}
 		}
 		if (counter >= 5) {
+			Hands.Flush = cardsInGame[i].suit;
 			return true;
 		}
 		else {
@@ -232,7 +233,6 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 	}
 	if (CheckNormalFlush(CardsOnTheHand, CardsOnTheTable)) { //flush
 		Hands.musterCorrect[flush]=true;
-		//evtl. noch zum struct hinzufügen?
 	}
 	if (CheckSuits(CardsOnTheHand, CardsOnTheTable)) //street
 	{

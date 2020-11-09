@@ -22,6 +22,7 @@ struct BestHand
 	card StraightFlushHighestCard;
 	values FourOfAKindCard;
 	std::array<values, 2> FullHouseCards; //first: threeOfAKind, second: pair
+	suits Flush;
 	card StraightHighestCard;
 	values ThreeOfAKindCard;
 	std::array<values, 2> TwoPairCards; //highest value first; if you have a full house [0] is the pair of the three [1] is the normal pair

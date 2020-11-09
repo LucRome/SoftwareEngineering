@@ -757,6 +757,7 @@ TEST(Rules, hasWon_flush_1) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
+	EXPECT_EQ(result.Flush, suits::hearts);
 }
 
 //combined flush and doublePair
@@ -783,6 +784,7 @@ TEST(Rules, hasWon_flush_2) {
 	EXPECT_EQ(result.PairCard, values::queen);
 	EXPECT_EQ(result.TwoPairCards[0], values::queen);
 	EXPECT_EQ(result.TwoPairCards[1], values::jack);
+	EXPECT_EQ(result.Flush, suits::hearts);
 }
 
 //combined flush and threeOfAKind
@@ -808,8 +810,10 @@ TEST(Rules, hasWon_flush_3) {
 	EXPECT_EQ(result.HighCard, hand.firstCard);
 	EXPECT_EQ(result.PairCard, values::queen);
 	EXPECT_EQ(result.ThreeOfAKindCard, values::queen);
+	EXPECT_EQ(result.Flush, suits::hearts);
 }
 
+//flush only in the communitycards
 TEST(Rules, hasWon_flush_4) {
 	Rules rl = Rules();
 	hand hand = { {clubs, ace}, { diamonds, four } };
@@ -830,6 +834,7 @@ TEST(Rules, hasWon_flush_4) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
+	EXPECT_EQ(result.Flush, suits::hearts);
 }
 
 //Tests for the fullHousePart in HasWon
@@ -915,6 +920,7 @@ TEST(Rules, hasWon_straightFlush_1) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
+	EXPECT_EQ(result.Flush, suits::diamonds);
 	EXPECT_EQ(result.StraightFlushHighestCard, card5);
 	EXPECT_EQ(result.StraightHighestCard, card5);
 }
@@ -942,6 +948,7 @@ TEST(Rules, hasWon_royalFlush_1) {
 	EXPECT_TRUE(result.musterCorrect[royalFlush]);
 	EXPECT_EQ(result.HighCard, hand.secondCard);
 	EXPECT_EQ(result.StraightHighestCard, hand.secondCard);
+	EXPECT_EQ(result.Flush, suits::diamonds);
 	EXPECT_EQ(result.StraightFlushHighestCard, hand.secondCard);
 }
 
