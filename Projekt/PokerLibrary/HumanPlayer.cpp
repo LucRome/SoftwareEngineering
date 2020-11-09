@@ -15,14 +15,14 @@ outPlay HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 	{
 		switch (i)
 		{
-		case fold:
-			std::cout << " fold [2]";
-			break;
 		case check:
 			std::cout << " check [0]";
 			break;
 		case raise:
 			std::cout << " raise [1]";
+			break;
+		case fold:
+			std::cout << " fold [2]";
 			break;
 		default:
 			break;

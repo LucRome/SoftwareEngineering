@@ -4,7 +4,6 @@
 #include "GameController.h"
 #include <iostream>
 #include <Output.h>
-#include <Money.cpp>
 #include <HumanPlayer.h>
 #include "DumbBot.h"
 
