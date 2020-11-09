@@ -146,10 +146,8 @@ void Output::printShowdown(const std::vector<playerNBestHand>& playerBesthand, c
 		std::cout << "\thand: { " << cardToString(h.firstCard) << " " << cardToString(h.secondCard) << " }" << std::endl;
 	}
 
-	//wait for input (otherwise it would be gone to soon)
-	std::cout << "Press any key";
-	char c;
-	std::cin >> c;
+	//pause (otherwise it would be gone to soon)
+	pause();
 }
 
 winTypes Output::getBestWinType(const BestHand& bestHand)
