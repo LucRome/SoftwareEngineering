@@ -16,13 +16,13 @@ outPlay HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 		switch (i)
 		{
 		case fold:
-			std::cout << " fold [2]";
+			std::cout << " fold [0]";
 			break;
 		case check:
-			std::cout << " check [0]";
+			std::cout << " check [1]";
 			break;
 		case raise:
-			std::cout << " raise [1]";
+			std::cout << " raise [2]";
 			break;
 		default:
 			break;
@@ -32,19 +32,19 @@ outPlay HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 
 	switch (play)
 	{
-	case 0:		//check
+	case 1:		//check
 		chipsOut = pToCheck;
 		//decFromWinnings(chipsOut); done by GameController
 		return {check,chipsOut};
 		break;
-	case 1:		//raise
+	case 2:		//raise
 		std::cout << "How much do u want to raise?";
 		chipsOut = chipstack::readChipstackFromConsole();
 		chipsOut = (pToCheck + chipsOut);
 		//decFromWinnings(chipsOut); done by Gamecontroller
 		return {raise,chipsOut };
 		break;
-	case 2:		//fold
+	case 0:		//fold
 		return { fold,chipsOut };
 		break;
 	default:
