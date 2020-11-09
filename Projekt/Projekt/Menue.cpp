@@ -132,6 +132,7 @@ void Menue::Startgame() {
 
 	std::cout << "Do you want to change the blinds (yes/no : 1/0)" << std::endl;
 
+	
 	int in;
 	do
 	{
@@ -139,10 +140,25 @@ void Menue::Startgame() {
 	} while (in != 0 && in != 1);
 	
 	if (in == 1) {
-		std::cout << "Bigblind: ";
-		bigBlind = chipstack::readChipstackFromConsole();
-		std::cout << "\nSmallblind: ";
-		smallBlind = chipstack::readChipstackFromConsole();
+		bool blindsToBig = false;
+
+		do {
+			std::cout << "Bigblind: ";
+			bigBlind = chipstack::readChipstackFromConsole();
+			std::cout << "\nSmallblind: ";
+			smallBlind = chipstack::readChipstackFromConsole();
+
+			for (std::shared_ptr<Player> p : players) { //check if blinds are >10% of Players cash
+				if (bigBlind.sum() * 10 > p->getWinnings().sum() || 
+					smallBlind.sum() * 10 > p->getWinnings().sum()) {
+					blindsToBig = true;
+				}
+			}
+			if (blindsToBig) {
+				std::cout << "Blinds are > 10% of lowest player cash, please change" << std::endl;
+			}
+		} while (blindsToBig);
+		
 	}
 	//Connection to Game Controller 
 	//start game
