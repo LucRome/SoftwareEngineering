@@ -157,6 +157,6 @@ void Menue::Startgame() {
 	//Connection to Game Controller 
 	//start game
 	GameController gc = GameController(players, tableRange, bigBlind, smallBlind);
-	std::shared_ptr<Player>& winner = gc.playGame();
+	std::shared_ptr<Player> winner = gc.playGame();
 
 }

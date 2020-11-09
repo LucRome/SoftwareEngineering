@@ -26,7 +26,7 @@ GameController::~GameController()
 {
 }
 
-std::shared_ptr<Player>& GameController::playGame()
+std::shared_ptr<Player> GameController::playGame()
 {
 	bool cont = true;
 	while (cont) {
@@ -44,26 +44,27 @@ std::shared_ptr<Player>& GameController::playGame()
 			//reset everything from previous round
 			resetAfterRound();
 		}
-		else {
+		else { //only one player not bankrupt -> end
 			cont = false;
 		}
 		
 	}
-	return m_players[0];
+	return m_players[0]; //return winner
 }
 
 
 void GameController::round() //return false if all players folded
 {
-	//Blinds
+	//determine positions of dealer and blinds
 	int sb_pos = (m_dealer_pos + 1) % m_playersInRound.size();
 	int bb_pos = (sb_pos + 1) % m_playersInRound.size();
 	int startBid_pos = (bb_pos + 1) % m_playersInRound.size();
 
+	//pose blinds
 	player_bid(sb_pos, m_smallBlind);
 	player_bid(bb_pos, m_bigBlind);
 
-	if (preflop(startBid_pos)) { //just continue if there are still players left
+	if (preflop(startBid_pos)) { //only continue if there are still players left
 		startBid_pos = (startBid_pos + 1) % m_playersInRound.size();
 		if (flop(startBid_pos)) {
 			startBid_pos = (startBid_pos + 1) % m_playersInRound.size();
