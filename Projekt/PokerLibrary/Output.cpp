@@ -111,7 +111,25 @@ void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
 
 void Output::clearConsole()
 {
+	
+#ifdef _WIN32 // Windows
 	system("CLS");
+#elif __linux__ //linux
+	system("clear");
+#else
+#error "OS not supported"
+#endif
+}
+
+void Output::pause()
+{
+#ifdef _WIN32 // Windows
+	system("pause");
+#elif __linux__ //linux
+	system("read");
+#else
+#error "OS not supported"
+#endif
 }
 
 std::string Output::cardToString(const card& card)
