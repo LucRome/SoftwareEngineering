@@ -40,7 +40,6 @@ int Output::readChip(int value)
 }
 
 //for Bot Chipstack 
-//idk if Output.cpp is right place for this function 
 int Output::randomChips(int value) {
 	int amount;
 	DeckOfCards random = DeckOfCards();
@@ -49,9 +48,10 @@ int Output::randomChips(int value) {
 	return amount;
 }
 
+//catch wrong user input (no int values and values < 0)
 int Output::userInput() {
 	int input;
-	while (!(std::cin >> input)) {
+	while ((!(std::cin >> input)) || input < 0) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Invalid input please try again" << std::endl;
