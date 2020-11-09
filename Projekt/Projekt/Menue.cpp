@@ -136,7 +136,7 @@ void Menue::Startgame() {
 	int in;
 	do
 	{
-		std::cin >> in;
+		in = out.userInput();
 	} while (in != 0 && in != 1);
 	
 	if (in == 1) {
