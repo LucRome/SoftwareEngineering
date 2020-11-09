@@ -215,6 +215,7 @@ Rules::~Rules()
 
 BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnTheTable)
 {
+	Hands = BestHand(); //reset besthand
 	std::array<card, 2> CardsOnTheHand;
 
 	Hands.musterCorrect[highCard] = true;
