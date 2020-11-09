@@ -3,11 +3,10 @@
 #include "Player_Besthand_struct.h"
 
 // allways just compare player(last in vector) to first in vector(first and the others are the same)
-
-//TODO: klären ob immer highestCard als nächstes oder einfach draw
+//if winType cant be resolved -> resolve by highCard
 void DrawResolver::resolveDraws(std::vector<playerNBestHand>& players_besthands, winTypes drawCase)
 {
-	
+	//Determine which function to call
 	switch (drawCase)
 	{
 	case highCard:
@@ -54,7 +53,7 @@ void DrawResolver::resolveHighCard(std::vector<playerNBestHand>& players_besthan
 	bool cont = true; //if nextlowercard needs to be evalued
 	while (cont) {
 		if (resolveValues(players_besthands, own, opponent)) {
-			cont = false;
+			cont = false; //only repeat with lowcard if neccessary
 		}
 		else { //draw -> interpret lowCard
 			//determine lowercard of opponent
@@ -77,6 +76,7 @@ void DrawResolver::resolveHighCard(std::vector<playerNBestHand>& players_besthan
 	}
 }
 
+//mechanism for pair: value of paircard
 void DrawResolver::resolvePair(std::vector<playerNBestHand>& players_besthands)
 {
 	int playerNr = players_besthands.size() - 1;
@@ -90,6 +90,7 @@ void DrawResolver::resolvePair(std::vector<playerNBestHand>& players_besthands)
 	}
 }
 
+//two pai: first better pair then worse pair
 void DrawResolver::resolveTwoPair(std::vector<playerNBestHand>& players_besthands)
 {
 	int playerNr = players_besthands.size() - 1;
@@ -107,6 +108,7 @@ void DrawResolver::resolveTwoPair(std::vector<playerNBestHand>& players_besthand
 	}
 }
 
+//3 of a kind: value of card
 void DrawResolver::resolveThreeOfAKind(std::vector<playerNBestHand>& players_besthands)
 {
 	int playerNr = players_besthands.size() - 1;
