@@ -32,7 +32,7 @@ chipstack& chipstack::operator+(const int& a) const
         //go through values from big to small and attempt to resort
         amountForValue = sum / values[i];
         sum -= amountForValue * values[i];
-        result.m_chips[i] = amountForValue;
+        result.m_chips[i] = this->m_chips[i] + amountForValue;
     }
     return result;
 }

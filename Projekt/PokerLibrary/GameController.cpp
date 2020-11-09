@@ -278,7 +278,9 @@ std::vector<playerNBestHand>& GameController::detWinner(std::vector<playerNBestH
 		}
 		else if (playerWinType == best) { //draw -> resolve or push to draws
 			draws.push_back(players_besthands[playerNr]);
-			dR.resolveDraws(draws, playerWinType);
+			if (draws.size() > 1) {
+				dR.resolveDraws(draws, playerWinType);
+			}
 		}
 	}
 	return draws;

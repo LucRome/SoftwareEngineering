@@ -75,8 +75,6 @@ void Menue::Startgame() {
 	} while (tableRange < 25000);
 
 
-	// first enterd is big blind, second small blind
-	std::cout << "The first player you enter will be big blind, the second small blind.\n";
 
 	//Create Players, Bots
 	for (int i = 0; i < nrPlayers; i++) {

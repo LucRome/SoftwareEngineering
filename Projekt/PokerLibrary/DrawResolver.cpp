@@ -178,20 +178,23 @@ bool DrawResolver::resolveValues(std::vector<playerNBestHand>& players_besthands
 		eraseAllButLastOne(players_besthands);
 		return true;
 	}
-	else {//draw
-		resolveHighCard(players_besthands);
+	else {//not resolved -> draw
 		return false;
 	}
 }
 
-void DrawResolver::eraseLastOne(std::vector<playerNBestHand>& players_besthands)
+void DrawResolver::eraseLastOne(std::vector<playerNBestHand>& players_besthands) //only if size > 1
 {
-	players_besthands.erase(players_besthands.begin() + players_besthands.size()-1);
+	if (players_besthands.size() > 1) {
+		players_besthands.erase(players_besthands.begin() + players_besthands.size()-1);
+	}
 }
 
-void DrawResolver::eraseAllButLastOne(std::vector<playerNBestHand>& players_besthands)
+void DrawResolver::eraseAllButLastOne(std::vector<playerNBestHand>& players_besthands) //only if size > 1
 {
-	playerNBestHand& temp = players_besthands[players_besthands.size() - 1]; //last one
-	players_besthands.clear();
-	players_besthands.push_back(temp);
-}
+	if (players_besthands.size() > 1) {
+		playerNBestHand& temp = players_besthands[players_besthands.size() - 1]; //last one
+		players_besthands.clear();
+		players_besthands.push_back(temp);
+	}
+} 

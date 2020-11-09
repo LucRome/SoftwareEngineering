@@ -164,6 +164,7 @@ winTypes Output::getBestWinType(const BestHand& bestHand)
 
 void Output::printWinners(const std::vector<playerNBestHand>& playerBesthand)
 {
+	clearConsole();
 	/*
 	WINNERS:
 	
@@ -175,10 +176,8 @@ void Output::printWinners(const std::vector<playerNBestHand>& playerBesthand)
 	for (playerNBestHand p : playerBesthand) {
 		std::cout << "\t" << p.player->getName() << std::endl;
 	}
-	//wait for input (otherwise it would be gone to soon)
-	std::cout << "Press any key";
-	char c;
-	std::cin >> c;
+	//pause (otherwise it would be gone to soon)
+	pause();
 }
 
 void Output::clearConsole()
