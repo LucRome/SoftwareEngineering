@@ -113,18 +113,7 @@ int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<ca
 
 bool Rules::CheckFourOfAKind(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers)
 {
-	/*for (int i = 0; i < 13; i++)
-	{
-		if (Numbers[i] == 4)
-		{
-			Hands.FourOfAKindCard = values(i);
-			Hands.ThreeOfAKindCard = values(i);
-			Hands.TwoPairCards[0] = values(i);
-			Hands.TwoPairCards[1] = values(i);
-			Hands.PairCard = values(i);
-			return true;
-		}
-	}*/
+	
 	values one = CardsOnTheHand[0].value;
 	values two = CardsOnTheHand[1].value;
 	int rest;
@@ -154,52 +143,79 @@ bool Rules::CheckFourOfAKind(const std::array<card, 2>& CardsOnTheHand, std::arr
 }
 
 //sets bits in Hands struct
-void Rules::CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers)
+void Rules::CheckThreeOfAKindAndFullHouse(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers)
 {
-	for (int j = 0; j < 13; j++)
+	values one = CardsOnTheHand[0].value;
+	values two = CardsOnTheHand[1].value;
+	if (one == two) //-> Only 3 Of A Kind possible
 	{
-		if (Numbers[j] == 3)
-		{
-			for (int i = 0; i < 13; i++)
-			{
-				if (Numbers[i] >= 2 && i != j)
-				{
-					Hands.FullHouseCards[0] = values(j);
-					Hands.FullHouseCards[1] = values(i);
-					Hands.musterCorrect[fullHouse] = true;
-					Hands.musterCorrect[twoPair] = true;
-					Hands.TwoPairCards[0] = values(j);
-					Hands.TwoPairCards[1] = values(i);
-				}
-			}
-			Hands.ThreeOfAKindCard = values(j);
+		if (Numbers[one] >= 1) { //3 Of A Kind
+			Hands.ThreeOfAKindCard = one;
 			Hands.musterCorrect[threeOfAKind] = true;
 			Hands.musterCorrect[pair] = true;
-			Hands.PairCard = values(j);
-
+			Hands.PairCard = one;
+		}
+	}
+	else if (Numbers[one] >= 2) { //3 OaK
+		Hands.ThreeOfAKindCard = one;
+		Hands.musterCorrect[threeOfAKind] = true;
+		Hands.musterCorrect[pair] = true;
+		Hands.PairCard = one;
+		if (Numbers[two] >= 1) { //pair -> FullHouse
+			Hands.FullHouseCards[0] = one;
+			Hands.FullHouseCards[1] = two;
+			Hands.musterCorrect[fullHouse] = true;
+			Hands.musterCorrect[twoPair] = true;
+			Hands.TwoPairCards[0] = two;
+			Hands.TwoPairCards[1] = one;
+		}
+	}
+	else if (Numbers[two] >= 2) { //3 OaK
+		Hands.ThreeOfAKindCard = one;
+		Hands.musterCorrect[threeOfAKind] = true;
+		Hands.musterCorrect[pair] = true;
+		Hands.PairCard = one;
+		if (Numbers[one] >= 1) { //pair -> FullHouse
+			Hands.FullHouseCards[0] = two;
+			Hands.FullHouseCards[1] = one;
+			Hands.musterCorrect[fullHouse] = true;
+			Hands.musterCorrect[twoPair] = true;
+			Hands.TwoPairCards[0] = one;
+			Hands.TwoPairCards[1] = two;
 		}
 	}
 }
 
-void Rules::CheckTwoPairAndPair(std::array<int, 13>Numbers)
+void Rules::CheckTwoPairAndPair(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13>Numbers)
 {
-	for (int j = 0; j < 13; j++) // iterate over all values (first pair)
-	{
-		//TODO: improve
-		if (Numbers[j] == 2)
-		{
-			for (int i = 0; i < 13; i++) //iterate over all values (second pair)
-			{
-				if (Numbers[i] == 2 && i != j)
-				{
-					Hands.TwoPairCards[0] = values(j);
-					Hands.TwoPairCards[1] = values(i);
-					Hands.musterCorrect[twoPair] = true;
-				}
-				Hands.PairCard = values(j);
-				Hands.musterCorrect[pair] = true; //1?
-			}
+
+	values one = CardsOnTheHand[0].value;
+	values two = CardsOnTheHand[1].value;
+	if (one == two) { //-> pair
+		Hands.PairCard = one;
+		Hands.musterCorrect[pair] = true;
+	}
+	bool p1 = Numbers[one] >= 1;
+	bool p2 = Numbers[two] >= 1;
+	if (p1 && p2) { //two pairs
+		if (one > two) { //determine "better pair"
+			Hands.TwoPairCards[0] = one;
+			Hands.TwoPairCards[1] = two;
 		}
+		else
+		{
+			Hands.TwoPairCards[0] = two;
+			Hands.TwoPairCards[1] = one;
+		}
+		Hands.musterCorrect[twoPair] = true;
+	}
+	else if (p1) { //detremine which is the pair
+		Hands.PairCard = one;
+		Hands.musterCorrect[pair] = true;
+	}
+	else if (p2) {
+		Hands.PairCard = two;
+		Hands.musterCorrect[pair] = true;
 	}
 }
 
@@ -225,8 +241,8 @@ void Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5>
 		Hands.musterCorrect[pair] = true;
 		Hands.musterCorrect[twoPair] = true;
 	}
-	CheckThreeOfAKindAndFullHouse(Numbers); //directlay sets bits
-	CheckTwoPairAndPair(Numbers); //directly sets bits
+	CheckThreeOfAKindAndFullHouse(CardsOnTheHand, Numbers); //directlay sets bits
+	CheckTwoPairAndPair(CardsOnTheHand ,Numbers); //directly sets bits
 
 }
 
