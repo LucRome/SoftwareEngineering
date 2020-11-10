@@ -40,7 +40,6 @@ public:
 
 
 	BestHand HasWon(hand CardsOnTheHand, std::array<card, 5> CardsOnTheTable);
-	friend class RulesFriend;
 
 private:
 	std::array<card, 5> CardsForAStreet; //contains the cards that build a street?

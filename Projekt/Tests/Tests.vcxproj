@@ -37,14 +37,12 @@
     <ClInclude Include="MockPlayer.h" />
     <ClInclude Include="MockRandom.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="RulesFriend.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\packages\gmock.1.10.0\lib\native\src\gtest\src\gtest_main.cc" />
     <ClCompile Include="GCFriend.cpp" />
     <ClCompile Include="MockPlayer.cpp" />
     <ClCompile Include="MockRandom.cpp" />
-    <ClCompile Include="RulesFriend.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
