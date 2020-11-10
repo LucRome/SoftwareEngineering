@@ -7,6 +7,8 @@
 #include "StringMaps.h"
 #include "DeckOfCards.h"
 #include "Rnd.h"
+#include "Rules.h"
+#include "Player_Besthand_struct.h"
 
 
 Output::Output()
@@ -107,6 +109,75 @@ void Output::printTable(const std::vector< std::shared_ptr< Player>>& players,
 			std::cout << "\t\t" << players[i]->getName() << ": \t" << chipstackToStringAndSum(players[i]->getWinnings()) << std::endl;
 		}
 	}
+}
+
+std::array<std::string, 10> winTypesStrings = {
+	"high Card", "pair", "two Pairs", "three of a Kind", "straight", "flush", "fullHouse",
+	"four of a Kind", "straightFlush", "royalFlush" };
+
+void Output::printShowdown(const std::vector<playerNBestHand>& playerBesthand, const chipstack& pot, std::array<card, 5> communityCards)
+{
+	clearConsole();
+	/*
+	SHOWDOWN:
+	*communitiy cards*	(1)
+	pot: xy				(2)
+	*Name*: *Besthand*	(3) (3.1)
+		*cards*			(3.2)
+	*Name*: *Besthand*
+		*cards*
+	...
+	*/
+	
+	//(1)
+	std::cout << "SHOWDOWN: \n\ncommunity cards: {";
+	for (card c : communityCards) {
+		std::cout << cardToString(c) << " ";
+	}
+	std::cout << "}" << std::endl << std::endl;
+	//(2)
+	std::cout << "pot: " << pot.sum() << std::endl << std::endl;
+	//(3)
+	for (playerNBestHand pH : playerBesthand) {
+		// (3.1)
+		std::cout << pH.player->getName() << ": " 
+			<< winTypesStrings[getBestWinType(pH.besthand)] << std::endl;
+		hand h = pH.player->getHand();
+		std::cout << "\thand: { " << cardToString(h.firstCard) << " " << cardToString(h.secondCard) << " }" << std::endl;
+	}
+
+	//pause (otherwise it would be gone to soon)
+	pause();
+}
+
+winTypes Output::getBestWinType(const BestHand& bestHand)
+{
+	winTypes ret = highCard;
+	for (int i = royalFlush; i > highCard; i--) { //high Card doesnt need to be checked
+		if (bestHand.musterCorrect[i]) {
+			ret = winTypes(i);
+			break;
+		}
+	}
+	return ret;
+}
+
+void Output::printWinners(const std::vector<playerNBestHand>& playerBesthand)
+{
+	clearConsole();
+	/*
+	WINNERS:
+	
+		*Name1*
+		*Name2*
+		...
+	*/
+	std::cout << "WINNERS: " << std::endl << std::endl;
+	for (playerNBestHand p : playerBesthand) {
+		std::cout << "\t" << p.player->getName() << std::endl;
+	}
+	//pause (otherwise it would be gone to soon)
+	pause();
 }
 
 void Output::clearConsole()

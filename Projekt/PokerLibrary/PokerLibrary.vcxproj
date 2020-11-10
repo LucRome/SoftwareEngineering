@@ -155,6 +155,7 @@
     <ClInclude Include="CardAndSymbols.h" />
     <ClInclude Include="Dealer.h" />
     <ClInclude Include="DeckOfCards.h" />
+    <ClInclude Include="DrawResolver.h" />
     <ClInclude Include="DumbBot.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameController.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Output.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Player_Besthand_struct.h" />
     <ClInclude Include="Rnd.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="StringMaps.h" />
@@ -171,6 +173,7 @@
     <ClCompile Include="BotPlayer.cpp" />
     <ClCompile Include="Dealer.cpp" />
     <ClCompile Include="DeckOfCards.cpp" />
+    <ClCompile Include="DrawResolver.cpp" />
     <ClCompile Include="DumbBot.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="HumanPlayer.cpp" />
