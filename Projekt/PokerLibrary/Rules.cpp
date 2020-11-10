@@ -94,14 +94,14 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i)
 {
 	int Counter = 0;
-	for (int j = 0; j < 2; j++)
+	/*for (int j = 0; j < 2; j++)
 	{
 		if (CardsOnTheHand[j].value == values(i))
 		{
 			Counter++;
 		}
-	}
-	for (int j = 0; j < 5; j++) //TODO: nur wenn auch auf Hand
+	}*/
+	for (int j = 0; j < 5; j++) //only count cards on the table
 	{
 		if (CardsOnTheTable[j].value == values(i))
 		{
@@ -111,9 +111,9 @@ int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<ca
 	return Counter;
 }
 
-bool Rules::CheckFourOfAKind(std::array<int, 13>Numbers)
+bool Rules::CheckFourOfAKind(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers)
 {
-	for (int i = 0; i < 13; i++)
+	/*for (int i = 0; i < 13; i++)
 	{
 		if (Numbers[i] == 4)
 		{
@@ -124,6 +124,31 @@ bool Rules::CheckFourOfAKind(std::array<int, 13>Numbers)
 			Hands.PairCard = values(i);
 			return true;
 		}
+	}*/
+	values one = CardsOnTheHand[0].value;
+	values two = CardsOnTheHand[1].value;
+	int rest;
+	if (one == two) {
+		rest = 2;
+	}
+	else {
+		rest = 3;
+	}
+	if (Numbers[one] >= rest) {
+		Hands.FourOfAKindCard = one;
+		Hands.ThreeOfAKindCard = one;
+		Hands.TwoPairCards[0] = one;
+		Hands.TwoPairCards[1] = one;
+		Hands.PairCard = one;
+		return true;
+	}
+	else if (Numbers[two] >= rest){
+		Hands.FourOfAKindCard = one;
+		Hands.ThreeOfAKindCard = one;
+		Hands.TwoPairCards[0] = one;
+		Hands.TwoPairCards[1] = one;
+		Hands.PairCard = one;
+		return true;
 	}
 	return false;
 }
@@ -187,12 +212,13 @@ void Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5>
 	for (int i = 0; i < 13; i++)
 	{
 		int storage;
-		storage = CheckHowManyOfAKind(CardsOnTheHand, CardsOnTheTable, i);
+		storage = CheckHowManyOfAKind(CardsOnTheHand, CardsOnTheTable, i); //checks cards on the table
+		//TODO: check... change Parameters
 		Numbers[i] = storage;
 	}
 
 	
-	if (CheckFourOfAKind(Numbers))
+	if (CheckFourOfAKind(CardsOnTheHand, Numbers))
 	{
 		Hands.musterCorrect[fourOfAKind] = true;
 		Hands.musterCorrect[threeOfAKind] = true;

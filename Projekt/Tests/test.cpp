@@ -461,12 +461,12 @@ TEST(Rules, hasWon_Pair_communityOnly) {
 	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
 	BestHand result = rl.HasWon(hand, community);
 	EXPECT_TRUE(result.musterCorrect[highCard]);
-	EXPECT_TRUE(result.musterCorrect[pair]);
+	EXPECT_FALSE(result.musterCorrect[pair]);
 	for (int i = 2; i < 10; i++) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.secondCard);
-	EXPECT_EQ(result.PairCard, values::two);
+	//EXPECT_EQ(result.PairCard, values::two);
 }
 
 ////One Pair is in the community Cards, the other is a mix of community card and hand card
@@ -505,15 +505,15 @@ TEST(Rules, hasWon_doublePair_2) {
 	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
 	BestHand result = rl.HasWon(hand, community);
 	EXPECT_TRUE(result.musterCorrect[highCard]);
-	EXPECT_TRUE(result.musterCorrect[twoPair]);
-	EXPECT_TRUE(result.musterCorrect[pair]);
+	EXPECT_FALSE(result.musterCorrect[twoPair]);
+	EXPECT_FALSE(result.musterCorrect[pair]);
 	for (int i = 3; i < 10; i++) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.secondCard);
-	EXPECT_EQ(result.PairCard, values::four);
+	/*EXPECT_EQ(result.PairCard, values::four);
 	EXPECT_EQ(result.TwoPairCards[0], values::four);
-	EXPECT_EQ(result.TwoPairCards[1], values::two);
+	EXPECT_EQ(result.TwoPairCards[1], values::two);*/
 }
 
 //One pair is in the community cards, one pair on the hand
@@ -528,15 +528,15 @@ TEST(Rules, hasWon_doublePair_3) {
 	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
 	BestHand result = rl.HasWon(hand, community);
 	EXPECT_TRUE(result.musterCorrect[highCard]);
-	EXPECT_TRUE(result.musterCorrect[twoPair]);
+	EXPECT_FALSE(result.musterCorrect[twoPair]);
 	EXPECT_TRUE(result.musterCorrect[pair]);
 	for (int i = 3; i < 10; i++) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
 	EXPECT_EQ(result.PairCard, values::four);
-	EXPECT_EQ(result.TwoPairCards[0], values::four);
-	EXPECT_EQ(result.TwoPairCards[1], values::two);
+	/*EXPECT_EQ(result.TwoPairCards[0], values::four);
+	EXPECT_EQ(result.TwoPairCards[1], values::two);*/
 }
 
 ////Both pairs are split up between community cards and hand

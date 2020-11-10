@@ -50,7 +50,7 @@ private:
 	bool CheckFlush(std::array<card, 5> Cards); //used for Straight Flush (+ Royal Flush)
 	bool CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //returns true if  street (?)
 	int CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i); //Helper for 2,3,... ofAKind
-	bool CheckFourOfAKind(std::array<int, 13> Numbers); //FourOfAKind
+	bool CheckFourOfAKind(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers); //FourOfAKind
 														
 	//set the bits of musterCorrect
 	void CheckThreeOfAKindAndFullHouse(std::array<int, 13> Numbers); //3 of a Kind + full House (1. fullHouse, 2 3oaK)
