@@ -882,35 +882,35 @@ TEST(Rules, hasWon_flush_4) {
 //	EXPECT_EQ(result.FullHouseCards[1], values::queen);
 //}
  
-////Tests for the fourOfAKindPart in HasWon
-//TEST(Rules, hasWon_fourOfAKind_1) {
-//	Rules rl = Rules();
-//	hand hand = { {hearts, six}, {spades, nine} };
-//	card card1 = { diamonds, three };
-//	card card2 = { hearts, three };
-//	card card3 = { clubs, three };
-//	card card4 = { spades, three };
-//	card card5 = { clubs, queen };
-//	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
-//	BestHand result = rl.HasWon(hand, community);
-//	EXPECT_TRUE(result.musterCorrect[highCard]);
-//	EXPECT_TRUE(result.musterCorrect[twoPair]);
-//	EXPECT_TRUE(result.musterCorrect[pair]);
-//	EXPECT_TRUE(result.musterCorrect[threeOfAKind]);
-//	EXPECT_FALSE(result.musterCorrect[straight]);
-//	EXPECT_FALSE(result.musterCorrect[fullHouse]);
-//	EXPECT_FALSE(result.musterCorrect[flush]);
-//	EXPECT_TRUE(result.musterCorrect[fourOfAKind]);
-//	for (int i = 8; i < 10; i++) {
-//		EXPECT_FALSE(result.musterCorrect[i]);
-//	}
-//	EXPECT_EQ(result.HighCard, hand.secondCard);
-//	EXPECT_EQ(result.PairCard, values::three);
-//	EXPECT_EQ(result.TwoPairCards[0], values::three);
-//	EXPECT_EQ(result.TwoPairCards[1], values::three);
-//	EXPECT_EQ(result.ThreeOfAKindCard, values::three);
-//	EXPECT_EQ(result.FourOfAKindCard, values::three);
-//}
+//Tests for the fourOfAKindPart in HasWon
+TEST(Rules, hasWon_fourOfAKind_1) {
+	Rules rl = Rules();
+	hand hand = { {hearts, six}, {spades, nine} };
+	card card1 = { diamonds, three };
+	card card2 = { hearts, three };
+	card card3 = { clubs, three };
+	card card4 = { spades, three };
+	card card5 = { clubs, queen };
+	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+	BestHand result = rl.HasWon(hand, community);
+	EXPECT_TRUE(result.musterCorrect[highCard]);
+	EXPECT_TRUE(result.musterCorrect[twoPair]);
+	EXPECT_TRUE(result.musterCorrect[pair]);
+	EXPECT_TRUE(result.musterCorrect[threeOfAKind]);
+	EXPECT_FALSE(result.musterCorrect[straight]);
+	EXPECT_FALSE(result.musterCorrect[fullHouse]);
+	EXPECT_FALSE(result.musterCorrect[flush]);
+	EXPECT_TRUE(result.musterCorrect[fourOfAKind]);
+	for (int i = 8; i < 10; i++) {
+		EXPECT_FALSE(result.musterCorrect[i]);
+	}
+	EXPECT_EQ(result.HighCard, hand.secondCard);
+	EXPECT_EQ(result.PairCard, values::three);
+	EXPECT_EQ(result.TwoPairCards[0], values::three);
+	EXPECT_EQ(result.TwoPairCards[1], values::three);
+	EXPECT_EQ(result.ThreeOfAKindCard, values::three);
+	EXPECT_EQ(result.FourOfAKindCard, values::three);
+}
 
 TEST(Rules, hasWon_straightFlush_1) {
 	Rules rl = Rules();
