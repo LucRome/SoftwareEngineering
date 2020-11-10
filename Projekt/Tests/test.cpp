@@ -965,22 +965,22 @@ TEST(Rules, hasWon_royalFlush_1) {
 	EXPECT_EQ(result.StraightFlushHighestCard, hand.secondCard);
 }
 
-//TODO
+//Tests the whole Gamesystem
 TEST(System, playGame) {
-	//chipstack chip1 = ({6,5,4,3,2,1})
-	//chipstack sB = chipstack({ 1,0,0,0,0,0 });
-	//chipstack bB = chipstack({ 2,0,0,0,0,0 });
-	//std::shared_ptr<Player> bot1 = make_shared<Player>(chips, "A");
-	//std::shared_Ptr<Player> bot2 = make_shared<Player>(chips, "B");
-	//std::vector<std::shared_ptr<Player>> players;
-	//players.push_Back(bot1);
-	//players.push_Back(bot2);
-	//int max=10000;
-	//GameController gc = GameController(players, max, bB, sB);
-	//std::shared_ptr<Player> winner = gc.playGame();
-	//bool systemRuns=false;
-	//if(winner==bot1 || winner==bot2){
-	//	systemRuns=true;
-	//}
-	//EXPECT_TRUE(systemRuns);
+	chipstack chip1 = chipstack({ 6,5,4,3,2,1 });
+	chipstack sB = chipstack({ 1,0,0,0,0,0 });
+	chipstack bB = chipstack({ 2,0,0,0,0,0 });
+	std::shared_ptr<Player> bot1 = std::make_shared<DumbBot>(chip1, "A");
+	std::shared_ptr<Player> bot2 = std::make_shared<DumbBot>(chip1, "B");
+	std::vector<std::shared_ptr<Player>> players;
+	players.push_back(bot1);
+	players.push_back(bot2);
+	int max=10000;
+	GameController gc = GameController(players, max, bB, sB);
+	std::shared_ptr<Player> winner = gc.playGame();
+	bool systemRuns=false;
+	if(winner==bot1 || winner==bot2){
+		systemRuns=true;
+	}
+	EXPECT_TRUE(systemRuns);
 }
