@@ -22,6 +22,8 @@ public:
 	
 	void clearConsole();
 
+	void pause();
+
 	std::string cardToString(const card& card);
 	std::string chipstackToStringAndSum(const chipstack& c);
 
