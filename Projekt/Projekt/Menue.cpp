@@ -159,4 +159,7 @@ void Menue::Startgame() {
 	GameController gc = GameController(players, tableRange, bigBlind, smallBlind);
 	std::shared_ptr<Player> winner = gc.playGame();
 
+	out.clearConsole();
+	std::cout << "The winner is: " << winner->getName() << std::endl;
+
 }
