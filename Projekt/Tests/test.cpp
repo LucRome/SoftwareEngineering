@@ -562,28 +562,28 @@ TEST(Rules, hasWon_doublePair_3) {
 //	EXPECT_EQ(result.TwoPairCards[1], values::two);
 //}
 
-// three of a kind split up with between community and hand
-TEST(Rules, hasWon_threeOfAKind_1) {
-	Rules rl = Rules();
-	hand hand = { {hearts, three}, {diamonds, two} };
-	card card1 = { hearts, two };
-	card card2 = { spades, two };
-	card card3 = { clubs, queen };
-	card card4 = { spades, nine };
-	card card5 = { clubs, ace };
-	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
-	BestHand result = rl.HasWon(hand, community);
-	EXPECT_TRUE(result.musterCorrect[highCard]);
-	EXPECT_FALSE(result.musterCorrect[twoPair]);
-	EXPECT_TRUE(result.musterCorrect[pair]);
-	EXPECT_TRUE(result.musterCorrect[threeOfAKind]);
-	for (int i = 4; i < 10; i++) {
-		EXPECT_FALSE(result.musterCorrect[i]);
-	}
-	EXPECT_EQ(result.HighCard, hand.firstCard);
-	EXPECT_EQ(result.PairCard, values::two);
-	EXPECT_EQ(result.ThreeOfAKindCard, values::two);
-}
+//// three of a kind split up with between community and hand
+//TEST(Rules, hasWon_threeOfAKind_1) {
+//	Rules rl = Rules();
+//	hand hand = { {hearts, three}, {diamonds, two} };
+//	card card1 = { hearts, two };
+//	card card2 = { spades, two };
+//	card card3 = { clubs, queen };
+//	card card4 = { spades, nine };
+//	card card5 = { clubs, ace };
+//	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+//	BestHand result = rl.HasWon(hand, community);
+//	EXPECT_TRUE(result.musterCorrect[highCard]);
+//	EXPECT_FALSE(result.musterCorrect[twoPair]);
+//	EXPECT_TRUE(result.musterCorrect[pair]);
+//	EXPECT_TRUE(result.musterCorrect[threeOfAKind]);
+//	for (int i = 4; i < 10; i++) {
+//		EXPECT_FALSE(result.musterCorrect[i]);
+//	}
+//	EXPECT_EQ(result.HighCard, hand.firstCard);
+//	EXPECT_EQ(result.PairCard, values::two);
+//	EXPECT_EQ(result.ThreeOfAKindCard, values::two);
+//}
 
 //three of a kind only in community
 TEST(Rules, hasWon_threeOfAKind_2) {
