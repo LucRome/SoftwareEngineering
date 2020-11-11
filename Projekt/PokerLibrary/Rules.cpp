@@ -94,13 +94,6 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i)
 {
 	int Counter = 0;
-	/*for (int j = 0; j < 2; j++)
-	{
-		if (CardsOnTheHand[j].value == values(i))
-		{
-			Counter++;
-		}
-	}*/
 	for (int j = 0; j < 5; j++) //only count cards on the table
 	{
 		if (CardsOnTheTable[j].value == values(i))
@@ -171,7 +164,7 @@ void Rules::CheckThreeOfAKindAndFullHouse(const std::array<card, 2>& CardsOnTheH
 		}
 	}
 	else if (Numbers[two] >= 2) { //3 OaK
-		Hands.ThreeOfAKindCard = one;
+		Hands.ThreeOfAKindCard = two;
 		Hands.musterCorrect[threeOfAKind] = true;
 		Hands.musterCorrect[pair] = true;
 		Hands.PairCard = one;
@@ -201,13 +194,16 @@ void Rules::CheckTwoPairAndPair(const std::array<card, 2>& CardsOnTheHand, std::
 		if (one > two) { //determine "better pair"
 			Hands.TwoPairCards[0] = one;
 			Hands.TwoPairCards[1] = two;
+			Hands.PairCard = one;
 		}
 		else
 		{
 			Hands.TwoPairCards[0] = two;
 			Hands.TwoPairCards[1] = one;
+			Hands.PairCard = two;
 		}
 		Hands.musterCorrect[twoPair] = true;
+		Hands.musterCorrect[pair] = true;
 	}
 	else if (p1) { //detremine which is the pair
 		Hands.PairCard = one;
@@ -225,7 +221,7 @@ void Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5>
 {
 	std::array<int, 13>Numbers = { 0 };
 	//int two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
-	for (int i = 0; i < 13; i++)
+	for (int i = two; i < v_none; i++)
 	{
 		int storage;
 		storage = CheckHowManyOfAKind(CardsOnTheHand, CardsOnTheTable, i); //checks cards on the table
