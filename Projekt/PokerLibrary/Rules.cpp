@@ -188,31 +188,34 @@ void Rules::CheckTwoPairAndPair(const std::array<card, 2>& CardsOnTheHand, std::
 		Hands.PairCard = one;
 		Hands.musterCorrect[pair] = true;
 	}
-	bool p1 = Numbers[one] >= 1;
-	bool p2 = Numbers[two] >= 1;
-	if (p1 && p2) { //two pairs
-		if (one > two) { //determine "better pair"
-			Hands.TwoPairCards[0] = one;
-			Hands.TwoPairCards[1] = two;
-			Hands.PairCard = one;
-		}
-		else
-		{
-			Hands.TwoPairCards[0] = two;
-			Hands.TwoPairCards[1] = one;
-			Hands.PairCard = two;
-		}
-		Hands.musterCorrect[twoPair] = true;
-		Hands.musterCorrect[pair] = true;
+	else {
+		bool p1 = Numbers[one] >= 1;
+			bool p2 = Numbers[two] >= 1;
+			if (p1 && p2) { //two pairs
+				if (one > two) { //determine "better pair"
+					Hands.TwoPairCards[0] = one;
+					Hands.TwoPairCards[1] = two;
+					Hands.PairCard = one;
+				}
+				else
+				{
+					Hands.TwoPairCards[0] = two;
+					Hands.TwoPairCards[1] = one;
+					Hands.PairCard = two;
+				}
+				Hands.musterCorrect[twoPair] = true;
+				Hands.musterCorrect[pair] = true;
+			}
+			else if (p1) { //detremine which is the pair
+				Hands.PairCard = one;
+				Hands.musterCorrect[pair] = true;
+			}
+			else if (p2) {
+				Hands.PairCard = two;
+				Hands.musterCorrect[pair] = true;
+			}
 	}
-	else if (p1) { //detremine which is the pair
-		Hands.PairCard = one;
-		Hands.musterCorrect[pair] = true;
-	}
-	else if (p2) {
-		Hands.PairCard = two;
-		Hands.musterCorrect[pair] = true;
-	}
+	
 }
 
 
