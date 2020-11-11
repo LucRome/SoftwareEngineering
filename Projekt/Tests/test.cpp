@@ -480,15 +480,15 @@ TEST(Rules, hasWon_doublePair_1) {
 	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
 	BestHand result = rl.HasWon(hand, community);
 	EXPECT_TRUE(result.musterCorrect[highCard]);
-	EXPECT_TRUE(result.musterCorrect[twoPair]);
+	EXPECT_FALSE(result.musterCorrect[twoPair]);
 	EXPECT_TRUE(result.musterCorrect[pair]);
 	for (int i = 3; i < 10; i++) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.secondCard);
 	EXPECT_EQ(result.PairCard, values::four);
-	EXPECT_EQ(result.TwoPairCards[0], values::four);
-	EXPECT_EQ(result.TwoPairCards[1], values::two);
+	/*EXPECT_EQ(result.TwoPairCards[0], values::four);
+	EXPECT_EQ(result.TwoPairCards[1], values::two);*/
 
 }
 
@@ -786,7 +786,7 @@ TEST(Rules, hasWon_flush_2) {
 	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
 	BestHand result = rl.HasWon(hand, community);
 	EXPECT_TRUE(result.musterCorrect[highCard]);
-	EXPECT_TRUE(result.musterCorrect[twoPair]);
+	EXPECT_FALSE(result.musterCorrect[twoPair]);
 	EXPECT_TRUE(result.musterCorrect[pair]);
 	EXPECT_FALSE(result.musterCorrect[threeOfAKind]);
 	EXPECT_FALSE(result.musterCorrect[straight]);
@@ -795,9 +795,7 @@ TEST(Rules, hasWon_flush_2) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
-	EXPECT_EQ(result.PairCard, values::queen);
-	EXPECT_EQ(result.TwoPairCards[0], values::queen);
-	EXPECT_EQ(result.TwoPairCards[1], values::jack);
+	EXPECT_EQ(result.PairCard, values::jack);
 	EXPECT_EQ(result.Flush, suits::hearts);
 }
 
@@ -852,12 +850,13 @@ TEST(Rules, hasWon_flush_4) {
 }
 
 //Tests for the fullHousePart in HasWon
+
 TEST(Rules, hasWon_fullHouse_1) {
 	Rules rl = Rules();
-	hand hand = { {hearts, ace}, {diamonds, queen} };
+	hand hand = { {hearts, two}, {diamonds, queen} };
 	card card1 = { hearts, two };
 	card card2 = { clubs, two };
-	card card3 = { diamonds, two };
+	card card3 = { diamonds, ace };
 	card card4 = { clubs, queen };
 	card card5 = { spades, four };
 	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
@@ -872,13 +871,38 @@ TEST(Rules, hasWon_fullHouse_1) {
 	for (int i = 7; i < 10; i++) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
-	EXPECT_EQ(result.HighCard, hand.firstCard);
+	EXPECT_EQ(result.HighCard, hand.secondCard);
 	EXPECT_EQ(result.PairCard, values::queen);
-	EXPECT_EQ(result.TwoPairCards[0], values::two);
-	EXPECT_EQ(result.TwoPairCards[1], values::queen);
+	EXPECT_EQ(result.TwoPairCards[0], values::queen);
+	EXPECT_EQ(result.TwoPairCards[1], values::two);
 	EXPECT_EQ(result.ThreeOfAKindCard, values::two);
 	EXPECT_EQ(result.FullHouseCards[0], values::two);
 	EXPECT_EQ(result.FullHouseCards[1], values::queen);
+}
+
+TEST(Rules, hasWon_fullHouse_2) { //3 oak in community -> only a pair
+	Rules rl = Rules();
+	hand hand = { {hearts, ace}, {diamonds, queen} };
+	card card1 = { hearts, two };
+	card card2 = { clubs, two };
+	card card3 = { diamonds, two };
+	card card4 = { clubs, queen };
+	card card5 = { spades, four };
+	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+	BestHand result = rl.HasWon(hand, community);
+	EXPECT_TRUE(result.musterCorrect[highCard]);
+	EXPECT_FALSE(result.musterCorrect[twoPair]);
+	EXPECT_TRUE(result.musterCorrect[pair]);
+	EXPECT_FALSE(result.musterCorrect[threeOfAKind]);
+	EXPECT_FALSE(result.musterCorrect[straight]);
+	EXPECT_FALSE(result.musterCorrect[fullHouse]);
+	EXPECT_FALSE(result.musterCorrect[flush]);
+	for (int i = 7; i < 10; i++) {
+		EXPECT_FALSE(result.musterCorrect[i]);
+	}
+	EXPECT_EQ(result.HighCard, hand.firstCard);
+	EXPECT_EQ(result.PairCard, values::queen);
+	EXPECT_EQ(result.ThreeOfAKindCard, values::two);
 }
 
 //Tests for the fourOfAKindPart in HasWon
