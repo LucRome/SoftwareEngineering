@@ -132,7 +132,19 @@ void DrawResolver::resolveStraight(std::vector<playerNBestHand>& players_besthan
 
 void DrawResolver::resolveFlush(std::vector<playerNBestHand>& players_besthands)
 {
-	//TODO: resolve Flush
+	int playerNr = players_besthands.size() - 1;
+	bool win = false;
+	int counter = 0;
+	while (win == false) {
+		values opponent = players_besthands[0].besthand.Flush[counter].value;
+		values own = players_besthands[playerNr].besthand.Flush[counter].value;
+		win = resolveValues(players_besthands, own, opponent);
+		counter++;
+		if (counter == 4 && win == false) {
+			resolveHighCard(players_besthands);
+			break;
+		}
+	}
 }
 
 void DrawResolver::resolvefullHouse(std::vector<playerNBestHand>& players_besthands)
