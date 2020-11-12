@@ -1049,10 +1049,91 @@ namespace out {
 	}
 }
 
+namespace drawResolver {
+	// constants(can be used to build all tests)
 
+	Rules rules;
+	chipstack ch = chipstack({ 1,1,1,1,1,1 });
+	card card1, card2, card3, card4, card5;
+	hand h1, h2;
+	std::array<card, 5> community;
+	std::shared_ptr<DumbBot> p1 = std::make_shared<DumbBot>(ch, "A");
+	std::shared_ptr<DumbBot> p2 = std::make_shared<DumbBot>(ch, "B");
+	DrawResolver dR;
 
+	//simple high card test
+	TEST(DrawResolver, HighCard_normal) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, king}, {hearts, five} }; //expected winner
+		h2 = { {diamonds, seven}, {clubs, five} };
+		card1 = { diamonds, eight };
+		card2 = { clubs, nine };
+		card3 = { diamonds, ace };
+		card4 = { spades, eight };
+		card5 = { spades, eight };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, highCard);
+		EXPECT_EQ(players_besthands.size(), 1);
+		EXPECT_EQ(players_besthands[0].player, p1);
+	}
 
+	//resolvable draw high card test
+	TEST(DrawResolver, HighCard_resolvable) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, three}, {hearts, five} }; //expected winner
+		h2 = { {diamonds, two}, {clubs, five} };
+		card1 = { diamonds, eight };
+		card2 = { clubs, nine };
+		card3 = { diamonds, ace };
+		card4 = { spades, eight };
+		card5 = { spades, eight };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, highCard);
+		EXPECT_EQ(players_besthands.size(), 1);
+		EXPECT_EQ(players_besthands[0].player, p1);
+	}
 
+	//true draw high card test
+	TEST(DrawResolver, HighCard_draw) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, three}, {hearts, five} }; //expected winner
+		h2 = { {diamonds, three}, {clubs, five} };
+		card1 = { diamonds, eight };
+		card2 = { clubs, nine };
+		card3 = { diamonds, ace };
+		card4 = { spades, eight };
+		card5 = { spades, eight };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, highCard);
+		EXPECT_EQ(players_besthands.size(), 2);
+		EXPECT_EQ(players_besthands[0].player, p1);
+		EXPECT_EQ(players_besthands[1].player, p2);
+	}
+}
 
 ////Tests the whole Gamesystem
 //TEST(system, playgame) {
