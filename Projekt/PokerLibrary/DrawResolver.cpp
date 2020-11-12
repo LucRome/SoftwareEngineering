@@ -63,12 +63,12 @@ void DrawResolver::resolveHighCard(std::vector<playerNBestHand>& players_besthan
 			opponent = players_besthands[0].player->getHand().firstCard.value;
 		}
 		//determine lowercard of player
-		if (opponent == players_besthands[playerNr].player->getHand().firstCard.value) {
-			opponent = players_besthands[playerNr].player->getHand().secondCard.value;
+		if (own == players_besthands[playerNr].player->getHand().firstCard.value) {
+			own = players_besthands[playerNr].player->getHand().secondCard.value;
 		}
 		else
 		{
-			opponent = players_besthands[playerNr].player->getHand().firstCard.value;
+			own = players_besthands[playerNr].player->getHand().firstCard.value;
 		}
 		resolveValues(players_besthands, own, opponent);
 	}
