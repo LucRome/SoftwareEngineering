@@ -51,7 +51,7 @@ private:
 	
 	bool CheckNormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //checks for Flush (hand + community)
 	bool CheckFlush(std::array<card, 5> Cards); //used for Straight Flush (+ Royal Flush)
-	bool CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //returns true if  street (?)
+	bool CheckValues(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //returns true if  street (?)
 	int CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i); //Helper for 2,3,... ofAKind
 	bool CheckFourOfAKind(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers); //FourOfAKind
 														

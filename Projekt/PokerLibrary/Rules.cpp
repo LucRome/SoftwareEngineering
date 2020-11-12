@@ -90,7 +90,7 @@ bool Rules::CheckFlush(std::array<card, 5> Cards) //used to check for Royal flus
 
 
 
-bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable) //checks for a straight
+bool Rules::CheckValues(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable) //checks for a straight
 {
 	std::array<CardsAndIsHand, 7> cards;
 	for (int i = 0; i < CardsOnTheHand.size(); i++) {
@@ -345,7 +345,7 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 	if (CheckNormalFlush(CardsOnTheHand, CardsOnTheTable)) { //flush
 		Hands.musterCorrect[flush]=true;
 	}
-	if (CheckSuits(CardsOnTheHand, CardsOnTheTable)) //street
+	if (CheckValues(CardsOnTheHand, CardsOnTheTable)) //street
 	{
 		if (CheckFlush(CardsForAStreet)) //StraightFlush
 		{
