@@ -104,6 +104,9 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 	std::vector<CardsAndIsHand> straightCards;
 	bool contains = false;
 
+	bool containsStraight = false;
+	int straightNr = 1;
+	std::array<card, 5> tmp_street;
 	//lowest possible starter value: 5 (-> ace as start, extra)
 	for (int i = ace; i >= five; i--) { //starter values for straight (highest)
 		straightCards.clear();
@@ -135,18 +138,25 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 		bool onHand = false;
 		if (straightCards.size() == 5) { //full straight
 			for (int j = 0; j < straightCards.size(); j++) {
-				card c = straightCards[j].card;
-				CardsForAStreet[j] = c;
+				tmp_street[j] =  straightCards[j].card;
 				if (straightCards[j].isHand) {
 					onHand = true;
 				}
 			}
 		}
 		if (onHand) {
-			return true;
+			containsStraight = true;
+			if (straightNr == 1) {//straight flush
+				CardsForAStreet = tmp_street; //only use the found straight if its the first
+				straightNr++;
+			} 
+			if (CheckFlush(tmp_street)) { //straight flush -> finished
+				CardsForAStreet = tmp_street; //use the best straight flush
+				break;
+			}
 		}
 	}
-	return false;
+	return containsStraight;
 }
 
 int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i)
