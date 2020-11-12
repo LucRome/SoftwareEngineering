@@ -46,49 +46,9 @@ bool Rules::CheckFlush(std::array<card, 5> Cards) //used to check for Royal flus
 	return isFlush;
 }
 
-bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable)
+bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable) //checks for a straight
 {
-	values Check;
-	int Counter = 0;
-	int CounterBefore = 0;
-	for (int i = 12; i >= 0; i--)
-	{
-
-		for (int j = 0; j < 2; j++)
-		{
-			if (CardsOnTheHand[j].value == values(i) && (Counter == CounterBefore))
-			{
-				Counter++;
-				CardsForAStreet[Counter - 1] = CardsOnTheHand[j];
-			}
-		}
-		if (Counter == CounterBefore)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				if (CardsOnTheTable[j].value == values(i) && (Counter == CounterBefore ))
-				{
-					Counter++;
-					CardsForAStreet[Counter - 1] = CardsOnTheTable[j];
-				}
-			}
-		}
-		if ((Counter == CounterBefore) && Counter < 5)
-		{
-			Counter = 0;
-			CounterBefore = 0;
-		}
-		else if (Counter < 5)
-		{
-			CounterBefore = Counter;
-		}
-		if (Counter >= 5)
-		{
-			return true;
-		}
-
-	}
-	return false;
+	
 }
 
 int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i)
