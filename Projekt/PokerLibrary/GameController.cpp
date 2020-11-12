@@ -288,6 +288,7 @@ void GameController::addPotToWinners(std::vector<playerNBestHand>& winners)
 	int cashPerPlayer = m_pot.sum() / winners.size(); //result is grounded
 	for (playerNBestHand p : winners) {
 		p.player->addToWinnings(cashPerPlayer); //if result doesnt fit: grounded again
+		p.player->setBankrupt(false);
 	}
 }
 
@@ -295,7 +296,7 @@ void GameController::player_bid(int playerNr, chipstack chips) //chips: chips a 
 {
 	m_playersInRound[playerNr]->decFromWinnings(chips);
 	if (m_playersInRound[playerNr]->getWinnings().isNegative) {
-		m_playersInRound[playerNr]->setBankrupt();
+		m_playersInRound[playerNr]->setBankrupt(true);
 	}
 	m_pot_perPlayer[playerNr] = m_pot_perPlayer[playerNr] + chips;
 	m_pot = m_pot + chips;
