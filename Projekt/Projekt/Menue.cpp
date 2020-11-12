@@ -49,9 +49,15 @@ void Menue::Startgame() {
 	int displayRules, maxPlayers = 9, nrPlayers, humanBot, tableRange, nameBot, k = 1;;
 	std::string playerName;
 
+	//Welcome
+	std::cout << "Welcome to poker" << std::endl;
 
-	std::cout << "Welcome to poker" << std::endl << "Do you whant the rules to be displayed? no = 0, yes = 1" << std::endl;
-	displayRules = out.userInput();
+	//display rules
+	do {
+		std::cout << "Do you whant the rules to be displayed? no = 0, yes = 1" << std::endl;
+		displayRules = out.userInput();
+	} while (displayRules != 0 && displayRules !=1);
+
 	if (displayRules == 1) {
 		out.rulesOut();
 	}
@@ -126,7 +132,7 @@ void Menue::Startgame() {
 	std::cout << "Bigblind: " << bigBlind.toString() << std::endl;
 	std::cout << "Smallblind: " << smallBlind.toString() << std::endl;
 
-	std::cout << "Do you want to change the blinds (yes/no : 1/0)" << std::endl;
+	std::cout << "Do you want to change the blinds? 1 = yes, 2 = no" << std::endl;
 
 	
 	int in;
