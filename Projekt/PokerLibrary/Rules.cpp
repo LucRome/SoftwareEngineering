@@ -26,9 +26,20 @@ bool Rules::CheckNormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card
 	}
 
 	suits flush;
-	for (int j = 0; j < 2; j++)
+	int cnt;
+	int toCheck;
+
+	if (CardsOnTheHand[0].suit == CardsOnTheHand[1].suit) {
+		cnt = 2;
+		toCheck = 1;
+	}
+	else {
+		cnt = 1;
+		toCheck = 2;
+	}
+	for (int j = 0; j < toCheck; j++)
 	{
-		int Counter = 1;
+		int Counter = cnt;
 		for (int i = 0; i < 5; i++)
 		{
 
