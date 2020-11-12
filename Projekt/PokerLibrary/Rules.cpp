@@ -46,9 +46,65 @@ bool Rules::CheckFlush(std::array<card, 5> Cards) //used to check for Royal flus
 	return isFlush;
 }
 
+
+
 bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable) //checks for a straight
 {
-	
+	std::array<CardsAndIsHand, 7> cards;
+	for (int i = 0; i < CardsOnTheHand.size(); i++) {
+		cards[i] = { CardsOnTheHand[i], true };
+	}
+	for (int i = 0; i < CardsOnTheTable.size(); i++) {
+		cards[i + 2] = { CardsOnTheTable[i], false };
+	}
+
+	// build street (for each starter card)
+	std::vector<CardsAndIsHand> straightCards;
+	bool contains = false;
+
+	//lowest possible starter value: 5 (-> ace as start, extra)
+	for (int i = ace; i >= five; i--) { //starter values for straight (highest)
+		straightCards.clear();
+		contains = false;
+		for (int j = 0; j < cards.size(); j++) { //check if startercard is present in cards
+			if (cards[j].card.value == values(i)) {
+				straightCards.push_back(cards[j]);
+				contains = true;
+				break;
+			}
+		}
+		if (contains) {
+			int tmp;
+			for (int j = i - 1; j > i - 5; j--) { //check for other cards
+				if (j == -1) {
+					tmp = ace;
+				}
+				else {
+					tmp = j;
+				}
+				for (int k = 0; k < cards.size(); k++) { //check if followcard is present in cards
+					if (cards[k].card.value == values(tmp)) {
+						straightCards.push_back(cards[k]);
+						break;
+					}
+				}
+			}
+		}
+		bool onHand = false;
+		if (straightCards.size() == 5) { //full straight
+			for (int j = 0; j < straightCards.size(); j++) {
+				card c = straightCards[j].card;
+				CardsForAStreet[j] = c;
+				if (straightCards[j].isHand) {
+					onHand = true;
+				}
+			}
+		}
+		if (onHand) {
+			return true;
+		}
+	}
+	return false;
 }
 
 int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i)
@@ -204,6 +260,7 @@ void Rules::CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5>
 	CheckTwoPairAndPair(CardsOnTheHand ,Numbers); //directly sets bits
 
 }
+
 
 
 Rules::Rules()
