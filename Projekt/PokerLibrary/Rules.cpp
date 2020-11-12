@@ -1,30 +1,61 @@
 #include "pch.h"
 #include "Rules.h"
 #include <string.h>
+#include <algorithm>
 
 
 
 bool Rules::CheckNormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable)
 {
-	std::array<card, 7> cardsInGame;
-	for (int i = 0; i < 5; i++) {
-		cardsInGame[i] = CardsOnTheTable[i];
+	std::array<card, 7> cards;
+	for (int l = 0; l < 5; l++) {
+		cards[l] = CardsOnTheTable[l];
 	}
-	cardsInGame[5] = CardsOnTheHand[0];
-	cardsInGame[6] = CardsOnTheHand[1];
-	for (int i = 0; i < 7; i++) {
-		int counter = 1; 
-		for (int j = i + 1; j < 7; j++) {
-			if (cardsInGame[i].suit == cardsInGame[j].suit) {
-				counter++;
+	cards[5] = CardsOnTheHand[0];
+	cards[6] = CardsOnTheHand[1];
+	//sort array cards
+	int m = 0, n = 7, o=0;
+	for (m=0; m < n; m++) {
+		for (o = m + 1; o < n; o++) {
+			if (cards[m].value > cards[o].value) {
+				card temp = cards[m];
+				cards[m] = cards[o];
+				cards[o] = temp;
 			}
 		}
-		if (counter >= 5) {
-			Hands.Flush = cardsInGame[i].suit;
+	}
+
+	suits flush;
+	for (int j = 0; j < 2; j++)
+	{
+		int Counter = 1;
+		for (int i = 0; i < 5; i++)
+		{
+
+			if (CardsOnTheHand[j].suit == CardsOnTheTable[i].suit)
+			{
+				Counter++;
+				flush = CardsOnTheHand[j].suit;
+			}
+		}
+		if (Counter >= 5)
+		{
+			int arrayCounter = 0;
+			for (int k = 6; k >=0; k--) {
+				if (cards[k].suit == flush) {
+					if (arrayCounter == 5) {
+						return true;
+					}
+					Hands.Flush[arrayCounter]=cards[k];
+					arrayCounter++;
+				}
+			}
 			return true;
 		}
-		else {
-			counter = 0;
+		else
+		{
+			Counter = 0;
+			flush = s_none;
 		}
 	}
 	return false;

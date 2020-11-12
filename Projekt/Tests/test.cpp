@@ -770,7 +770,11 @@ TEST(Rules, hasWon_flush_1) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
-	EXPECT_EQ(result.Flush, suits::hearts);
+	EXPECT_EQ(result.Flush[0].value, queen);
+	EXPECT_EQ(result.Flush[1].value, jack);
+	EXPECT_EQ(result.Flush[2].value, six);
+	EXPECT_EQ(result.Flush[3].value, five);
+	EXPECT_EQ(result.Flush[4].value, two);
 }
 
 //combined flush and doublePair
@@ -795,7 +799,11 @@ TEST(Rules, hasWon_flush_2) {
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
 	EXPECT_EQ(result.PairCard, values::jack);
-	EXPECT_EQ(result.Flush, suits::hearts);
+	EXPECT_EQ(result.Flush[0].value, queen);
+	EXPECT_EQ(result.Flush[1].value, jack);
+	EXPECT_EQ(result.Flush[2].value, six);
+	EXPECT_EQ(result.Flush[3].value, five);
+	EXPECT_EQ(result.Flush[4].value, two);
 }
 
 //combined flush and threeOfAKind
@@ -821,7 +829,11 @@ TEST(Rules, hasWon_flush_3) {
 	EXPECT_EQ(result.HighCard, hand.firstCard);
 	EXPECT_EQ(result.PairCard, values::queen);
 	EXPECT_EQ(result.ThreeOfAKindCard, values::queen);
-	EXPECT_EQ(result.Flush, suits::hearts);
+	EXPECT_EQ(result.Flush[0].value, queen);
+	EXPECT_EQ(result.Flush[1].value, jack);
+	EXPECT_EQ(result.Flush[2].value, six);
+	EXPECT_EQ(result.Flush[3].value, five);
+	EXPECT_EQ(result.Flush[4].value, two);
 }
 
 //flush only in the communitycards
@@ -840,16 +852,46 @@ TEST(Rules, hasWon_flush_4) {
 	EXPECT_FALSE(result.musterCorrect[pair]);
 	EXPECT_FALSE(result.musterCorrect[threeOfAKind]);
 	EXPECT_FALSE(result.musterCorrect[straight]);
+	EXPECT_FALSE(result.musterCorrect[flush]);
+	for (int i = 6; i < 10; i++) {
+		EXPECT_FALSE(result.musterCorrect[i]);
+	}
+	EXPECT_EQ(result.HighCard, hand.firstCard);
+}
+
+//6 cards for a flush
+TEST(Rules, hasWon_flush_5) {
+	Rules rl = Rules();
+	hand hand = { {clubs, ace}, { hearts, four } };
+	card card1 = { hearts, six };
+	card card2 = { hearts, five };
+	card card3 = { hearts, two };
+	card card4 = { hearts, queen };
+	card card5 = { hearts, jack };
+	std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+	BestHand result = rl.HasWon(hand, community);
+	EXPECT_TRUE(result.musterCorrect[highCard]);
+	EXPECT_FALSE(result.musterCorrect[twoPair]);
+	EXPECT_FALSE(result.musterCorrect[pair]);
+	EXPECT_FALSE(result.musterCorrect[threeOfAKind]);
+	EXPECT_FALSE(result.musterCorrect[straight]);
 	EXPECT_TRUE(result.musterCorrect[flush]);
 	for (int i = 6; i < 10; i++) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
-	EXPECT_EQ(result.Flush, suits::hearts);
+	EXPECT_EQ(result.Flush[0].value, queen);
+	EXPECT_EQ(result.Flush[1].value, jack);
+	EXPECT_EQ(result.Flush[2].value, six);
+	EXPECT_EQ(result.Flush[3].value, five);
+	EXPECT_EQ(result.Flush[4].value, four);
+
+
+
 }
 
-//Tests for the fullHousePart in HasWon
 
+//Tests for the fullHousePart in HasWon
 TEST(Rules, hasWon_fullHouse_1) {
 	Rules rl = Rules();
 	hand hand = { {hearts, two}, {diamonds, queen} };
@@ -957,7 +999,11 @@ TEST(Rules, hasWon_straightFlush_1) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
-	EXPECT_EQ(result.Flush, suits::diamonds);
+	EXPECT_EQ(result.Flush[0].value, six);
+	EXPECT_EQ(result.Flush[1].value, five);
+	EXPECT_EQ(result.Flush[2].value, four);
+	EXPECT_EQ(result.Flush[3].value, three);
+	EXPECT_EQ(result.Flush[4].value, two);
 	EXPECT_EQ(result.StraightFlushHighestCard, card5);
 	EXPECT_EQ(result.StraightHighestCard, card5);
 }
@@ -985,26 +1031,30 @@ TEST(Rules, hasWon_royalFlush_1) {
 	EXPECT_TRUE(result.musterCorrect[royalFlush]);
 	EXPECT_EQ(result.HighCard, hand.secondCard);
 	EXPECT_EQ(result.StraightHighestCard, hand.secondCard);
-	EXPECT_EQ(result.Flush, suits::diamonds);
+	EXPECT_EQ(result.Flush[0].value, ace);
+	EXPECT_EQ(result.Flush[1].value, king);
+	EXPECT_EQ(result.Flush[2].value, queen);
+	EXPECT_EQ(result.Flush[3].value, jack);
+	EXPECT_EQ(result.Flush[4].value, ten);
 	EXPECT_EQ(result.StraightFlushHighestCard, hand.secondCard);
 }
 
-//Tests the whole Gamesystem
-TEST(System, playGame) {
-	chipstack chip1 = chipstack({ 6,5,4,3,2,1 });
-	chipstack sB = chipstack({ 1,0,0,0,0,0 });
-	chipstack bB = chipstack({ 2,0,0,0,0,0 });
-	std::shared_ptr<Player> bot1 = std::make_shared<DumbBot>(chip1, "A");
-	std::shared_ptr<Player> bot2 = std::make_shared<DumbBot>(chip1, "B");
-	std::vector<std::shared_ptr<Player>> players;
-	players.push_back(bot1);
-	players.push_back(bot2);
-	int max=10000;
-	GameController gc = GameController(players, max, bB, sB);
-	std::shared_ptr<Player> winner = gc.playGame();
-	bool systemRuns=false;
-	if(winner==bot1 || winner==bot2){
-		systemRuns=true;
-	}
-	EXPECT_TRUE(systemRuns);
-}
+////Tests the whole Gamesystem
+//TEST(system, playgame) {
+//	chipstack chip1 = chipstack({ 6,5,4,3,2,1 });
+//	chipstack sb = chipstack({ 1,0,0,0,0,0 });
+//	chipstack bb = chipstack({ 2,0,0,0,0,0 });
+//	std::shared_ptr<Player> bot1 = std::make_shared<DumbBot>(chip1, "a");
+//	std::shared_ptr<Player> bot2 = std::make_shared<DumbBot>(chip1, "b");
+//	std::vector<std::shared_ptr<Player>> players;
+//	players.push_back(bot1);
+//	players.push_back(bot2);
+//	int max=10000;
+//	GameController gc = GameController(players, max, bb, sb);
+//	std::shared_ptr<Player> winner = gc.playGame();
+//	bool systemruns=false;
+//	if(winner==bot1 || winner==bot2){
+//		systemruns=true;
+//	}
+//	EXPECT_TRUE(systemruns);
+//}
