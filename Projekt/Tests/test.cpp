@@ -1140,13 +1140,13 @@ namespace n_drawResolver {
 	TEST(drawResolver, pair_normal) {
 		std::vector<playerNBestHand> players_besthands;
 		//cards
-		h1 = { {diamonds, king}, {hearts, five} }; //expected winner
-		h2 = { {diamonds, seven}, {clubs, five} };
-		card1 = { diamonds, king };
+		h1 = { {diamonds, three}, {hearts, five} }; //expected winner
+		h2 = { {diamonds, two}, {clubs, six} };
+		card1 = { diamonds, three };
 		card2 = { clubs, nine };
 		card3 = { diamonds, ace };
 		card4 = { spades, eight };
-		card5 = { spades, seven };
+		card5 = { spades, two };
 		community = { card1, card2, card3, card4, card5 };
 		//players hands
 		p1->setHand(h1.firstCard, h1.secondCard);
@@ -1204,6 +1204,154 @@ namespace n_drawResolver {
 		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
 		//Resolve draws
 		dR.resolveDraws(players_besthands, pair);
+		EXPECT_EQ(players_besthands.size(), 2);
+		EXPECT_EQ(players_besthands[0].player, p1);
+		EXPECT_EQ(players_besthands[1].player, p2);
+	}
+
+	//----------------------------------2pair-----------------------------------//
+	//simple pair test
+	TEST(drawResolver, twopair_normal) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, king}, {hearts, two} }; //expected winner
+		h2 = { {diamonds, seven}, {clubs, five} };
+		card1 = { diamonds, king };
+		card2 = { clubs, two };
+		card3 = { diamonds, ace };
+		card4 = { spades, five };
+		card5 = { spades, seven };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, twoPair);
+		EXPECT_EQ(players_besthands.size(), 1);
+		EXPECT_EQ(players_besthands[0].player, p1);
+	}
+
+	//resolvable draw pair test
+	TEST(drawResolver, twopair_resolvable) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, three}, {hearts, five} };
+		h2 = { {diamonds, four}, {clubs, five} }; //expected winner
+		card1 = { diamonds, eight };
+		card2 = { clubs, five };
+		card3 = { diamonds, four };
+		card4 = { spades, eight };
+		card5 = { spades, three };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, twoPair);
+		EXPECT_EQ(players_besthands.size(), 1);
+		EXPECT_EQ(players_besthands[0].player, p2);
+	}
+
+	//true draw high card test
+	TEST(drawResolver, twopair_draw) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, three}, {hearts, five} };
+		h2 = { {diamonds, three}, {clubs, five} };
+		card1 = { diamonds, eight };
+		card2 = { clubs, five };
+		card3 = { diamonds, ace };
+		card4 = { spades, three };
+		card5 = { spades, eight };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, twoPair);
+		EXPECT_EQ(players_besthands.size(), 2);
+		EXPECT_EQ(players_besthands[0].player, p1);
+		EXPECT_EQ(players_besthands[1].player, p2);
+	}
+
+	//----------------------------------3 of a kind-----------------------------------//
+	//simple pair test
+	TEST(drawResolver, threeOfAKind_normal) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, two}, {hearts, ace} }; //expected winner
+		h2 = { {diamonds, seven}, {clubs, five} };
+		card1 = { diamonds, ace };
+		card2 = { clubs, ace };
+		card3 = { diamonds, five };
+		card4 = { spades, five };
+		card5 = { spades, six };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, threeOfAKind);
+		EXPECT_EQ(players_besthands.size(), 1);
+		EXPECT_EQ(players_besthands[0].player, p1);
+	}
+
+	//resolvable draw pair test
+	TEST(drawResolver, threeOfAKind_resolvable) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, three}, {hearts, five} };
+		h2 = { {diamonds, four}, {clubs, five} }; //expected winner
+		card1 = { diamonds, five };
+		card2 = { clubs, five };
+		card3 = { diamonds, four };
+		card4 = { spades, eight };
+		card5 = { spades, three };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, threeOfAKind);
+		EXPECT_EQ(players_besthands.size(), 1);
+		EXPECT_EQ(players_besthands[0].player, p2);
+	}
+
+	//true draw high card test
+	TEST(drawResolver, threeOfAKind_draw) {
+		std::vector<playerNBestHand> players_besthands;
+		//cards
+		h1 = { {diamonds, three}, {hearts, five} };
+		h2 = { {diamonds, three}, {clubs, five} };
+		card1 = { diamonds, eight };
+		card2 = { clubs, five };
+		card3 = { diamonds, ace };
+		card4 = { spades, five };
+		card5 = { spades, eight };
+		community = { card1, card2, card3, card4, card5 };
+		//players hands
+		p1->setHand(h1.firstCard, h1.secondCard);
+		p2->setHand(h2.firstCard, h2.secondCard);
+		//players_besthands
+		players_besthands.push_back({ p1, rules.HasWon(h1, community) });
+		players_besthands.push_back({ p2, rules.HasWon(h2, community) });
+		//Resolve draws
+		dR.resolveDraws(players_besthands, twoPair);
 		EXPECT_EQ(players_besthands.size(), 2);
 		EXPECT_EQ(players_besthands[0].player, p1);
 		EXPECT_EQ(players_besthands[1].player, p2);
