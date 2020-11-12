@@ -1049,7 +1049,7 @@ namespace n_out {
 	}
 }
 
-namespace n_drawResolver {
+namespace n_drawResolvernf {
 	// constants(can be used to build all tests)
 
 	Rules rules;

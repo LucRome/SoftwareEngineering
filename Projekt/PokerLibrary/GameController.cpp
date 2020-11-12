@@ -96,6 +96,7 @@ void GameController::resetAfterRound()
 	m_bid = chipstack();
 	m_pot = chipstack();
 	m_pot_perPlayer.clear();
+	m_communityCard = { card(), card(), card(), card(), card() };
 	for (int i = 0; i < m_players.size(); i++) {
 		m_pot_perPlayer.push_back(chipstack());
 	}
