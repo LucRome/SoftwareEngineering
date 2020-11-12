@@ -254,6 +254,7 @@ std::vector<playerNBestHand>& GameController::detWinner(std::vector<playerNBestH
 	bool cont = true;
 	for (int playerNr = 0; playerNr < players_besthands.size(); playerNr++) { //i =: playerNr
 		musterNr = royalFlush; // reset
+		cont = true;
 
 		//determine best muster
 		while(musterNr >= highCard && cont){
