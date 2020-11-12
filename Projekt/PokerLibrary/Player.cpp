@@ -7,7 +7,7 @@ bool Player::bankrupt() const
     return m_bankrupt;
 }
 
-void Player::setBankrupt()
+void Player::setBankrupt(bool isBankrupt)
 {
-    m_bankrupt = true;
+    m_bankrupt = isBankrupt;
 }

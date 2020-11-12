@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "HumanPlayer.h"
 #include <iostream>
+#include "Output.h"
 
 HumanPlayer::HumanPlayer(chipstack pStartingChips, std::string pName):Player(pStartingChips,pName) {
 
@@ -10,7 +11,8 @@ HumanPlayer::HumanPlayer(chipstack pStartingChips, std::string pName):Player(pSt
 outPlay HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 	int play;
 	chipstack chipsOut;
-	std::cout << "What do u want to do";
+	std::cout << "What do you want to do";
+
 	for (plays i:pPlays)
 	{
 		switch (i)
@@ -28,7 +30,16 @@ outPlay HumanPlayer::play(chipstack pToCheck,std::vector<plays> pPlays) {
 			break;
 		}
 	}
-	std::cin >> play;
+
+	play = out.userInput();
+	if (play != 0 && play != 1 && play != 2) {
+		do {
+			std::cout << "Invalid input please try again" << std::endl;
+			play = out.userInput();
+		} while (play != 0 && play != 1 && play != 2);
+	}
+
+
 
 	switch (play)
 	{

@@ -34,7 +34,7 @@ std::shared_ptr<Player> GameController::playGame()
 		//extract bankrupt players
 		for (int i = 0; i < m_players.size(); i++) {
 			if (m_players[i]->bankrupt()) {
-				m_players.erase(m_players.begin() + i);
+ 				m_players.erase(m_players.begin() + i);
 			}
 		}
 		if (m_players.size() > 1) { //check if at least 2 players are left
@@ -96,6 +96,7 @@ void GameController::resetAfterRound()
 	m_bid = chipstack();
 	m_pot = chipstack();
 	m_pot_perPlayer.clear();
+	m_communityCard = { card(), card(), card(), card(), card() };
 	for (int i = 0; i < m_players.size(); i++) {
 		m_pot_perPlayer.push_back(chipstack());
 	}
@@ -152,25 +153,29 @@ bool GameController::roundOfBidding(int start_playerNr) //return false if all pl
 	
 	while (cont) {
 		for (int i = 0; i < m_playersInRound.size(); i++) { //just iterate over all players (give each one the chance to bid)
-			out.printTable(m_playersInRound, playerNr, m_communityCard, m_pot_perPlayer[playerNr],
-				m_pot, m_bid);
-			if (movePlayer(playerNr) != fold) { //get Playerchoice, increase PlayerNr. if Player doesnt fold
-				playerNr = (playerNr + 1) % m_playersInRound.size();
-			}
-			else { //fold -> player gets removed from m_playersInRound (movePlayer(..))
-				if (m_playersInRound.size() != 0) { //still players left
-					playerNr %= m_playersInRound.size();
-				}
-				else { //all players folded -> end of round
-					return false;
-				}
-				
-			}
 			playersThatActed++;
-			//if condition is met: end of the bidding round (all players acted and bid the same amount)
-			if(playersThatActed >= m_playersInRound.size() && allPlayersSamePot()) {
+			//if (!m_playersInRound[playerNr]->bankrupt()) {
+				out.printTable(m_playersInRound, playerNr, m_communityCard, m_pot_perPlayer[playerNr],
+					m_pot, m_bid);
+				if (m_playersInRound[playerNr]->bankrupt() || movePlayer(playerNr) != fold) { //get Playerchoice, increase PlayerNr. if Player doesnt fold
+					playerNr = (playerNr + 1) % m_playersInRound.size();
+				}
+				else { //fold -> player gets removed from m_playersInRound (movePlayer(..))
+					if (m_playersInRound.size() != 0) { //still players left
+						playerNr %= m_playersInRound.size();
+					}
+					else { //all players folded -> end of round
+						return false;
+					}
+
+				}
+				//if condition is met: end of the bidding round (all players acted and bid the same amount)
+				
+			//}
+			if (playersThatActed >= m_playersInRound.size() && allPlayersSamePot()) {
 				cont = false;
 			}
+			
 		}
 	}
 	return true;
@@ -180,7 +185,7 @@ plays GameController::movePlayer(int playerNr)
 {
 	plays play = check; //if player is bankrupt he went all in -> he can check until the end of the round
 	bool moveAllowed = false;
-	if (!m_players[playerNr]->bankrupt()) { //Player doesnt need to move if bankrupt, but stays in round (ALL IN)
+	if (!m_playersInRound[playerNr]->bankrupt()) { //Player doesnt need to move if bankrupt, but stays in round (ALL IN)
 		do { //let player choose move until correct
 			chipstack delta = m_bid - m_pot_perPlayer[playerNr]; //operator-: result cant be negative
 			outPlay move = m_playersInRound[playerNr]->play(delta, possiblePlays(playerNr)); //get PlayerChoice
@@ -193,7 +198,13 @@ plays GameController::movePlayer(int playerNr)
 			case check: //check whether bid is right, then remove chips from player and add to pot
 				if (move.chips == (m_bid.sum() - m_pot_perPlayer[playerNr].sum())) {
 					moveAllowed = true;
-					player_bid(playerNr, move.chips);
+					if (move.chips.sum() <= m_playersInRound[playerNr]->getWinnings().sum()) { //normal check
+						player_bid(playerNr, move.chips);
+					}
+					else { // All In
+						player_bid(playerNr, m_playersInRound[playerNr]->getWinnings());
+						m_playersInRound[playerNr]->setBankrupt(true);
+					}
 				}
 				break;
 			case raise: //only allowed when player_pot + new bid <= maximum
@@ -230,7 +241,7 @@ bool GameController::allPlayersSamePot()//returns if all Player bid the same sum
 {
 	bool same = true;
 	for (int i = 0; i < m_playersInRound.size(); i++) { //simply check for all players if bid = max_bid
-		if (!(m_pot_perPlayer[i] == m_bid.sum())) {
+		if (!m_playersInRound[i]->bankrupt() && !(m_pot_perPlayer[i] == m_bid.sum())) {
 			same = false;
 		}
 	}
@@ -254,6 +265,7 @@ std::vector<playerNBestHand>& GameController::detWinner(std::vector<playerNBestH
 	bool cont = true;
 	for (int playerNr = 0; playerNr < players_besthands.size(); playerNr++) { //i =: playerNr
 		musterNr = royalFlush; // reset
+		cont = true;
 
 		//determine best muster
 		while(musterNr >= highCard && cont){
@@ -288,6 +300,7 @@ void GameController::addPotToWinners(std::vector<playerNBestHand>& winners)
 	int cashPerPlayer = m_pot.sum() / winners.size(); //result is grounded
 	for (playerNBestHand p : winners) {
 		p.player->addToWinnings(cashPerPlayer); //if result doesnt fit: grounded again
+		p.player->setBankrupt(false);
 	}
 }
 
@@ -295,7 +308,7 @@ void GameController::player_bid(int playerNr, chipstack chips) //chips: chips a 
 {
 	m_playersInRound[playerNr]->decFromWinnings(chips);
 	if (m_playersInRound[playerNr]->getWinnings().isNegative) {
-		m_playersInRound[playerNr]->setBankrupt();
+		m_playersInRound[playerNr]->setBankrupt(true);
 	}
 	m_pot_perPlayer[playerNr] = m_pot_perPlayer[playerNr] + chips;
 	m_pot = m_pot + chips;

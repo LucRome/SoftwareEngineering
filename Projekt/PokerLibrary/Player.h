@@ -55,7 +55,7 @@ public:
 	virtual outPlay play(chipstack pToCheck, std::vector<plays> pPlays) = 0;
 
 	bool bankrupt() const;
-	void setBankrupt();
+	void setBankrupt(bool isBankrupt);
 private:	
 	std::string name;
 	hand playerHand;

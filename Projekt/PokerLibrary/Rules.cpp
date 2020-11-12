@@ -26,9 +26,20 @@ bool Rules::CheckNormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card
 	}
 
 	suits flush;
-	for (int j = 0; j < 2; j++)
+	int cnt;
+	int toCheck;
+
+	if (CardsOnTheHand[0].suit == CardsOnTheHand[1].suit) {
+		cnt = 2;
+		toCheck = 1;
+	}
+	else {
+		cnt = 1;
+		toCheck = 2;
+	}
+	for (int j = 0; j < toCheck; j++)
 	{
-		int Counter = 1;
+		int Counter = cnt;
 		for (int i = 0; i < 5; i++)
 		{
 
@@ -79,7 +90,7 @@ bool Rules::CheckFlush(std::array<card, 5> Cards) //used to check for Royal flus
 
 
 
-bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable) //checks for a straight
+bool Rules::CheckValues(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable) //checks for a straight
 {
 	std::array<CardsAndIsHand, 7> cards;
 	for (int i = 0; i < CardsOnTheHand.size(); i++) {
@@ -93,6 +104,9 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 	std::vector<CardsAndIsHand> straightCards;
 	bool contains = false;
 
+	bool containsStraight = false;
+	int straightNr = 1;
+	std::array<card, 5> tmp_street;
 	//lowest possible starter value: 5 (-> ace as start, extra)
 	for (int i = ace; i >= five; i--) { //starter values for straight (highest)
 		straightCards.clear();
@@ -124,18 +138,25 @@ bool Rules::CheckSuits(std::array<card, 2> CardsOnTheHand, std::array<card, 5> C
 		bool onHand = false;
 		if (straightCards.size() == 5) { //full straight
 			for (int j = 0; j < straightCards.size(); j++) {
-				card c = straightCards[j].card;
-				CardsForAStreet[j] = c;
+				tmp_street[j] =  straightCards[j].card;
 				if (straightCards[j].isHand) {
 					onHand = true;
 				}
 			}
 		}
 		if (onHand) {
-			return true;
+			containsStraight = true;
+			if (straightNr == 1) {//straight flush
+				CardsForAStreet = tmp_street; //only use the found straight if its the first
+				straightNr++;
+			} 
+			if (CheckFlush(tmp_street)) { //straight flush -> finished
+				CardsForAStreet = tmp_street; //use the best straight flush
+				break;
+			}
 		}
 	}
-	return false;
+	return containsStraight;
 }
 
 int Rules::CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i)
@@ -324,7 +345,7 @@ BestHand Rules::HasWon(hand CardsOnTheHandStruct, std::array<card, 5> CardsOnThe
 	if (CheckNormalFlush(CardsOnTheHand, CardsOnTheTable)) { //flush
 		Hands.musterCorrect[flush]=true;
 	}
-	if (CheckSuits(CardsOnTheHand, CardsOnTheTable)) //street
+	if (CheckValues(CardsOnTheHand, CardsOnTheTable)) //street
 	{
 		if (CheckFlush(CardsForAStreet)) //StraightFlush
 		{
