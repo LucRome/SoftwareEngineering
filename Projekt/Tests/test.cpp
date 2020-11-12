@@ -742,7 +742,7 @@ namespace n_rules {
 	}
 }
 
-namespace randomNrGen {
+namespace n_randomNrGen {
 	//Tests for RandomGenerator
 	//Tests wether the return value of randomNumberGenerator is positive
 	TEST(RandomNumber, positive) {
@@ -757,7 +757,7 @@ namespace randomNrGen {
 	}
 }
 
-namespace gameController {
+namespace n_gameController {
 	//Tests for GameController
 //Tests if funkction movePlayers() returns the selected action of the player
 	TEST(movePlayer, returnRaise) {
@@ -807,7 +807,7 @@ namespace gameController {
 	}
 }
 
-namespace money {
+namespace n_money {
 	//Tests for money
 //Follwing Tests check wether the overload operators for chipstack work accordingly
 	TEST(money, simplePlus) {
@@ -1028,7 +1028,7 @@ namespace money {
 	}
 }
 
-namespace out {
+namespace n_out {
 	//Tests for output
 //Tests the Output of the cardToString() Function
 	TEST(output, cardToString) {
@@ -1049,7 +1049,7 @@ namespace out {
 	}
 }
 
-namespace drawResolver {
+namespace n_drawResolver {
 	// constants(can be used to build all tests)
 
 	Rules rules;
@@ -1161,7 +1161,7 @@ namespace drawResolver {
 	}
 
 	//resolvable draw pair test
-	TEST(drawResolver, HighCard_resolvable) {
+	TEST(drawResolver, pair_resolvable) {
 		std::vector<playerNBestHand> players_besthands;
 		//cards
 		h1 = { {diamonds, three}, {hearts, five} };
