@@ -1114,7 +1114,7 @@ namespace n_drawResolver {
 	TEST(drawResolver, HighCard_draw) {
 		std::vector<playerNBestHand> players_besthands;
 		//cards
-		h1 = { {diamonds, three}, {hearts, five} }; //expected winner
+		h1 = { {diamonds, three}, {hearts, five} };
 		h2 = { {diamonds, three}, {clubs, five} };
 		card1 = { diamonds, eight };
 		card2 = { clubs, nine };
@@ -1181,14 +1181,14 @@ namespace n_drawResolver {
 		//Resolve draws
 		dR.resolveDraws(players_besthands, pair);
 		EXPECT_EQ(players_besthands.size(), 1);
-		EXPECT_EQ(players_besthands[0].player, p1);
+		EXPECT_EQ(players_besthands[0].player, p2);
 	}
 
 	//true draw high card test
 	TEST(drawResolver, pair_draw) {
 		std::vector<playerNBestHand> players_besthands;
 		//cards
-		h1 = { {diamonds, three}, {hearts, five} }; //expected winner
+		h1 = { {diamonds, three}, {hearts, five} };
 		h2 = { {diamonds, three}, {clubs, five} };
 		card1 = { diamonds, eight };
 		card2 = { clubs, five };
