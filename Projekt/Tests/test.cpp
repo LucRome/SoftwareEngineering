@@ -643,12 +643,11 @@ TEST(Rules, hasWon_straight_2) {
 	EXPECT_FALSE(result.musterCorrect[twoPair]);
 	EXPECT_FALSE(result.musterCorrect[pair]);
 	EXPECT_FALSE(result.musterCorrect[threeOfAKind]);
-	//EXPECT_TRUE(result.musterCorrect[straight]);
+	EXPECT_TRUE(result.musterCorrect[straight]);
 	for (int i = 5; i < 10; i++) {
 		EXPECT_FALSE(result.musterCorrect[i]);
 	}
 	EXPECT_EQ(result.HighCard, hand.firstCard);
-	//EXPECT_EQ(result.StraightHighestCard, card5);
 }
 
 //ace as last card of straight

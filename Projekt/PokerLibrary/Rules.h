@@ -30,6 +30,11 @@ struct BestHand
 	card HighCard;
 };
 
+struct CardsAndIsHand {
+	card card;
+	bool isHand;
+};
+
 //TODO: optimize
 
 class Rules
@@ -54,6 +59,8 @@ private:
 	void CheckThreeOfAKindAndFullHouse(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers); //3 of a Kind + full House (1. fullHouse, 2 3oaK)
 	void CheckTwoPairAndPair(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers); //2 pair, 1 twoPairs 
 	void CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); // 1: fourOfAKind, 2: fullHouse, 3: 3oak, 4: 2pair, 5: pair, 0: highCard
+
+	//helper function for straight
 
 	BestHand Hands;
 };
