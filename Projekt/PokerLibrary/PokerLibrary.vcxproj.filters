@@ -72,6 +72,12 @@
     <ClInclude Include="Rnd.h">
       <Filter>Headerdateien\Other</Filter>
     </ClInclude>
+    <ClInclude Include="Player_Besthand_struct.h">
+      <Filter>Headerdateien\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawResolver.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PokerLibrary.cpp">
@@ -114,6 +120,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Rnd.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawResolver.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

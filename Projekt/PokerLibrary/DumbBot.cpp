@@ -49,9 +49,9 @@ int DumbBot::random(int max) const {
 
 
 /*probabilities for actions * 100*/
-constexpr int p_fold = 5;
-constexpr int p_check = 75;
-constexpr int p_raise = 20;
+constexpr int p_fold = 2;
+constexpr int p_check = 90;
+constexpr int p_raise = 8;
 
 plays DumbBot::detPlay(std::vector<plays>& pPlays) const
 {

@@ -68,8 +68,6 @@ void Menue::Startgame() {
 	} while (tableRange < 25000);
 
 
-	// first enterd is big blind, second small blind
-	std::cout << "The first player you enter will be big blind, the second small blind.\n";
 
 	//Create Players, Bots
 	for (int i = 0; i < nrPlayers; i++) {
@@ -157,6 +155,9 @@ void Menue::Startgame() {
 	//Connection to Game Controller 
 	//start game
 	GameController gc = GameController(players, tableRange, bigBlind, smallBlind);
-	std::shared_ptr<Player>& winner = gc.playGame();
+	std::shared_ptr<Player> winner = gc.playGame();
+
+	out.clearConsole();
+	std::cout << "The winner is: " << winner->getName() << std::endl;
 
 }

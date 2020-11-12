@@ -13,6 +13,7 @@ struct chipstack {
 
 public:
 	chipstack& operator+(const chipstack& a) const;
+	chipstack& operator+(const int& a) const;
 	chipstack& operator-(const chipstack& a) const;
 	bool operator<= (const chipstack& a) const;
 	bool operator< (const int& a) const;
