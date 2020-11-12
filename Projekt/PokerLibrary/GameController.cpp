@@ -154,10 +154,10 @@ bool GameController::roundOfBidding(int start_playerNr) //return false if all pl
 	while (cont) {
 		for (int i = 0; i < m_playersInRound.size(); i++) { //just iterate over all players (give each one the chance to bid)
 			playersThatActed++;
-			if (!m_playersInRound[playerNr]->bankrupt()) {
+			//if (!m_playersInRound[playerNr]->bankrupt()) {
 				out.printTable(m_playersInRound, playerNr, m_communityCard, m_pot_perPlayer[playerNr],
 					m_pot, m_bid);
-				if (movePlayer(playerNr) != fold) { //get Playerchoice, increase PlayerNr. if Player doesnt fold
+				if (m_playersInRound[playerNr]->bankrupt() || movePlayer(playerNr) != fold) { //get Playerchoice, increase PlayerNr. if Player doesnt fold
 					playerNr = (playerNr + 1) % m_playersInRound.size();
 				}
 				else { //fold -> player gets removed from m_playersInRound (movePlayer(..))
@@ -171,7 +171,7 @@ bool GameController::roundOfBidding(int start_playerNr) //return false if all pl
 				}
 				//if condition is met: end of the bidding round (all players acted and bid the same amount)
 				
-			}
+			//}
 			if (playersThatActed >= m_playersInRound.size() && allPlayersSamePot()) {
 				cont = false;
 			}
@@ -185,7 +185,7 @@ plays GameController::movePlayer(int playerNr)
 {
 	plays play = check; //if player is bankrupt he went all in -> he can check until the end of the round
 	bool moveAllowed = false;
-	if (!m_players[playerNr]->bankrupt()) { //Player doesnt need to move if bankrupt, but stays in round (ALL IN)
+	if (!m_playersInRound[playerNr]->bankrupt()) { //Player doesnt need to move if bankrupt, but stays in round (ALL IN)
 		do { //let player choose move until correct
 			chipstack delta = m_bid - m_pot_perPlayer[playerNr]; //operator-: result cant be negative
 			outPlay move = m_playersInRound[playerNr]->play(delta, possiblePlays(playerNr)); //get PlayerChoice

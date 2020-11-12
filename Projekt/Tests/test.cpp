@@ -19,9 +19,9 @@ using namespace testing;
 
 
 //test (just play a game)
-/*TEST(Gamecontroller, playGame) {
+TEST(Gamecontroller, playGame) {
 	std::vector<std::shared_ptr<Player>> player = {
-		std::make_shared<HumanPlayer>(chipstack({ 1, 2, 3, 2, 1, 0 }), "A"),
+		std::make_shared<HumanPlayer>(chipstack({ 1, 1, 0, 0, 0, 0 }), "A"),
 		std::make_shared<DumbBot>(chipstack({ 1, 2, 3, 2, 1, 0 }), "B"),
 		std::make_shared<DumbBot>(chipstack({ 1, 2, 3, 2, 1, 0 }), "C")
 	};
@@ -30,7 +30,7 @@ using namespace testing;
 	chipstack sb = chipstack({ 1,0,0,0,0,0 });
 	GameController gc = GameController(player, max, bb, sb);
 	gc.playGame();
-}*/
+}
 
 namespace n_rules {
 	Rules rl;
