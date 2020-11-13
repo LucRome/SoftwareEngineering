@@ -18,19 +18,6 @@
 using namespace testing;
 
 
-//test (just play a game)
-TEST(Gamecontroller, playGame) {
-	std::vector<std::shared_ptr<Player>> player = {
-		std::make_shared<HumanPlayer>(chipstack({ 1, 1, 0, 0, 0, 0 }), "A"),
-		std::make_shared<DumbBot>(chipstack({ 1, 2, 3, 2, 1, 0 }), "B"),
-		std::make_shared<DumbBot>(chipstack({ 1, 2, 3, 2, 1, 0 }), "C")
-	};
-	int max = 25000;
-	chipstack bb = chipstack({ 0,1,0,0,0,0 });
-	chipstack sb = chipstack({ 1,0,0,0,0,0 });
-	GameController gc = GameController(player, max, bb, sb);
-	gc.playGame();
-}
 
 namespace n_rules {
 	Rules rl;
@@ -167,7 +154,6 @@ namespace n_rules {
 			EXPECT_FALSE(result.musterCorrect[i]);
 		}
 		EXPECT_EQ(result.HighCard, hand.secondCard);
-		//EXPECT_EQ(result.PairCard, values::two);
 	}
 
 	//One Pair is in the community Cards, the other is a mix of community card and hand card
@@ -189,8 +175,6 @@ namespace n_rules {
 		}
 		EXPECT_EQ(result.HighCard, hand.secondCard);
 		EXPECT_EQ(result.PairCard, values::four);
-		/*EXPECT_EQ(result.TwoPairCards[0], values::four);
-		EXPECT_EQ(result.TwoPairCards[1], values::two);*/
 
 	}
 
@@ -212,9 +196,6 @@ namespace n_rules {
 			EXPECT_FALSE(result.musterCorrect[i]);
 		}
 		EXPECT_EQ(result.HighCard, hand.secondCard);
-		/*EXPECT_EQ(result.PairCard, values::four);
-		EXPECT_EQ(result.TwoPairCards[0], values::four);
-		EXPECT_EQ(result.TwoPairCards[1], values::two);*/
 	}
 
 	//One pair is in the community cards, one pair on the hand
@@ -236,8 +217,6 @@ namespace n_rules {
 		}
 		EXPECT_EQ(result.HighCard, hand.firstCard);
 		EXPECT_EQ(result.PairCard, values::four);
-		/*EXPECT_EQ(result.TwoPairCards[0], values::four);
-		EXPECT_EQ(result.TwoPairCards[1], values::two);*/
 	}
 
 	//Both pairs are split up between community cards and hand
@@ -305,8 +284,6 @@ namespace n_rules {
 			EXPECT_FALSE(result.musterCorrect[i]);
 		}
 		EXPECT_EQ(result.HighCard, hand.secondCard);
-		//EXPECT_EQ(result.PairCard, values::two);
-		//EXPECT_EQ(result.ThreeOfAKindCard, values::two);
 	}
 
 	//Tests for straightPart in HasWon
@@ -351,6 +328,7 @@ namespace n_rules {
 			EXPECT_FALSE(result.musterCorrect[i]);
 		}
 		EXPECT_EQ(result.HighCard, hand.firstCard);
+		EXPECT_EQ(result.StraightHighestCard.value, five);
 	}
 
 	//ace as last card of straight
@@ -623,7 +601,7 @@ namespace n_rules {
 		EXPECT_EQ(result.FullHouseCards[1], values::queen);
 	}
 
-	TEST(Rules, hasWon_fullHouse_2) { //3 oak in community -> only a pair
+	TEST(Rules, hasWon_fullHouse_2) { //3 only in community -> only a pair
 		Rules rl = Rules();
 		hand hand = { {hearts, ace}, {diamonds, queen} };
 		card card1 = { hearts, two };
@@ -671,11 +649,36 @@ namespace n_rules {
 			EXPECT_FALSE(result.musterCorrect[i]);
 		}
 		EXPECT_EQ(result.HighCard, hand.secondCard);
-		/*EXPECT_EQ(result.PairCard, values::three);
+	}
+
+	TEST(Rules, hasWon_fourOfAKind_2) {
+		Rules rl = Rules();
+		hand hand = { {hearts, six}, {spades, three} };
+		card card1 = { diamonds, three };
+		card card2 = { hearts, three };
+		card card3 = { clubs, three };
+		card card4 = { spades, nine };
+		card card5 = { clubs, queen };
+		std::array <card, 5> community = { card1, card2, card3, card4, card5 };
+		BestHand result = rl.HasWon(hand, community);
+		EXPECT_TRUE(result.musterCorrect[highCard]);
+		EXPECT_TRUE(result.musterCorrect[twoPair]);
+		EXPECT_TRUE(result.musterCorrect[pair]);
+		EXPECT_TRUE(result.musterCorrect[threeOfAKind]);
+		EXPECT_FALSE(result.musterCorrect[straight]);
+		EXPECT_FALSE(result.musterCorrect[fullHouse]);
+		EXPECT_FALSE(result.musterCorrect[flush]);
+		EXPECT_TRUE(result.musterCorrect[fourOfAKind]);
+		for (int i = 8; i < 10; i++) {
+			EXPECT_FALSE(result.musterCorrect[i]);
+		}
+		std::cout << result.TwoPairCards[0] << std::endl;
+		EXPECT_EQ(result.HighCard, hand.firstCard);
+		EXPECT_EQ(result.PairCard, values::three);
 		EXPECT_EQ(result.TwoPairCards[0], values::three);
 		EXPECT_EQ(result.TwoPairCards[1], values::three);
 		EXPECT_EQ(result.ThreeOfAKindCard, values::three);
-		EXPECT_EQ(result.FourOfAKindCard, values::three);*/
+		EXPECT_EQ(result.FourOfAKindCard, values::three);
 	}
 
 	TEST(Rules, hasWon_straightFlush_1) {
@@ -800,11 +803,6 @@ namespace n_gameController {
 		EXPECT_EQ(gc.isPotSame(), true);
 	}
 
-	//TODO: kann noch nicht geschrieben werden, Funktion possiblePlays() noch nicht fertig
-	//else for der Abgabe löschen
-	TEST(gameController, possiblePlays) {
-		EXPECT_EQ(1, 1);
-	}
 }
 
 namespace n_money {
@@ -1763,10 +1761,11 @@ namespace n_drawResolvernf {
 ////Tests the whole Gamesystem
 //TEST(system, playgame) {
 //	chipstack chip1 = chipstack({ 6,5,4,3,2,1 });
+//	chipstack chip2 = chipstack({ 6,0,0,0,0,0 });
 //	chipstack sb = chipstack({ 1,0,0,0,0,0 });
 //	chipstack bb = chipstack({ 2,0,0,0,0,0 });
 //	std::shared_ptr<Player> bot1 = std::make_shared<DumbBot>(chip1, "a");
-//	std::shared_ptr<Player> bot2 = std::make_shared<DumbBot>(chip1, "b");
+//	std::shared_ptr<Player> bot2 = std::make_shared<DumbBot>(chip2, "b");
 //	std::vector<std::shared_ptr<Player>> players;
 //	players.push_back(bot1);
 //	players.push_back(bot2);

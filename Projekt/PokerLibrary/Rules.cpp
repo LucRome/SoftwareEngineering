@@ -193,11 +193,11 @@ bool Rules::CheckFourOfAKind(const std::array<card, 2>& CardsOnTheHand, std::arr
 		return true;
 	}
 	else if (Numbers[two] >= rest){
-		Hands.FourOfAKindCard = one;
-		Hands.ThreeOfAKindCard = one;
-		Hands.TwoPairCards[0] = one;
-		Hands.TwoPairCards[1] = one;
-		Hands.PairCard = one;
+		Hands.FourOfAKindCard = two;
+		Hands.ThreeOfAKindCard = two;
+		Hands.TwoPairCards[0] = two;
+		Hands.TwoPairCards[1] = two;
+		Hands.PairCard = two;
 		return true;
 	}
 	return false;
