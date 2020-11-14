@@ -35,7 +35,6 @@ struct CardsAndIsHand {
 	bool isHand;
 };
 
-//TODO: optimize
 
 class Rules
 {
@@ -47,16 +46,16 @@ public:
 	BestHand HasWon(hand CardsOnTheHand, std::array<card, 5> CardsOnTheTable);
 
 private:
-	std::array<card, 5> CardsForAStreet; //contains the cards that build a street?
+	std::array<card, 5> CardsForAStreet; //contains the cards that build a street
 	
 	bool CheckNormalFlush(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //checks for Flush (hand + community)
 	bool CheckFlush(std::array<card, 5> Cards); //used for Straight Flush (+ Royal Flush)
-	bool CheckValues(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //returns true if  street (?)
+	bool CheckValues(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); //returns true if  street 
 	int CheckHowManyOfAKind(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable, int i); //Helper for 2,3,... ofAKind
 	bool CheckFourOfAKind(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers); //FourOfAKind
 														
 	//set the bits of musterCorrect
-	void CheckThreeOfAKindAndFullHouse(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers); //3 of a Kind + full House (1. fullHouse, 2 3oaK)
+	void CheckThreeOfAKindAndFullHouse(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers); //3 of a Kind + full House (1. fullHouse, 2. 3oaK)
 	void CheckTwoPairAndPair(const std::array<card, 2>& CardsOnTheHand, std::array<int, 13> Numbers); //2 pair, 1 twoPairs 
 	void CheckNumbers(std::array<card, 2> CardsOnTheHand, std::array<card, 5> CardsOnTheTable); // 1: fourOfAKind, 2: fullHouse, 3: 3oak, 4: 2pair, 5: pair, 0: highCard
 
