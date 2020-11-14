@@ -51,28 +51,26 @@ void DrawResolver::resolveHighCard(std::vector<playerNBestHand>& players_besthan
 	values opponent = players_besthands[0].besthand.HighCard.value;
 	values own = players_besthands[playerNr].besthand.HighCard.value;
 	bool cont = true; //if nextlowercard needs to be evalued
-	while (cont) {
-		if (resolveValues(players_besthands, own, opponent)) {
-			cont = false; //only repeat with lowcard if neccessary
+
+	if (!resolveValues(players_besthands, own, opponent)) {
+		//draw -> interpret lowCard
+		//determine lowercard of opponent
+		if (opponent == players_besthands[0].player->getHand().firstCard.value) {
+			opponent = players_besthands[0].player->getHand().secondCard.value;
 		}
-		else { //draw -> interpret lowCard
-			//determine lowercard of opponent
-			if (opponent == players_besthands[0].player->getHand().firstCard.value) {
-				opponent = players_besthands[0].player->getHand().secondCard.value;
-			}
-			else
-			{
-				opponent = players_besthands[0].player->getHand().firstCard.value;
-			}
-			//determine lowercard of player
-			if (opponent == players_besthands[playerNr].player->getHand().firstCard.value) {
-				opponent = players_besthands[playerNr].player->getHand().secondCard.value;
-			}
-			else
-			{
-				opponent = players_besthands[playerNr].player->getHand().firstCard.value;
-			}
+		else
+		{
+			opponent = players_besthands[0].player->getHand().firstCard.value;
 		}
+		//determine lowercard of player
+		if (own == players_besthands[playerNr].player->getHand().firstCard.value) {
+			own = players_besthands[playerNr].player->getHand().secondCard.value;
+		}
+		else
+		{
+			own = players_besthands[playerNr].player->getHand().firstCard.value;
+		}
+		resolveValues(players_besthands, own, opponent);
 	}
 }
 
