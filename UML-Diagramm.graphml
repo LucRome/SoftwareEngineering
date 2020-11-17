@@ -13,10 +13,9 @@
   <key attr.name="description" attr.type="string" for="edge" id="d9"/>
   <key for="edge" id="d10" yfiles.type="edgegraphics"/>
   <graph edgedefault="directed" id="G">
-    <data key="d0"/>
+    <data key="d0" xml:space="preserve"/>
     <node id="n0">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="115.72098536345635" width="1139.3531345963786" x="1455.3234327018108" y="-7.860492681728374"/>
@@ -35,13 +34,12 @@
     </node>
     <node id="n1">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="88.78148438044782" width="159.59702590253704" x="2245.2014870487315" y="1155.6092578097762"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="46.62451171875" x="56.48625709189352" xml:space="preserve" y="26.701171875">ouPlay<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="-4.996003610813204E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="50.95361328125" x="54.32170631064352" xml:space="preserve" y="26.701171875">outPlay<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="-4.996003610813204E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="structure" use3DEffect="false">
             <y:AttributeLabel xml:space="preserve">+ play: plays
 + chips: chipstack</y:AttributeLabel>
@@ -52,7 +50,6 @@
     </node>
     <node id="n2">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="337.97569851922356" width="354.6839008499057" x="1822.6580495750472" y="1031.0121507403883"/>
@@ -85,7 +82,6 @@
     </node>
     <node id="n3">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="84.69167729036607" width="180.52956970824408" x="2859.735215145878" y="482.654161354817"/>
@@ -103,13 +99,12 @@
     </node>
     <node id="n4">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="121.60693007447966" width="326.66769110552616" x="536.666154447237" y="464.1965349627601"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="86.3671875" x="120.15025180276308" xml:space="preserve" y="3.0">DeckOfCards
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="86.3671875" x="120.15025180276302" xml:space="preserve" y="50.84033027161479">DeckOfCards
 <y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="1.1102230246251565E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="false">
             <y:AttributeLabel xml:space="preserve">-m_cardDeck: std::vector&lt;card&gt;</y:AttributeLabel>
@@ -123,13 +118,12 @@
     </node>
     <node id="n5">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="99.75253027661793" width="228.78724475666502" x="585.6063776216674" y="325.123734861691"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="40.82275390625" x="93.98224542520751" xml:space="preserve" y="26.701171875">Rnd.h<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="9.992007221626409E-16" nodeRatioY="-1.6653345369377348E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="40.82275390625" x="93.9822454252078" xml:space="preserve" y="39.91313037268395">Rnd.h<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="9.992007221626409E-16" nodeRatioY="-1.6653345369377348E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="File" use3DEffect="false">
             <y:AttributeLabel xml:space="preserve"/>
             <y:MethodLabel xml:space="preserve">+ randomNr(int): int
@@ -140,7 +134,6 @@
     </node>
     <node id="n6">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="293.4611178595744" width="777.8846396333345" x="611.0576801833328" y="703.2694410702129"/>
@@ -170,7 +163,6 @@ printWinner(const std::vector&lt;playerNBestHand&gt;&amp; playerBestHand): void
     </node>
     <node id="n7">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="73.0235236278944" width="190.8299196213045" x="904.5850401893478" y="588.4882381860527"/>
@@ -188,7 +180,6 @@ printWinner(const std::vector&lt;playerNBestHand&gt;&amp; playerBestHand): void
     </node>
     <node id="n8">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="243.34678922064228" width="688.1462061285425" x="-19.073103064271265" y="2203.3266053896787"/>
@@ -217,7 +208,6 @@ printWinner(const std::vector&lt;playerNBestHand&gt;&amp; playerBestHand): void
     </node>
     <node id="n9">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="121.60693007447972" width="238.91784601949126" x="205.54107699025437" y="464.1965349627601"/>
@@ -237,13 +227,12 @@ printWinner(const std::vector&lt;playerNBestHand&gt;&amp; playerBestHand): void
     </node>
     <node id="n10">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="447.0499616908426" width="545.8726437428083" x="52.063678128595825" y="1726.4750191545786"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="102.24267578125" x="221.81498398077917" xml:space="preserve" y="3.0">GameController
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="102.24267578125" x="259.34649005554974" xml:space="preserve" y="213.5618460797964">GameController
 <y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.0" nodeRatioX="0.16240572774913586" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="false">
             <y:AttributeLabel xml:space="preserve">-m_players: std::vector&lt;std::shared_ptr&lt;Player&gt;&gt;
@@ -279,7 +268,6 @@ printWinner(const std::vector&lt;playerNBestHand&gt;&amp; playerBestHand): void
     </node>
     <node id="n11">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="88.78148438044781" width="192.4473382497394" x="2453.7763308751305" y="1255.6092578097762"/>
@@ -296,13 +284,12 @@ printWinner(const std::vector&lt;playerNBestHand&gt;&amp; playerBestHand): void
     </node>
     <node id="n12">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="241.18965233648152" width="661.1715465732177" x="3169.414226713391" y="1454.4051738317594"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="39.40087890625" x="310.88533383348386" xml:space="preserve" y="3.0">Rules<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="1.1102230246251565E-16" nodeRatioY="-1.1102230246251565E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="39.40087890625" x="310.88533383348386" xml:space="preserve" y="110.63169140261584">Rules<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="1.1102230246251565E-16" nodeRatioY="-1.1102230246251565E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="false">
             <y:AttributeLabel xml:space="preserve">-Hands BestHand
 -CardsForAStreet: std::array&lt;card, 5&gt;</y:AttributeLabel>
@@ -325,13 +312,12 @@ printWinner(const std::vector&lt;playerNBestHand&gt;&amp; playerBestHand): void
     </node>
     <node id="n13">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="128.62466292500605" width="194.27769685083513" x="2627.8611515745824" y="235.68766853749685"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="113.07177734375" x="40.602959753542564" xml:space="preserve" y="54.34919669687804">CardAndSymbols
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="113.07177734375" x="40.602959753542564" xml:space="preserve" y="3.0">CardAndSymbols
 <y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="1.1102230246251565E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="false">
             <y:AttributeLabel xml:space="preserve">- m_deckOfCards DeckofCards</y:AttributeLabel>
@@ -345,7 +331,6 @@ hand &lt;&lt;Structure&gt;&gt;</y:MethodLabel>
     </node>
     <node id="n14">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="128.62466292500602" width="180.5295697082442" x="2634.735215145878" y="-14.312331462503153"/>
@@ -365,13 +350,12 @@ s_none</y:AttributeLabel>
     </node>
     <node id="n15">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="84.69167729036604" width="185.86631660763413" x="2857.066841696183" y="257.654161354817"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="35.052734375" x="75.40679111631698" xml:space="preserve" y="32.38270387955788">hand<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="4.440892098500626E-16" nodeRatioY="-1.0547118733938987E-15" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="35.052734375" x="75.40679111631707" xml:space="preserve" y="26.701171875">hand<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="4.440892098500626E-16" nodeRatioY="-1.0547118733938987E-15" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="structure" use3DEffect="false">
             <y:AttributeLabel xml:space="preserve">+ firstCard: card
 + secondCard: card</y:AttributeLabel>
@@ -382,7 +366,6 @@ s_none</y:AttributeLabel>
     </node>
     <node id="n16">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="207.99360301250744" width="330.6167414252648" x="2784.6916292873675" y="1196.0031984937464"/>
@@ -408,7 +391,6 @@ s_none</y:AttributeLabel>
     </node>
     <node id="n17">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="84.69167729036606" width="148.19622190499422" x="3425.9018890475027" y="482.654161354817"/>
@@ -426,7 +408,6 @@ s_none</y:AttributeLabel>
     </node>
     <node id="n18">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="264.53093612836864" width="210.41692335440032" x="1919.7915383227999" y="167.73453193581554"/>
@@ -455,7 +436,6 @@ v_none</y:AttributeLabel>
     </node>
     <node id="n19">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="207.99360301250752" width="169.10499043988074" x="2865.4475047800597" y="1471.0031984937464"/>
@@ -480,7 +460,6 @@ royalFlush</y:AttributeLabel>
     </node>
     <node id="n20">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="115.72098536345635" width="330.61674142526505" x="2584.6916292873675" y="792.1395073182719"/>
@@ -500,7 +479,6 @@ royalFlush</y:AttributeLabel>
     </node>
     <node id="n21">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="99.75253027661793" width="314.7754614270188" x="1442.6122692864906" y="800.123734861691"/>
@@ -517,7 +495,6 @@ royalFlush</y:AttributeLabel>
     </node>
     <node id="n22">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="293.4611178595744" width="354.6839008499056" x="1822.6580495750472" y="703.2694410702129"/>
@@ -546,7 +523,6 @@ royalFlush</y:AttributeLabel>
     </node>
     <node id="n23">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="40.30815881605413" width="76.34178369361473" x="1686.8291081531927" y="1179.845920591973"/>
@@ -562,7 +538,6 @@ royalFlush</y:AttributeLabel>
     </node>
     <node id="n24">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="35.30815881605368" width="159.5970259025372" x="2245.2014870487315" y="1282.3459205919733"/>
@@ -578,7 +553,6 @@ royalFlush</y:AttributeLabel>
     </node>
     <edge id="e0" source="n3" target="n13">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-90.2647848541219" sy="-25.0" tx="0.0" ty="64.31233146250315">
@@ -592,7 +566,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e1" source="n3" target="n14">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="90.26478485412235" sy="-25.0" tx="90.26478485412235" ty="-0.0">
@@ -607,7 +580,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e2" source="n3" target="n18">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-90.2647848541219" sy="-12.5" tx="0.0" ty="132.26546806418423">
@@ -621,7 +593,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e3" source="n4" target="n3">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="163.33384555276314" sy="-0.0" tx="-90.2647848541219" ty="-0.0"/>
@@ -634,7 +605,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e4" source="n5" target="n4">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="49.87626513830901" tx="0.0" ty="-60.803465037239675"/>
@@ -646,7 +616,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e5" source="n7" target="n10">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-95.41495981065225" sy="-0.0" tx="25.0" ty="-223.5249808454214">
@@ -660,7 +629,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e6" source="n7" target="n6">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="36.51176181394726" tx="0.0" ty="-146.73055892978732"/>
@@ -672,7 +640,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e7" source="n7" target="n22">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="95.41495981065236" sy="-0.0" tx="0.0" ty="-146.73055892978732">
@@ -687,7 +654,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e8" source="n9" target="n4">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="119.4589230097456" sy="-0.0" tx="-163.33384555276302" ty="-0.0"/>
@@ -700,7 +666,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e9" source="n10" target="n11">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="272.9363218714042" sy="-25.0" tx="0.0" ty="44.39074219022382">
@@ -714,7 +679,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e10" source="n10" target="n9">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="-223.5249808454214" tx="0.0" ty="60.8034650372399"/>
@@ -726,7 +690,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e11" source="n10" target="n8">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="223.52498084542128" tx="0.0" ty="-121.67339461032114"/>
@@ -738,7 +701,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e12" source="n10" target="n12">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="272.9363218714042" sy="-0.0" tx="0.0" ty="120.59482616824073">
@@ -752,7 +714,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e13" source="n10" target="n6">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="272.9363218714042" sy="-75.0" tx="0.0" ty="146.7305589297871">
@@ -766,7 +727,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e14" source="n11" target="n16">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="96.22366912486996" sy="-0.0" tx="-165.3083707126325" ty="-0.0"/>
@@ -778,7 +738,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e15" source="n12" target="n16">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-25.0" sy="-120.59482616824084" tx="165.3083707126325" ty="-0.0">
@@ -792,7 +751,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e16" source="n12" target="n17">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="-120.59482616824084" tx="0.0" ty="42.345838645182994"/>
@@ -804,7 +762,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e17" source="n12" target="n19">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-330.58577328660886" sy="-0.0" tx="84.55249521994028" ty="-0.0"/>
@@ -816,7 +773,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e18" source="n13" target="n15">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="97.13884842541756" sy="-0.0" tx="-92.93315830381698" ty="-0.0"/>
@@ -828,7 +784,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e19" source="n13" target="n14">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="-64.3123314625027" tx="0.0" ty="64.31233146250315"/>
@@ -840,7 +795,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e20" source="n15" target="n3">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="42.345838645182994" tx="0.0" ty="-42.345838645182994"/>
@@ -852,7 +806,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e21" source="n16" target="n3">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="-103.99680150625386" tx="0.0" ty="42.345838645182994"/>
@@ -864,7 +817,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e22" source="n16" target="n19">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="103.99680150625363" tx="0.0" ty="-103.99680150625375"/>
@@ -876,7 +828,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e23" source="n17" target="n3">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-74.09811095249734" sy="-0.0" tx="90.26478485412235" ty="-0.0"/>
@@ -888,7 +839,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e24" source="n18" target="n13">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="105.20846167720038" sy="-0.0" tx="-97.13884842541756" ty="-0.0"/>
@@ -899,7 +849,6 @@ royalFlush</y:AttributeLabel>
       </data>
     </edge>
     <edge id="e25" source="n20" target="n22">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-165.3083707126325" sy="-0.0" tx="177.34195042495276" ty="-0.0"/>
@@ -910,7 +859,6 @@ royalFlush</y:AttributeLabel>
       </data>
     </edge>
     <edge id="e26" source="n21" target="n22">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="157.38773071350943" sy="-0.0" tx="-177.34195042495276" ty="-0.0"/>
@@ -921,7 +869,6 @@ royalFlush</y:AttributeLabel>
       </data>
     </edge>
     <edge id="e27" source="n22" target="n11">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="177.34195042495276" sy="25.0" tx="0.0" ty="-44.390742190224046">
@@ -935,7 +882,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e28" source="n23" target="n2">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="38.170891846807535" sy="-0.0" tx="-177.34195042495276" ty="-0.0"/>
@@ -947,7 +893,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e29" source="n10" target="n2">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="272.9363218714042" sy="-50.0" tx="0.0" ty="168.98784925961172">
@@ -961,7 +906,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e30" source="n22" target="n2">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="146.7305589297871" tx="0.0" ty="-168.98784925961172"/>
@@ -973,7 +917,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e31" source="n2" target="n1">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="177.34195042495276" sy="-0.0" tx="-79.79851295126855" ty="-0.0"/>
@@ -985,7 +928,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e32" source="n14" target="n0">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-90.2647848541219" sy="-0.0" tx="569.6765672981892" ty="-0.0"/>
@@ -997,7 +939,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e33" source="n0" target="n18">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="57.860492681728374" tx="0.0" ty="-132.26546806418446"/>
@@ -1009,7 +950,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e34" source="n11" target="n24">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-96.2236691248695" sy="-0.0" tx="79.79851295126855" ty="-0.0"/>
@@ -1021,7 +961,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e35" source="n21" target="n6">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-157.38773071350943" sy="-0.0" tx="388.94231981666735" ty="-0.0"/>
@@ -1033,7 +972,6 @@ royalFlush</y:AttributeLabel>
     </edge>
     <edge id="e36" source="n1" target="n22">
       <data key="d8" xml:space="preserve"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="-44.390742190224046" tx="177.34195042495276" ty="50.0">
