@@ -2,7 +2,7 @@
 # also falls ignorieren nicht funktioniert: Entsprechende Datei l�schen und das committen (auch Ordner)
 
 # Executables
-*.exe
+
 *.out
 *.app
 
@@ -12,7 +12,8 @@ Projekt/x64
 /.vs/
 Projekt/PokerLibrary/x64
 Projekt/PokerLibrary/Debug
-Projekt/Projekt/x64
+Projekt/Projekt/x64/*
+!Projekt/x64/Debug/PokerGame.exe
 Projekt/Projekt/Debug
 *.obj
 Projekt/Tests/x64
