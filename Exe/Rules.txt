@@ -1,0 +1,95 @@
+The rules for Texas Hold'em
+---------------------------------------------------------------------------------------------------
+Hand Rankings:
+
+  The player with the best hand wins the round (except if all players fold).
+  The hands are ranked from highest to lowest.
+  The suits have no influence on the "value" of your hand
+
+	- Royal Flush: A, K, Q, J, 10 (all the same suit)
+	
+	- Straight Flush: Five cards in sequence, all in the same suit
+	
+	- Four of a Kind: All four cards of the same rank
+	
+	- Full House: Three of a kind and a pair
+
+	- Flush: Five cards of the same suit
+	
+	- Straight: Five cards in a sequence (Ace can start lowest straight and end highest straight)
+	
+	- Three of a kind: Three cards of the same rank
+
+	- Two pair: two different pairs
+
+	- Pair: two cards of the same rank
+
+	- High Card: The highest card
+
+
+Additions:
+
+  What happens if two (or more) players have the same hand?
+
+	- Straight/Straight Flush: The player with the highest card in his straight wins.
+	
+	- Four of a Kind: Player with highest Four of a kind wins, if the same: highest other card
+
+	- Flush: highest card in Flush (if the same: 2nd, 3rd,...)
+
+	- Full House: first highest Three of a Kind, then highest pair
+
+	- Two Pair: First higher pair, then lower pair
+
+	- Pair: higher pair, then highest other card,...
+
+	- High Card: Highest card, 2nd highest,...
+---------------------------------------------------------------------------------------------------	
+Roles:
+
+	- Dealer: The Dealer hands out the cards (here it is just a role), after each round
+			  the role is shifted one to the left.
+
+	- Small Blind: The player on the left to the dealer has to pay the small blind.
+
+	- Big Blind: The player on the left to the small Blind has to pay the big Blind.
+---------------------------------------------------------------------------------------------------
+Game:	
+
+	At the end of the round every Player has two pocket Cards, that only the Player can see,
+	and there are five community cards on the table, that every Player can see.
+	
+	To build your hand you use up to 4 of the community cards and at least 1 of your pocket cards.
+	Using only community cards wouldn't make sense, since all players have that hand.
+---------------------------------------------------------------------------------------------------
+Round:
+
+	Preflop:
+		First the two pocket cards are dealt and there is a round of betting.
+	The Flop:
+		(The top card on the stack is thrown away), Three community cards are dealt, round of betting
+	The Turn:
+		(The top card on the stack is thrown away), one community card is dealt, round of betting
+	The River:
+		(The top card on the stack is thrown away), the last community card is dealt, round of betting
+	The Showdown:
+		The pocket cards are revealed and the winner takes the pot
+---------------------------------------------------------------------------------------------------
+Round of betting:
+
+	In the Preflop betting round, the first player to act is left of the big blind, 
+	then this role is always shifted one to the left
+	
+	A Player has the following options:
+	 - Fold: don't pay into the pot and toss away your cards, wait for next round
+	 - Call/Check: match the amount of the bet/ don't raise
+	 - Raise: Raise the amount of the bet
+	 - Forgot: All in ()
+	 - (Begin of Preflop: bet = big blind)
+
+	The round of betting continues until the following conditions are met:
+	 - all players had a chance to act
+	 - all players that haven't folded have the same amount of money in the pot
+---------------------------------------------------------------------------------------------------
+Source:
+https://www.pokerlistings.com/poker-rules-texas-holdem
