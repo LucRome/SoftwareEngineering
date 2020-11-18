@@ -8,12 +8,14 @@
 
 # Debug und so
 Projekt/.vs/
-Projekt/x64
+/Projekt/x64/*
+! /Projekt/x64/Debug/*
+
 /.vs/
 Projekt/PokerLibrary/x64
 Projekt/PokerLibrary/Debug
 /Projekt/Projekt/x64/*
-! /Projekt/x64/Debug/*
+
 Projekt/Projekt/Debug
 *.obj
 Projekt/Tests/x64
