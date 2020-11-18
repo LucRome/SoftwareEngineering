@@ -2,7 +2,7 @@
 # also falls ignorieren nicht funktioniert: Entsprechende Datei l�schen und das committen (auch Ordner)
 
 # Executables
-
+*.exe
 *.out
 *.app
 
