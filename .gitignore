@@ -9,7 +9,7 @@
 # Debug und so
 Projekt/.vs/
 /Projekt/x64/*
-! /Projekt/x64/Debug/*
+
 
 /.vs/
 Projekt/PokerLibrary/x64
